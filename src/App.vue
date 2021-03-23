@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="center">
-      <Login></Login>
+      <router-view>
+        <Login></Login>
+      </router-view>
     </div>
   </div>
 </template>
