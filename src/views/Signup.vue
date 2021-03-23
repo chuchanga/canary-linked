@@ -39,9 +39,9 @@
         class=" bg-cyberyellow flex-col flex ml-auto mr-auto items-center w-full md:w-3/5  "
       >
         <h1 class="font-bold text-2xl my-10 text-black">
-          Acceso para usuarios registrados
+          Registrarme como nuevo usuario
         </h1>
-        <Form></Form>
+        <FormSignup></FormSignup>
       </div>
 
       <div class="border-solid border-2 border-light-blue-500 m-8 "></div>
@@ -63,14 +63,15 @@
     </div>
   </div>
 </template>
+
 <script>
-import Form from "../components/Form.vue";
+import FormSignup from "../components/FormSignup.vue";
 import Arrow from "../components/Arrow.vue";
 import Bar from "../components/Bar.vue";
 export default {
-  name: "Login",
+  name: "Signup",
   components: {
-    Form,
+    FormSignup,
     Arrow,
     Bar
   }

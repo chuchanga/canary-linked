@@ -1,14 +1,24 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-import Login from "./view/Login.vue";
 import "tailwindcss/tailwind.css";
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
-const routes = [{ path: "/login", component: Login }];
+const routes = [
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("./views/Login.vue")
+  },
+  {
+    path: "/signup",
+    name: "login",
+    component: () => import("./views/Signup.vue")
+  }
+];
 
 const router = new VueRouter({
   routes,

@@ -30,21 +30,14 @@
         </span>
       </div>
     </div>
-
     <Button inputLogin="true" text="INICIAR SESIÓN" />
-
-    <div class="flex justify-center flex-col -mt-8">
-      <Button inputLogin="true" text="CONTINUAR CON GOOGLE" />
+    <div class="m-auto -mt-4">
+      <router-link
+        to="login"
+        class="m-auto text-base text-black text-right leading-normal hover:underline mb-2 -mt-8"
+        >¿No puedes iniciar sesión?</router-link
+      >
     </div>
-
-    <div class="flex justify-center flex-col -mt-16">
-      <Button inputLogin="true" text="CONTINUAR CON FACEBOOK" />
-    </div>
-    <a
-      href="#"
-      class="m-auto text-base text-black text-right leading-normal hover:underline mb-2 -mt-8"
-      >¿No puedes iniciar sesión?</a
-    >
     <Button text="REGISTRA NUEVA CUENTA" />
   </form>
 </template>
