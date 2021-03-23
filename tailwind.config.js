@@ -7,9 +7,15 @@ module.exports = {
     },
     backgroundColor: theme => ({
       ...theme("colors"),
-      login: "#FAD000",
-      btn: "#00A8F5",
-      btnh: "#5CCBFF"
+      cyberyellow: "#FAD000",
+      minionyellow: "#FFE45C",
+      goldenrod: "#E6A503",
+      culturedwhite: "#F3F3F3",
+      honolulublue: "#0070A3",
+      bluejeans: "#00A8F5",
+      capriblue: "#5CCBFF",
+      davysgray: "#4D4D4D",
+      richblack: "#0A0C09"
     }),
     extend: {}
   },
