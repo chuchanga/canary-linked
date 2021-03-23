@@ -36,7 +36,7 @@
         </svg>
       </div>
       <div
-        class=" bg-login flex-col flex ml-auto mr-auto items-center w-full md:w-3/5  "
+        class=" bg-cyberyellow flex-col flex ml-auto mr-auto items-center w-full md:w-3/5  "
       >
         <h1 class="font-bold text-2xl my-10 text-black">
           Acceso para usuarios registrados
