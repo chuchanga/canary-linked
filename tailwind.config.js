@@ -1,11 +1,20 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false, // Or 'media' or 'class'
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Nunito"]
+    },
+    backgroundColor: theme => ({
+      ...theme("colors"),
+      login: "#FAD000",
+      btn: "#00A8F5",
+      btnh: "#5CCBFF"
+    }),
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: [require("@tailwindcss/forms")]
+};
