@@ -25,7 +25,8 @@ export default {
     return {
       pages: [
         { route: "/header", name: "Header" },
-        { route: "/login", name: "Iniciar sesión" }
+        { route: "/login", name: "Iniciar sesión" },
+        { route: "/signup", name: "Registrarse" }
       ]
     };
   }
