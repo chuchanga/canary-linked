@@ -26,7 +26,9 @@ module.exports = {
     "vars-on-top": ["warn"],
     "no-unreachable": ["error"],
     "no-extra-semi": ["error"],
-    "no-extra-parens": ["error"]
+    "no-extra-parens": ["error"],
+    "space-before-function-paren":["off"],
+    "comma-dangle":["off"]
   }
 }
 

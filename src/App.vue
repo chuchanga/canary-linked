@@ -9,7 +9,7 @@
 // Import Header from "./views/Header.vue";
 export default {
   name: "App",
-  components: {}
+  components: {},
 };
 </script>
 
