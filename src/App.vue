@@ -8,7 +8,7 @@
 
 export default {
   name: "App",
-  components: {}
+  components: {},
 };
 </script>
 

@@ -1,15 +1,29 @@
 import Vue from "vue";
-import Login from "../views/Login.vue";
-import Header from "../views/Header.vue";
-import Signup from "../views/Signup.vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/login", component: Login },
-  { path: "/header", component: Header },
-  { path: "/signup", component: Signup }
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("./views/Login.vue")
+  },
+  {
+    path: "/header",
+    name: "header",
+    component: () => import("./views/Header.vue")
+  },
+  {
+    path: "/signup",
+    name: "login",
+    component: () => import("./views/Signup.vue")
+  },
+  {
+    path: "/training",
+    name: "training",
+    component: () => import("./views/Training.vue")
+  }
 ];
 
 const router = new VueRouter({
