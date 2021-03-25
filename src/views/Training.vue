@@ -7,7 +7,6 @@
 <script>
 import vPagination from "../components/vPagination.vue";
 import Card from "../components/Card.vue";
-
 export default {
   name: "Training",
   components: {
