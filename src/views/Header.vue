@@ -2,7 +2,7 @@
 <div class="content">
     <BarMenu/>
     <br>
-    <table class=" bg-richblack text-white" >
+    <table class=" bg-richblack text-white -mt-16 m-auto " >
         <tr>
             <th rawspan="10" v-for="(page, index) in pages" :key="index">
                 <router-link :to="page.route">
