@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import vPagination from "vue-plain-pagination";
+import   from "vue-plain-pagination";
 
 export default {
   components: { vPagination },

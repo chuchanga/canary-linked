@@ -6,26 +6,27 @@
           class="max-w-sm rounded overflow-hidden shadow-lg"
           v-for="card in Training"
           v-bind:key="card.title"
-        ><div v-if="card.show">
-          <img class="w-full" src="../assets/job.jpg" alt="Girl job" />
-          <div class="px-6 py-4 space-y-6">
-            <div class="font-bold text-xl mb-2">{{ card.title }}</div>
-            <p class="text-gray-700 text-base">
-              {{ card.show }}
-            </p>
-            <div id="demo">
-              <button
-                @click="show = card.title"
-                class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded"
-              >
-                Leer más/Oculta
-              </button>
-              <transition name="fade">
-                <p v-if="card.title == show">{{ card.text }}</p>
-              </transition>
+        >
+          <div v-if="card.show">
+            <img class="w-full" src="../assets/job.jpg" alt="Girl job" />
+            <div class="px-6 py-4 space-y-6">
+              <div class="font-bold text-xl mb-2">{{ card.title }}</div>
+              <p class="text-gray-700 text-base">
+                {{ card.show }}
+              </p>
+              <div id="demo">
+                <button
+                  @click="show = card.title"
+                  class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded"
+                >
+                  Leer más/Oculta
+                </button>
+                <transition name="fade">
+                  <p v-if="card.title == show">{{ card.text }}</p>
+                </transition>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
@@ -33,21 +34,25 @@
       <p>Current page: {{ currentPage }}</p>
       <p>TotalPages : {{ totalPages }}</p>
       <div class="bg-cyberyellow m-auto flex flex-row justify-center space-x-3">
-        <button  @click="cambiarPagina(1)">
-          {{paginationAnchorTexts.first}}
-          </button>
-          <button  @click="cambiarPagina(currentPage - 1)">
-          {{paginationAnchorTexts.prev}}
-          </button>
-      <button v-for="index in totalPages" :key="index" @click="cambiarPagina(index)">
-        {{index}}
-      </button>
-      <button  @click="cambiarPagina(currentPage + 1)">
-          {{paginationAnchorTexts.next}}
-          </button>
-      <button  @click="cambiarPagina(totalPages)">
-          {{paginationAnchorTexts.last}}
-          </button>
+        <button @click="cambiarPagina(1)">
+          {{ paginationAnchorTexts.first }}
+        </button>
+        <button @click="cambiarPagina(currentPage - 1)">
+          {{ paginationAnchorTexts.prev }}
+        </button>
+        <button
+          v-for="index in totalPages"
+          :key="index"
+          @click="cambiarPagina(index)"
+        >
+          {{ index }}
+        </button>
+        <button @click="cambiarPagina(currentPage + 1)">
+          {{ paginationAnchorTexts.next }}
+        </button>
+        <button @click="cambiarPagina(totalPages)">
+          {{ paginationAnchorTexts.last }}
+        </button>
       </div>
     </div>
   </div>
@@ -55,7 +60,7 @@
 
 <script>
 export default {
-  name: "Training",
+  name: "TrainingSaul",
   data() {
     return {
       currentPage: 1,
@@ -107,13 +112,18 @@ export default {
     };
   },
   methods: {
-    cambiarPagina: function(index) {
+    cambiarPagina: function (index) {
       this.currentPage = index;
       for (let i = 0; i < this.Training.length; i++) {
-        if (i >= ((index - 1) * 3) && i < (index - 1) * 3 + 3) {
+        if (i >= (index - 1) * 3 && i < (index - 1) * 3 + 3) {
           this.Training[i].show = true;
         } else this.Training[i].show = false;
-        console.log("El indice es: " + this.Training[i].title + " y su valor es " + this.Training[i].show);
+        console.log(
+          "El indice es: " +
+            this.Training[i].title +
+            " y su valor es " +
+            this.Training[i].show
+        );
       }
     },
   },
