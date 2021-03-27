@@ -33,7 +33,6 @@ export default {
     Carousel,
     Slide,
   },
-
   data() {
     return {
       Testimonials: [
