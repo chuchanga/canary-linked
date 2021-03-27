@@ -1,7 +1,10 @@
 <template>
   <div class="Subheader">
     <Carousel></Carousel>
-
+    <div class="card">
+      <h1 class="mt-12 lg:text-2xl sm:tex-2xl font-bold">Últimos Contenidos</h1>
+      <CardAdvert></CardAdvert>
+    </div>
     <div class="Content">
       <h1 class="mt-12 lg:text-2xl sm:tex-2xl font-bold">
         Lo que dicen nuestros usuarios
@@ -14,12 +17,14 @@
 <script>
 import Carousel from "../components/Carousel.vue";
 import CarouselComment from "../components/CarouselComment.vue";
+import CardAdvert from "../components/CardAdvert.vue";
 
 export default {
   name: "Home",
   components: {
     Carousel,
     CarouselComment,
+    CardAdvert,
   },
 };
 </script>
