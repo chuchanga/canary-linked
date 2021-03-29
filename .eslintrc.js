@@ -4,18 +4,18 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
+    "plugin:vue/essential",
+    "@vue/standard"
   ],
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint"
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-     semi: ["error", "always"],
-     quotes: ["error", "double", { allowTemplateLiterals: true }],
-     camelcase: ["error"],
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    semi: ["error", "always"],
+    quotes: ["error", "double", { allowTemplateLiterals: true }],
+    camelcase: ["error"],
     "capitalized-comments": ["error"],
     "no-unused-vars": ["warn"],
     "max-lines-per-function": ["error", 60],
@@ -27,8 +27,7 @@ module.exports = {
     "no-unreachable": ["error"],
     "no-extra-semi": ["error"],
     "no-extra-parens": ["error"],
-    "space-before-function-paren":["off"],
-    "comma-dangle":["off"]
+    "space-before-function-paren": ["off"],
+    "comma-dangle": ["off"]
   }
-}
-
+};

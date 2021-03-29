@@ -16,6 +16,7 @@ module.exports = {
       capriblue: "#5CCBFF",
       davysgray: "#4D4D4D",
       richblack: "#0A0C09"
+
     }), /* De esta forma solo coge los colores para los fondos, pero no para texto, por ejemplo */
     extend: {
       colors: {
