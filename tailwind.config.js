@@ -2,6 +2,9 @@ module.exports = {
   purge: [],
   darkMode: false, // Or 'media' or 'class'
   theme: {
+    // Screens: {
+    //   Culturedwhite: "#F3F3F3",
+    // },
     fontFamily: {
       sans: ["Nunito"]
     }, /*,
