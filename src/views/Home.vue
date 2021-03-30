@@ -1,5 +1,8 @@
 <template>
   <div class="Subheader">
+    <div class="asda">
+      <Header />
+    </div>
     <Carousel></Carousel>
     <div class="card">
       <h1 class="mt-12 lg:text-2xl sm:tex-2xl font-bold">Últimos Contenidos</h1>
@@ -18,6 +21,7 @@
 import Carousel from "../components/Carousel.vue";
 import CarouselComment from "../components/CarouselComment.vue";
 import CardAdvert from "../components/CardAdvert.vue";
+import Header from "../components/Header.vue";
 
 export default {
   name: "Home",
@@ -25,6 +29,7 @@ export default {
     Carousel,
     CarouselComment,
     CardAdvert,
+    Header,
   },
 };
 </script>
