@@ -3,11 +3,13 @@
     <slide v-for="images of SubheaderImages" :key="images.description">
       <div class="ContentText">
         <img class="mx-auto object-cover h-96 w-full" :src="images.image" />
-        <h1
-          class="textSubheader p-8 lg:text-3xl md:text-2xl sm:text-xl text-white bg-gray-500 bg-opacity-50 rounded-xl"
+
+        <p
+          class="textSubheader p-8 lg:text-5xl md:text-2xl text-xl text-white bg-gray-500 bg-opacity-50 rounded-xl"
         >
           {{ images.description }}
-        </h1>
+        </p>
+        <ButtonCard></ButtonCard>
       </div>
     </slide>
   </carousel>
@@ -17,6 +19,7 @@ import { Carousel, Slide } from "vue-carousel";
 import search from "../assets/search.jpg";
 import connection from "../assets/connection.jpg";
 import offer from "../assets/offer.jpg";
+
 export default {
   components: {
     Carousel,

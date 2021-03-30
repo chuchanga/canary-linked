@@ -1,18 +1,15 @@
 <template>
-  <div class="Subheader">
-    <div class="asda">
-      <Header />
-    </div>
+  <div>
     <Carousel></Carousel>
-    <div class="card">
-      <h1 class="mt-12 lg:text-2xl sm:tex-2xl font-bold">Últimos Contenidos</h1>
-      <CardAdvert></CardAdvert>
+    <div>
+      <ContentHome></ContentHome>
     </div>
-    <div class="Content">
-      <h1 class="mt-12 lg:text-2xl sm:tex-2xl font-bold">
-        Lo que dicen nuestros usuarios
-      </h1>
-      <CarouselComment></CarouselComment>
+    <p class="text-4xl lg:text-5xl mt-12 italic font-bold">
+      Lo que dicen nuestros usuarios
+    </p>
+    <CarouselComment></CarouselComment>
+    <div class="bg-cyberyellow mt-12">
+      <Help></Help>
     </div>
   </div>
 </template>
@@ -20,16 +17,16 @@
 <script>
 import Carousel from "../components/Carousel.vue";
 import CarouselComment from "../components/CarouselComment.vue";
-import CardAdvert from "../components/CardAdvert.vue";
-import Header from "../components/Header.vue";
+import ContentHome from "../components/ContentHome.vue";
+import Help from "../components/Help.vue";
 
 export default {
   name: "Home",
   components: {
     Carousel,
     CarouselComment,
-    CardAdvert,
-    Header,
+    ContentHome,
+    Help,
   },
 };
 </script>
