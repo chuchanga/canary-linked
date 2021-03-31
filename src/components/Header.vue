@@ -47,6 +47,7 @@ export default {
         { route: "/home", name: "Home" },
         { route: "/about", name: "Sobre nosotros" },
         { route: "/training", name: "Noticias" },
+        { route: "/contact", name: "Contacto" },
         { route: "/login", name: "Iniciar sesión" },
         { route: "/signup", name: "Registrarse" },
         { route: "/profile", name: "Mi perfil" },
