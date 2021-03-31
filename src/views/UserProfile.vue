@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container flex flex-col lg:flex-row">
-      <div class="description-container w-1/5">
+      <div class="description-container w-1/5 md:self-center">
         <UserDescription />
       </div>
       <div class="categories-container w-full">
