@@ -29,7 +29,7 @@
 <script>
 export default {
   name: "Button",
-  props: ["text", "inputLogin"]
+  props: ["text", "inputLogin"],
 };
 </script>
 

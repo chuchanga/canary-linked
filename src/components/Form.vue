@@ -10,10 +10,11 @@
           <i class="fas fa-at"></i>
         </span>
       </div>
+
       <Input type="email" placeholder="Email" />
     </div>
     <div
-      class="flex flex-wrap  w-full relative h-15 bg-white items-center rounded mb-2"
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-2"
     >
       <div class="flex -mr-px justify-center w-15 p-4">
         <span
@@ -30,7 +31,12 @@
         </span>
       </div>
     </div>
-    <Button inputLogin="true" text="INICIAR SESIÓN" />
+    <Button
+      type="submit"
+      value="Enviar"
+      inputLogin="true"
+      text="INICIAR SESIÓN"
+    />
     <div class="m-auto -mt-4">
       <router-link
         to="login"
@@ -49,8 +55,8 @@ export default {
   name: "Form",
   components: {
     Button,
-    Input
-  }
+    Input,
+  },
 };
 </script>
 <style scoped></style>
