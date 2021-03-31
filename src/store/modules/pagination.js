@@ -27,17 +27,9 @@ export default {
     CHANGE_PAGE(state, index) {
       state.currentPage = index;
       for (let i = 0; i < state.arrayTraining.length; i++) {
-        console.log("Estoy en " + i);
         if ((i >= ((index - 1) * 3)) && (i < ((index - 1) * 3 + 3))) {
-          console.log("Estoy en " + i);
           state.arrayTraining[i].show = true;
         } else state.arrayTraining[i].show = false;
-        console.log(
-          "El indice es: " +
-            state.arrayTraining[i].title +
-            " y su valor es " +
-            state.arrayTraining[i].show
-        );
       }
     }
   },

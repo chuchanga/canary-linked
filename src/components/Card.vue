@@ -12,17 +12,17 @@
               Leer más
             </button>
             </div>
-            <div id="back" class="px-6 py-4 space-y-6">
+            </div>
+            <div id="back" class="px-6 py-4 space-y-6 flip-vertical-left">
             <div v-if="show == false">
               <p> {{ text }} </p>
-               <button @click="reverse()"
+               <button @click="animation()"
               class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded"
             >
             Volver
             </button>
             </div>
             </div>
-        </div>
     </div>
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
 }
 
 .flip-vertical-left {
-  animation: flip-vertical-left 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: flip-vertical-left 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
 }
 
 @keyframes flip-vertical-right {
