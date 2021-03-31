@@ -41,12 +41,12 @@ export default {
           image: lucia,
         },
         {
-          name: "Saul De Abreu",
+          name: "Saul Abreu",
           description: "Periodista y Coaching",
           image: saul,
         },
         {
-          name: "Aythami",
+          name: "Aythami De Armas",
           description: "Diseñador",
           image: aythami,
         },

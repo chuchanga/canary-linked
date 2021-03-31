@@ -1,6 +1,6 @@
 <template>
   <div class="container m-auto">
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg justify-items-center ">
         <div  id="front" class="px-6 py-4 space-y-6">
           <div v-if="show == true">
             <img class="w-full" src="../assets/job.jpg" alt="Girl job" />

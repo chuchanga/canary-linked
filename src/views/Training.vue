@@ -1,9 +1,11 @@
 <template>
-  <div class="container m-auto" >
+  <div class="container m-auto justify-items-center" >
+    <div class="flex flex-row justify-items-center">
     <div v-for="card in arrayTraining" :key="card.id">
       <div v-if="card.show">
         <Card :title = "card.title" :description = "card.show" :id="card.id" :text="card.text"/>
       </div>
+    </div>
     </div>
     <Pagination />
   </div>
