@@ -1,7 +1,6 @@
 <template>
   <div class="Subheader">
     <div class="asda">
-      <Header />
     </div>
     <Carousel></Carousel>
     <div class="card">
@@ -14,6 +13,7 @@
       </h1>
       <CarouselComment></CarouselComment>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -21,7 +21,7 @@
 import Carousel from "../components/Carousel.vue";
 import CarouselComment from "../components/CarouselComment.vue";
 import CardAdvert from "../components/CardAdvert.vue";
-import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Home",
@@ -29,7 +29,7 @@ export default {
     Carousel,
     CarouselComment,
     CardAdvert,
-    Header,
+    Footer,
   },
 };
 </script>

@@ -11,18 +11,13 @@ const routes = [
   },
   {
     path: "/signup",
-    name: "login",
+    name: "singup",
     component: () => import("../views/Signup.vue")
   },
   {
     path: "/training",
     name: "training",
     component: () => import("../views/Training.vue")
-  },
-  {
-    path: "/trainingsaul",
-    name: "trainingsaul",
-    component: () => import("../views/TrainingSaul.vue")
   },
   {
     path: "/profile",
