@@ -1,0 +1,27 @@
+<template>
+  <div>
+      <p>Estás en la página: {{ currentPage }}</p>
+      <div class="bg-cyberyellow m-auto flex flex-row justify-center space-x-3">
+         <button @click="changePage(1)"> {{ paginationAnchorTexts.first }} </button>
+        <button @click="changePage(currentPage - 1)"> {{ paginationAnchorTexts.prev }} </button>
+        <button v-for="index in totalPages" :key="index" @click="changePage(index)"> {{ index }} </button>
+        <button @click="changePage(currentPage + 1)"> {{ paginationAnchorTexts.next }}</button>
+        <button @click="changePage(totalPages)"> {{ paginationAnchorTexts.last }}</button>
+       </div>
+  </div>
+</template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+export default {
+  name: "Pagination",
+  computed: {
+    ...mapState("pagination", ["currentPage"]),
+    ...mapState("pagination", ["totalPages"]),
+    ...mapState("pagination", ["paginationAnchorTexts"]),
+  },
+  methods: {
+    ...mapActions("pagination", ["changePage"]),
+  },
+};
+</script>
