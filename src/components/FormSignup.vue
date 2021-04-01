@@ -36,8 +36,7 @@
           <i class="fas fa-at"></i>
         </span>
       </div>
-      <!--<Input type="Email" placeholder="Correo Electrónico" uvemodel="email" />-->
-      <input type="email" id="email" v-model="email">
+      <Input type="email" id="email" placeholder="Correo Electrónico" v-model="email" />
     </div>
 
     <div
@@ -50,12 +49,9 @@
           <i class="fas fa-lock"></i>
         </span>
       </div>
-      <!--<Input type="password" placeholder="Contraseña" uvemodel="password" />-->
-       <input type="password" id="password" v-model="password">
+        <Input type="password" id="password" placeholder="Contraseña" v-model="password" />
     </div>
-    <!--<Button inputLogin="true" text="REGISTRAR NUEVA CUENTA" />-->
-    <!--<BlueButton :onClick="register"> Register </BlueButton>-->
-    <button v-on:click="register" class="bg-bluejeans hover:bg-capriblue py-4 text-center w-full px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20">Registrarse</button>
+    <BlueButton :onClick="register"> REGISTRAR CUENTA </BlueButton>
     <div class="m-auto -mt-4">
       <router-link
         to="/login"
@@ -71,9 +67,15 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import Input from "../components/Input.vue";
-// Import BlueButton from "./BlueButton.vue";
+import BlueButton from "./BlueButton.vue";
 export default {
   name: "Form",
+  /* Props: {
+    onClick: {
+      type: Function,
+      required: true
+    }
+  }, */
   data() {
     return {
       email: "",
@@ -106,7 +108,7 @@ export default {
   components: {
     // Button,
     Input,
-    // BlueButton
+    BlueButton
   }
 };
 </script>

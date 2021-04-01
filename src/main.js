@@ -5,7 +5,7 @@ import "tailwindcss/tailwind.css";
 import router from "./router/index.js";
 import store from "./store";
 
-import firebase from "firebase";
+/* Import firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
 
@@ -20,7 +20,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-export default firebaseApp.firestore();
+export default firebaseApp.firestore(); */
 
 Vue.config.productionTip = false;
 
