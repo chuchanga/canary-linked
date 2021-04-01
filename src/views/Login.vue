@@ -41,7 +41,7 @@
         <h1 class="font-bold text-2xl my-10 text-black">
           Acceso para usuarios registrados
         </h1>
-        <Form></Form>
+        <LoginForm></LoginForm>
       </div>
 
       <div class="border-solid border-2 border-light-blue-500 m-8 "></div>
@@ -64,13 +64,15 @@
   </div>
 </template>
 <script>
-import Form from "../components/Form.vue";
+// Import Form from "../components/Form.vue";
+import LoginForm from "../components/LoginForm.vue";
 import Arrow from "../components/Arrow.vue";
 import Bar from "../components/Bar.vue";
 export default {
   name: "Login",
   components: {
-    Form,
+    // Form,
+    LoginForm,
     Arrow,
     Bar
   }
