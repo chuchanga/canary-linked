@@ -7,24 +7,38 @@
         <div class="text-xs uppercase font-bold tracking-wide text-cyberyellow">Canary Linked</div>
         </router-link>
       </div>
-      <!--<div class="hidden sm:flex space-x-3 text-lg" v-for="page in Pages" :key="page">
-          <router-link :to="page.route" >
-            {{ page.name }}
-          </router-link>
-          <DropdownMenu />
-      </div>-->
-            <div><router-link to="/training">Noticias</router-link></div>
-            <div><router-link to="/contact">Contacto</router-link></div>
-            <div><router-link to="/about">Sobre Nosotros</router-link></div>
-            <div><router-link to="/signup">Registrarse</router-link></div>
-            <div><DropdownMenu /></div>
-
+            <div>
+              <router-link to="/training">Noticias</router-link>
+            </div>
+            <div>
+              <router-link to="/contact">Contacto</router-link>
+            </div>
+            <div>
+              <router-link to="/about">Sobre Nosotros</router-link>
+            </div>
+            <div v-if="isLoggedIn">
+              <router-link to="/profile">Perfil</router-link>
+            </div>
+             <div v-if="!isLoggedIn">
+              <router-link to="/login">Inicia Sesión</router-link>
+            </div>
+            <div v-if="!isLoggedIn">
+              <router-link to="/signup">Regístrate</router-link>
+            </div>
+            <div v-if="isLoggedIn">
+              <button class="bg-richblack hover:bg-cyberyellow text-center w-full text-white hover:text-richblack rounded leading-tight md:text-base font-sans" @click="logout">Logout</button>
+            </div>
+            <div>
+              <DropdownMenu />
+            </div>
     </div>
   </div>
   </div>
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
 import DropdownMenu from "./DropdownMenu.vue";
 export default {
   name: "Navbar",
@@ -33,17 +47,22 @@ export default {
   },
   data() {
     return {
-      Pages: [
-
-        { route: "/training", name: "Noticias" },
-        { route: "/contact", name: "Contacto" },
-        { route: "/about", name: "Sobre nosotros" },
-        { route: "/profile", name: "Mi perfil" },
-        { route: "/login", name: "Iniciar sesión" },
-        // { route: "/signup", name: "Registrarse" },
-
-      ],
+      isLoggedIn: false,
+      currentUser: false,
     };
+  },
+  created() {
+    if (firebase.auth().currentUser) {
+      this.isLoggedIn = true;
+      this.currentUser = firebase.auth().currentUser.email;
+    }
+  },
+  methods: {
+    logout () {
+      firebase.auth().signOut().then(() => {
+        this.$router.go({ path: this.$router.path });
+      });
+    }
   },
 };
 </script>

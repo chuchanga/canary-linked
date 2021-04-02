@@ -77,7 +77,7 @@ export default {
           user => {
             console.log(user);
             alert(`Se creó una cuenta para el correo ${this.email}`);
-            this.$router.push("/home");
+            this.$router.go({ path: this.$router.path });
           },
           err => {
             alert(err.message);

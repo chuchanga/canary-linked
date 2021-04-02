@@ -1,6 +1,5 @@
 <template>
   <div class="content">
-    <Bar />
     <Arrow />
     <div class="container mx-auto font-sans">
       <div class="logo">
@@ -38,7 +37,7 @@
       <div
         class=" bg-cyberyellow flex-col flex ml-auto mr-auto items-center w-full md:w-3/5  "
       >
-        <h1 class="font-bold text-2xl my-10 text-black">
+        <h1 class="font-bold text-2xl my-10 text-richblack">
           Acceso para usuarios registrados
         </h1>
         <LoginForm></LoginForm>
@@ -67,14 +66,13 @@
 // Import Form from "../components/Form.vue";
 import LoginForm from "../components/LoginForm.vue";
 import Arrow from "../components/Arrow.vue";
-import Bar from "../components/Bar.vue";
+
 export default {
   name: "Login",
   components: {
     // Form,
     LoginForm,
     Arrow,
-    Bar
   }
 };
 </script>

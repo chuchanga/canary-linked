@@ -65,7 +65,7 @@ export default {
           user => {
             console.log(user);
             alert(`Inició sesión como ${this.email}`);
-            this.$router.push("/home");
+            this.$router.go({ path: this.$router.path });
           },
           err => {
             alert(err.message);
