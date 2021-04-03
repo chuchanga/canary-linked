@@ -2,16 +2,18 @@
   <div>
     <div v-for="text of Content" :key="text" class="textcontent">
       <div class="col-start-1 col-end-5">
-        <p class="text-2xl md:text-3xl lg:text-5xl italic font-bold mt-32">
+        <p class="text-xl lg:text-5xl italic font-bold mt-12">
           {{ text.title }}
         </p>
-        <p class="text-xl md:text-3xl lg:text-4xl mt-12">
+        <p class="text-2xl lg:text-4xl mt-12">
           {{ text.description }}
         </p>
-        <ButtonCard
-          class="mt-12 text-2xl md:text-3xl xl:text-4xl"
-          text="Leer más"
-        ></ButtonCard>
+        <router-link to="/board">
+          <ButtonCard
+            class="mt-12 text-2xl lg:text-3xl"
+            text="Leer más"
+          ></ButtonCard
+        ></router-link>
       </div>
       <img src="../assets/job.jpg" class="m-8" />
     </div>
@@ -45,7 +47,7 @@ export default {
 
 <style lang="postcss" scoped>
 .textcontent {
-  @apply bg-cyberyellow flex justify-center m-32 mt-12 p-24 md:flex-col 2xl:flex-row;
+  @apply bg-cyberyellow flex flex-col justify-center m-12 p-8 2xl:flex-row;
 }
 
 .textcontent:nth-child(2n) {

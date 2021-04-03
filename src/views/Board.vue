@@ -43,6 +43,7 @@
 <script>
 import BoardOffer from "../views/BoardOffer.vue";
 import BoardProyect from "../views/BoardProyect.vue";
+
 export default {
   name: "Board",
   components: {
