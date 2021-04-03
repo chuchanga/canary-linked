@@ -2,9 +2,9 @@ module.exports = {
   purge: [],
   darkMode: false, // Or 'media' or 'class'
   theme: {
-    // Screens: {
-    //   Culturedwhite: "#F3F3F3",
-    // },
+    /* Screens: {
+      Culturedwhite: "#F3F3F3",
+    }, */
     fontFamily: {
       sans: ["Nunito"]
     }, /*,
@@ -17,7 +17,7 @@ module.exports = {
       honolulublue: "#0070A3",
       bluejeans: "#00A8F5",
       capriblue: "#5CCBFF",
-      davysgray: "#4D4D4D",
+      davysgrey: "#242424",
       richblack: "#0A0C09"
 
     }), /* De esta forma solo coge los colores para los fondos, pero no para texto, por ejemplo */
