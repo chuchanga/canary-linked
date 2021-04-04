@@ -16,12 +16,12 @@
         {{ users[0].website }}
        </div>
     </div>
-    <Button class="mt-8 mb-6" text="Editar Perfil" />
+    <YellowButton class="mt-8 mb-6"> Editar Perfil </YellowButton>
   </div>
 </template>
 
 <script>
-import Button from "../components/ButtonCard.vue";
+import YellowButton from "../components/YellowButton.vue";
 import db from "./firebaseInit.js";
 export default {
   name: "UserDescription",
@@ -49,7 +49,7 @@ export default {
   },
 
   components: {
-    Button,
+    YellowButton,
   }
 };
 </script>

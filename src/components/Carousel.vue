@@ -1,15 +1,19 @@
 <template>
   <carousel :perPage="1">
     <slide v-for="images of SubheaderImages" :key="images.description">
-      <div class="ContentText">
-        <img class="mx-auto object-cover h-96 w-full" :src="images.image" />
+      <div class="ContentText relative">
+        <img class="mx-auto object-cover h-80 w-full" :src="images.image" />
 
         <p
-          class="textSubheader p-8 lg:text-5xl md:text-2xl text-xl text-white bg-gray-500 bg-opacity-50 rounded-xl"
+          class="textSubheader p-8 lg:text-4xl text-xl text-white bg-yellow-500 bg-opacity-50 rounded-xl"
         >
           {{ images.description }}
         </p>
-        <ButtonCard></ButtonCard>
+        <div class="flex justify-center">
+          <router-link to="/contact">
+            <ButtonCard class="btn" text="¡Contactanos!"> </ButtonCard>
+          </router-link>
+        </div>
       </div>
     </slide>
   </carousel>
@@ -19,11 +23,13 @@ import { Carousel, Slide } from "vue-carousel";
 import search from "../assets/search.jpg";
 import connection from "../assets/connection.jpg";
 import offer from "../assets/offer.jpg";
+import ButtonCard from "../components/ButtonCard.vue";
 
 export default {
   components: {
     Carousel,
     Slide,
+    ButtonCard,
   },
   data() {
     return {
@@ -61,5 +67,15 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.btn {
+  position: absolute;
+  left: 40%;
+  border-radius: 1.5em;
+  color: black;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  top: 80%;
 }
 </style>

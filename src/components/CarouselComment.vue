@@ -1,9 +1,9 @@
 
 <template>
-  <carousel :perPage="1" class="bg-goldenrod mt-8 p-4 text-2xl 2xl:text-4xl">
+  <carousel :perPage="1" class="bg-goldenrod mt-8 text-xl lg:text-3xl">
     <slide v-for="(testimonial, index) of Testimonials" :key="index">
       <img
-        class="m-auto object-cover rounded-full h-48 w-48 flex items-center justify-center mt-8"
+        class="m-auto object-cover rounded-full h-48 w-48 flex items-center justify-center"
         :src="testimonial.image"
       />
       <p class="mt-8">{{ testimonial.description }}</p>

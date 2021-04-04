@@ -1,71 +1,118 @@
 <template>
-    <div class="container">
-    <div class="sm:flex mb-4 bg-davysgray p-8">
-  <div class="sm:w-1/4 h-auto">
-      <div class="text-cyberyellow mb-2">Síguenos</div>
-      <ul class="list-reset leading-normal">
-          <li class="hover:text-cyberyellow text-culturedwhite">Instagram</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Facebook</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Twitter</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">LinkedIn</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">TikTok</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">YouTube</li>
-      </ul>
-  </div>
-  <div class="sm:w-1/4 h-auto sm:mt-0 mt-8">
-      <div class="text-cyberyellow mb-2">Anuncios</div>
-      <ul class="list-reset leading-normal">
-          <li class="hover:text-cyberyellow text-culturedwhite">Ofertas</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Colaborativo</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Proyectos</li>
-      </ul>
-    <br>
-    <div class="text-cyberyellow mb-2">Servicios</div>
-      <ul class="list-reset leading-normal">
-          <li class="hover:text-cyberyellow text-culturedwhite">Consejos</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Orientación</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Formación</li>
-      </ul>
-
-  </div>
-  <div class="sm:w-1/4 h-auto sm:mt-0 mt-8">
-   <div class="text-cyberyellow mb-2">Blog</div>
-      <ul class="list-reset leading-normal">
-          <li class="hover:text-cyberyellow text-culturedwhite">Arte</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Empresas</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Cultura</li>
-      </ul>
-    <br>
-    <div class="text-cyberyellow mb-2">Contacto</div>
-      <ul class="list-reset leading-normal">
-          <li class="hover:text-cyberyellow text-culturedwhite">Ubicación</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">Sobre nosotros</li>
-          <li class="hover:text-cyberyellow text-culturedwhite">¡Contáctanos!</li>
-      </ul>
-
-  </div>
-    <div class="sm:w-1/2 sm:mt-0 mt-8 h-auto">
-        <div class="text-cyberyellow mb-2">¿Quieres más información?</div>
-        <p class="text-culturedwhite leading-normal">¡Suscríbete a nuestra newsletter! </p>
-        <div class="mt-4 flex">
-            <input type="text" class="p-2 border border-grey-light round text-grey-dark text-sm h-auto" placeholder="Tu correo">
-            <button class="bg-goldenrod text-white rounded-sm h-auto text-xs p-3">Enviar</button>
+  <footer class="footer bg-black relative pt-1 border-b-2 border-yellow-500">
+    <div class="container mx-auto px-6">
+      <div class="sm:flex sm:mt-8">
+        <div
+          class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between"
+        >
+          <div class="flex flex-col">
+            <span class="font-bold text-cyberyellow uppercase mb-2"
+              >Tablón Formativo</span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/board"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Ofertas</router-link
+              ></span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/board"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Proyectos</router-link
+              ></span
+            >
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-cyberyellow uppercase mt-4 md:mt-0 mb-2"
+              >Orientación Laboral</span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/training"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Pautas orientativas</router-link
+              ></span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/contact"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Ayuda orientativa</router-link
+              ></span
+            >
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-cyberyellow uppercase mt-4 md:mt-0 mb-2"
+              >Contacto</span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/contact"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Ubicación</router-link
+              ></span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/contact"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Contacto</router-link
+              ></span
+            >
+            <span class="my-2"
+              ><router-link
+                to="/about"
+                class="text-culturedwhite text-md hover:text-minionyellow"
+                >Sobre Nosotros</router-link
+              ></span
+            >
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-cyberyellow uppercase mt-4 md:mt-0 mb-2"
+              >Síguenos</span
+            >
+            <span
+              class="my-2 text-white hover:text-blue-500"
+              style="font-size: 1.5rem"
+              ><a href="https://twitter.com"
+                ><i class="fab fa-twitter-square"></i
+              ></a>
+            </span>
+            <span
+              class="my-2 text-white hover:text-blue-600"
+              style="font-size: 1.5rem"
+              ><a href="https://www.facebook.com/"
+                ><i class="fab fa-facebook"></i
+              ></a>
+            </span>
+            <span
+              class="my-2 text-white hover:text-blue-500"
+              style="font-size: 1.5rem"
+              ><a href="https://es.linkedin.com/"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </span>
+          </div>
         </div>
+      </div>
     </div>
-
-</div>
-<div class="bg-richblack">
-    <div class="flex flex-col space-y-2">
-        <span class="text-culturedwhite"> Términos y condiciones</span>
-        <span class="text-culturedwhite"> Política de privacidad</span>
-        <span class="text-culturedwhite"> © 2020-2021 CanaryLinked Inc. All rights reserved</span>
+    <div class="container mx-auto px-6">
+      <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
+        <div class="sm:w-2/3 text-center py-6">
+          <p class="text-sm text-cyberyellow font-bold mb-2">
+            © 2020-2021 CanaryLinked Inc. All rights reserved
+          </p>
         </div>
-        </div>
-</div>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
   name: "Footer",
+  components: {},
 };
 </script>
