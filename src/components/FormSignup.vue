@@ -6,7 +6,7 @@
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" placeholder="Nombre" />
+      <Input type="text" id="name" placeholder="Nombre" v-model="name" />
     </div>
     <div class="flex flex-wrap  w-full relative h-15 bg-white items-center rounded mb-6">
       <div class="flex -mr-px justify-center w-15 p-4">
@@ -14,7 +14,7 @@
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" placeholder="Apellidos" />
+      <Input type="text" id="surname" placeholder="Apellidos" v-model="surname" />
     </div>
     <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6">
       <div class="flex -mr-px justify-center w-15 p-4">
@@ -47,6 +47,7 @@
 // Import Button from "../components/Button.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
+import db from "./firebaseInit.js";
 import Input from "../components/Input.vue";
 import BlueButton from "./BlueButton.vue";
 export default {
@@ -60,7 +61,9 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      name: "",
+      surname: ""
     };
   },
   methods: {
@@ -74,8 +77,19 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
-            console.log(user);
+          userData => {
+            db.collection("users").doc(userData.user.uid).set(
+              {
+                name: this.name,
+                surname: this.surname,
+                description: "",
+                location: "",
+                displayName: "",
+                userType: "",
+                website: "",
+                bio: "",
+              }
+            );
             alert(`Se creó una cuenta para el correo ${this.email}`);
             this.$router.go({ path: this.$router.path });
           },
