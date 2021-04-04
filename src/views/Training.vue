@@ -1,15 +1,25 @@
 <template>
-  <div class="container m-auto justify-items-center" >
-    <div class="flex flex-row justify-items-center">
-    <div v-for="card in arrayTraining" :key="card.id">
-      <div :id="card.id" v-if="card.show" class="flip-vertical-right"> {{card.id}}
-        <div v-if="card.id == getChoice">
-        <div v-if="arrayTraining[getChoice].pos == true">{{animate()}}</div>
-        <div v-if="arrayTraining[getChoice].pos == false">{{reverse()}}</div>
+  <div>
+    <div class="flex justify-center flex-col lg:flex-row mt-24">
+      <div v-for="card in arrayTraining" :key="card.id">
+        <div :id="card.id" v-if="card.show" class="flip-vertical-right">
+          {{ card.id }}
+          <div v-if="card.id == getChoice">
+            <div v-if="arrayTraining[getChoice].pos == true">
+              {{ animate() }}
+            </div>
+            <div v-if="arrayTraining[getChoice].pos == false">
+              {{ reverse() }}
+            </div>
+          </div>
+          <Card
+            :title="card.title"
+            :description="card.show"
+            :id="card.id"
+            :text="card.text"
+          />
+        </div>
       </div>
-        <Card :title = "card.title" :description = "card.show" :id = "card.id" :text = "card.text"/>
-      </div>
-    </div>
     </div>
     <Pagination />
   </div>
@@ -24,7 +34,7 @@ export default {
   name: "Training",
   components: {
     Pagination,
-    Card
+    Card,
   },
   computed: {
     ...mapState("pagination", ["arrayTraining"]),
@@ -47,23 +57,24 @@ export default {
         console.log(element);
       }
     },
-  }
+  },
 };
 </script>
 
 <style>
 .flip-vertical-right {
-  animation: flip-vertical-right 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+  animation: flip-vertical-right 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .flip-vertical-left {
-  animation: flip-vertical-left 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+  animation: flip-vertical-left 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 @keyframes flip-vertical-right {
   0% {
     transform: rotateY(0);
   }
+
   100% {
     transform: rotateY(180deg);
   }
@@ -73,6 +84,7 @@ export default {
   0% {
     transform: rotateY(0);
   }
+
   100% {
     transform: rotateY(-180deg);
   }
