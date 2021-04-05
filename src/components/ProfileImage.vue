@@ -1,12 +1,9 @@
 <template>
   <div>
-     <!--<style>
-        :root {
-        --user-image: url("{{userImage}}");
-        }
-      </style>-->
-    <div class="user-image mb-8 h-48 w-48 rounded-full self-center bg-hero">
-      <i class="fas fa-camera" @click="browse()"></i>
+
+    <div class="user-image mb-8 h-48 w-48 rounded-full self-center">
+      <img :src=userImage alt="Foto de perfil del usuario">
+      <i class="fas fa-camera absolute" @click="browse()"></i>
     </div>
     <div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >

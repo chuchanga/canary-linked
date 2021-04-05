@@ -90,8 +90,8 @@ export default {
                 bio: "",
               }
             );
-            alert(`Se creó una cuenta para el correo ${this.email}`);
-            this.$router.go({ path: this.$router.path });
+            //  Alert(`Se creó una cuenta para el correo ${this.email}`);
+            this.$router.go({ path: "/profile" });
           },
           err => {
             alert(err.message);

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="text of Content" :key="text" class="textcontent">
+    <div v-for="(text, index) in Content" :key="index" class="textcontent">
       <div class="col-start-1 col-end-5">
         <p class="text-xl lg:text-5xl italic font-bold mt-12">
           {{ text.title }}
