@@ -17,6 +17,7 @@
             :description="card.show"
             :id="card.id"
             :text="card.text"
+            :url="card.url"
           />
         </div>
       </div>

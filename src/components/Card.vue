@@ -2,7 +2,7 @@
   <div class="justify-center rounded shadow-lg">
     <div id="front" class="px-6 py-4 space-y-6">
       <div v-if="arrayTraining[id].pos == true">
-        <img class="w-full" src="../assets/job.jpg" alt="Girl job" />
+        <img class="w-full" :src="url" :alt="description" />
         <div class="font-bold text-xl mb-2">{{ title }}</div>
         <button
           @click="set_id(id)"
@@ -28,7 +28,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
-  props: ["title", "description", "text", "id"],
+  props: ["title", "description", "text", "id", "url"],
   computed: {
     ...mapState("animation", ["show"]),
     ...mapState("pagination", ["arrayTraining"]),

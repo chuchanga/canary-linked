@@ -3,8 +3,8 @@ export default {
   namespaced: true,
   state: {
     currentPage: 1,
-    totalPages: 5,
-    cardsPerPages: 3,
+    totalPages: 3,
+    cardsPerPages: 6,
     paginationAnchorTexts: { first: "<<", prev: "<", next: ">", last: ">>" },
     show: true,
     arrayTraining: [],
@@ -62,6 +62,7 @@ export default {
             id: doc.data().id,
             show: doc.data().show,
             pos: doc.data().pos,
+            url: doc.data().url,
           };
           card.push(data);
         });
