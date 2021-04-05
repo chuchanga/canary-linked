@@ -1,6 +1,7 @@
 <template>
   <div class="user-info w-72 h-auto m-4 p-4 shadow-lg flex flex-col">
-    <div class="user-image mb-8 bg-hero h-48 w-48 rounded-full self-center"></div>
+    <!--<div class="user-image mb-8 h-48 w-48 rounded-full self-center bg-hero"></div>-->
+    <ProfileImage />
     <div class="user-name ml-2 h-1/6 text-left">{{loggedUser.name}} {{loggedUser.surname}}</div>
     <div class="user-id mt-1 ml-2 h-1/6 text-left text-gray-400">@{{loggedUser.displayName}}</div>
     <div class="user-brief-description ml-2 mt-8 h-1/6 text-left text-xs">{{ loggedUser.description }}</div>
@@ -24,13 +25,14 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "./firebaseInit.js";
-
+import ProfileImage from "../components/ProfileImage.vue";
 // Import YellowButton from "../components/YellowButton.vue";
 export default {
   name: "UserDescription",
   data () {
     return {
-      loggedUser: {}
+      loggedUser: {},
+      imgFile: {}
     };
   },
   created () {
@@ -51,14 +53,15 @@ export default {
     }
     );
   },
-
+  methods: {
+  },
   components: {
+    ProfileImage
     // YellowButton,
+
   }
 };
 </script>
 <style scoped>
-  .bg-hero {
-        background: url("../assets/img1.jpg") center center no-repeat;
-    }
+  .bg-hero {background: url("../assets/img1.jpg") center center no-repeat;}
 </style>
