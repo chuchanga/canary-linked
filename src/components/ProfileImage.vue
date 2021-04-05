@@ -2,15 +2,16 @@
   <div>
 
     <div class="user-image mb-8 h-48 w-48 rounded-full self-center">
-      <img :src=userImage alt="Foto de perfil del usuario">
+      <img class="h-48 w-48 rounded-full self-center" :src=userImageUrl alt="Foto de perfil del usuario">
       <i class="fas fa-camera absolute" @click="browse()"></i>
     </div>
     <div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >
+      <button @click="onUpload()" ref="uploadImg">Upload</button>
     </div>
-    <div v-if="imageData!=null">
-      <button @click="onUpload">Upload</button>
-  </div>
+    <!--<div v-if="imageData!=null">
+      <button @click="onUpload()" ref="uploadImg">Upload</button>
+  </div>-->
   </div>
 </template>
 <script>
@@ -21,9 +22,8 @@ export default {
   data() {
     return {
       imageData: null,
-      picture: null,
-      uploadValue: 0,
-      userImage: firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").getDownloadURL()
+      userImageUrl: null,
+      componentKey: 0
     };
   },
 
@@ -32,24 +32,24 @@ export default {
       this.$refs.selectFile.click();
     },
     previewImage(event) {
-      this.uploadValue = 0;
+      console.log(this);
       this.picture = null;
       this.imageData = event.target.files[0];
+      const elem = this.$refs.uploadImg;
+      elem.click();
     },
-
     onUpload() {
       this.picture = null;
-      const storageRef = firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").put(this.imageData);
-      storageRef.on(`state_changed`, () => {
-        this.uploadValue = 100;
-        storageRef.snapshot.ref.getDownloadURL().then((url) => {
-          this.picture = url;
-        });
-      }
-      );
+      firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").put(this.imageData);
+      this.$forceUpdate();
     }
 
   },
+  mounted() {
+    firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").getDownloadURL().then(imgUrl => {
+      this.userImageUrl = imgUrl;
+    });
+  }
 
 };
 </script>

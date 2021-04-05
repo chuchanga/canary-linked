@@ -54,6 +54,7 @@ export default {
   methods: {
     // Este método crea un usuario en firebase auth con el email y passwd que pasemos en los inputs
     login(e) {
+      e.preventDefault();
       console.log(this.email);
       console.log(this.password);
       console.log(firebase);
@@ -71,7 +72,6 @@ export default {
             alert(err.message);
           }
         );
-      e.preventDefault();
     }
   },
   components: {

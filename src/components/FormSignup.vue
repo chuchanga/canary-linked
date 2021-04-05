@@ -73,6 +73,7 @@ export default {
       console.log(this.password);
       console.log(firebase);
       // Para probar aquí iba console.log("register");
+      e.preventDefault();
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -89,15 +90,13 @@ export default {
                 website: "",
                 bio: "",
               }
-            );
+            ).then(this.$router.go({ path: "/profile" }));
             //  Alert(`Se creó una cuenta para el correo ${this.email}`);
-            this.$router.go({ path: "/profile" });
           },
           err => {
             alert(err.message);
           }
         );
-      e.preventDefault();
     }
   },
   components: {
