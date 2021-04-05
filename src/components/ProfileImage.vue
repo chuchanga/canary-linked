@@ -7,7 +7,7 @@
     </div>
     <div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >
-      <button @click="onUpload()" ref="uploadImg">Upload</button>
+      <button class="hidden" @click="onUpload()" ref="uploadImg"></button>
     </div>
     <!--<div v-if="imageData!=null">
       <button @click="onUpload()" ref="uploadImg">Upload</button>

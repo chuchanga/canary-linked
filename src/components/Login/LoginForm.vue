@@ -35,8 +35,8 @@
 // Import Button from "../components/Button.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
-import Input from "./Input.vue";
-import BlueButton from "./BlueButton.vue";
+import Input from "../Input.vue";
+import BlueButton from "../Button/BlueButton.vue";
 export default {
   name: "Login",
   /* Props: {

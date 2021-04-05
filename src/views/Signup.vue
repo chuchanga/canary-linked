@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import FormSignup from "../components/FormSignup.vue";
+import FormSignup from "../components/SignUp/FormSignup.vue";
 import Arrow from "../components/Arrow.vue";
 export default {
   name: "Signup",

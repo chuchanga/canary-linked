@@ -64,7 +64,7 @@
 </template>
 <script>
 // Import Form from "../components/Form.vue";
-import LoginForm from "../components/LoginForm.vue";
+import LoginForm from "../components/Login/LoginForm.vue";
 import Arrow from "../components/Arrow.vue";
 
 export default {

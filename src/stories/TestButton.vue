@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import "./button.css";
+import "./testButton.css";
 
 export default {
-  name: "my-button",
+  name: "test-button",
 
   props: {
     label: {

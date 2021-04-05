@@ -12,7 +12,7 @@
           <router-link to="/home"
             ><img
               class="-mb-3 -mt-3 h-24 w-24 m-auto"
-              src="../assets/logo.svg"
+              src="../../assets/logo.svg"
               alt="logo"
             />
             <div
