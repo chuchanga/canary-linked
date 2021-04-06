@@ -22,8 +22,14 @@
           v-for="index in totalPages"
           :key="index"
         >
-          <div v-if="index==currentPage" class="text-black" @click="changePage(index)"> {{ index }} </div>
-          <div v-else @click="changePage(index)"> {{ index }}</div>
+          <div
+            v-if="index == currentPage"
+            class="text-black"
+            @click="changePage(index)"
+          >
+            {{ index }}
+          </div>
+          <div v-else @click="changePage(index)">{{ index }}</div>
         </div>
         <div
           class="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full"

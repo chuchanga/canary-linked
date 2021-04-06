@@ -2,12 +2,12 @@
   <div>
     <div>
       <div
-        class="bg-cover bg-center p-24 mt-24"
+        class="bg-cover bg-center p-8"
         style="
           background-image: url(https://cdn.shopify.com/s/files/1/0275/5752/7616/files/Contactanos_480x480.jpg?v=1590771329);
         "
       >
-        <p class="text-2xl lg:text-4xl m-12 italic font-bold">
+        <p class="text-2xl lg:text-4xl m-8 italic font-bold">
           ¿Tienes alguna pregunta?
         </p>
         <p class="text-xl lg:text-2xl p-8 m-12 font-bold break-words">

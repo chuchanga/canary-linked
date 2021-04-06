@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="flex justify-center mt-12 space-x-12 bg-cyberyellow p-24 rounded-3xl"
-  >
-    <section class="flex flex-col rounded-lg 2xl:flex-row">
+  <div class="flex justify-center mt-12 space-x-12 p-24 rounded-3xl">
+    <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
       <div
         v-for="card of Board"
         :key="card"
@@ -61,6 +59,30 @@ export default {
           description:
             "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
           image: connection,
+        },
+        {
+          title: "Técnico Prevención de Riesgos Laborales",
+          site: "Los Cristianos",
+          time: "full time",
+          description:
+            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
+          image: offer,
+        },
+        {
+          title: "Técnico Prevención de Riesgos Laborales",
+          site: "Los Cristianos",
+          time: "full time",
+          description:
+            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
+          image: offer,
+        },
+        {
+          title: "Técnico Prevención de Riesgos Laborales",
+          site: "Los Cristianos",
+          time: "full time",
+          description:
+            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
+          image: offer,
         },
         {
           title: "Técnico Prevención de Riesgos Laborales",

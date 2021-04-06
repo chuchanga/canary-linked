@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center rounded shadow-lg">
+  <div class="flex justify-center rounded-lg shadow-lg">
     <div id="front" class="px-6 py-4 space-y-6">
       <div v-if="arrayTraining[id].pos == true">
         <img class="w-full" :src="url" :alt="description" />
