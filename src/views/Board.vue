@@ -59,7 +59,6 @@
       </div>
     </div>
     <Help></Help>
-    <Footer></Footer>
   </div>
 </template>
 
@@ -67,14 +66,13 @@
 import BoardOffer from "../views/BoardOffer.vue";
 import BoardProyect from "../views/BoardProyect.vue";
 import Help from "../components/Help.vue";
-import Footer from "../components/Footer.vue";
+
 export default {
   name: "Board",
   components: {
     BoardProyect,
     BoardOffer,
     Help,
-    Footer,
   },
   data() {
     return {

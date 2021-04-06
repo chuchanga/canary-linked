@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4mt-24">
+    <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
       <div v-for="card in arrayTraining" :key="card.id">
         <div :id="card.id" v-if="card.show" class="flip-vertical-right">
           {{ card.id }}
