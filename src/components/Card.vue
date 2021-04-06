@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center rounded-lg shadow-lg">
-    <div id="front" class="px-6 py-4 space-y-6">
+    <div id="front">
       <div v-if="arrayTraining[id].pos == true">
         <img class="w-full" :src="url" :alt="description" />
         <div class="font-bold text-xl mb-2">{{ title }}</div>
@@ -10,18 +10,30 @@
         >
           Leer más
         </button>
+        <br>
       </div>
     </div>
-    <div id="back" class="px-6 py-4 flip-vertical-left">
-      <div v-if="arrayTraining[id].pos == false">
-        <p>{{ text }}</p>
+    <div id="back" class="py-2 px-4">
+      <div v-if="arrayTraining[id].pos == false" class="text-justify">
+        {{ text[0] }}
+        <br>
+        <br>
+        <ol>
+          <li>⠀⠀⠀{{ text[1] }}</li>
+          <li>⠀⠀⠀{{ text[2] }}</li>
+          <li>⠀⠀⠀{{ text[3] }}</li>
+          <li>⠀⠀⠀{{ text[4] }}</li>
+          <li>⠀⠀⠀{{ text[5] }}</li>
+          <li>⠀⠀⠀{{ text[6] }}</li>
+        </ol>
         <button
           @click="set_id(id)"
-          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded"
+          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded content-center"
         >
           Volver
         </button>
-      </div>
+        <p> ⠀⠀⠀</p>
+        </div>
     </div>
   </div>
 </template>
