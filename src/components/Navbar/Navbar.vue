@@ -65,24 +65,24 @@
           </li>
         </ul>
       </div>
-      <div class="container w-28 ml-12">
+      <div class="container w-28 lg:ml-12">
         <div class="inline-flex flex-col lg:text-lg">
           <button
             @click="open = !open"
             class="mt-2 p-2 hover:text-cyberyellow bg-richblack items-center text-culturedwhite focus:outline-none rounded-full"
           >
-            <i class="far fa-user fa-3x rounded-full self-center"></i>
+            <i class="far fa-user fa-2x rounded-full self-center"></i>
           </button>
           <span
             @click="open = !open"
             v-if="isLoggedIn"
-            class="cursor-pointer block text-culturedwhite text-center text-lg -mt-2"
+            class="cursor-pointer block text-culturedwhite text-center text-sm -mt-2 mb-2"
             >Sesión iniciada como {{ currentUser }}</span
           >
           <span
             @click="open = !open"
             v-if="!isLoggedIn"
-            class="cursor-pointer block text-culturedwhite text-center self-center text-lg mb-2"
+            class="cursor-pointer block text-culturedwhite text-center self-center text-sm mb-2"
             >No ha iniciado sesión</span
           >
           <div v-if="open" class="absolute mt-24 bg-richblack w-32">
