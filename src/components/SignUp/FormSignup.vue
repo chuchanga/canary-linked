@@ -32,6 +32,12 @@
       </div>
         <Input type="password" id="password" placeholder="Contraseña" v-model="password" />
     </div>
+    <div>
+      <input type="radio" id="person" value="person" v-model="userType" class="mx-2 text-bluejeans">
+      <label class="text-richblack font-semibold mr-2" for="person">Persona</label>
+      <input type="radio" id="entity" value="entity" v-model="userType" class="mx-2 text-bluejeans">
+      <label class="text-richblack font-semibold" for="entity">Empresa</label>
+    </div>
     <BlueButton :onClick="register"> REGISTRAR CUENTA </BlueButton>
     <div class="m-auto -mt-4">
       <router-link
@@ -63,7 +69,8 @@ export default {
       email: "",
       password: "",
       name: "",
-      surname: ""
+      surname: "",
+      userType: ""
     };
   },
   methods: {
@@ -81,16 +88,16 @@ export default {
           userData => {
             db.collection("users").doc(userData.user.uid).set(
               {
-                name: this.name,
-                surname: this.surname,
+                name: this.name + " " + this.surname,
                 description: "",
                 location: "",
                 displayName: "",
-                userType: "",
+                userType: this.userType,
                 website: "",
-                bio: "",
               }
-            ).then(this.$router.go({ path: "/profile" }));
+            ).then(() => {
+              this.$router.go({ path: "/profile" });
+            });
             //  Alert(`Se creó una cuenta para el correo ${this.email}`);
           },
           err => {

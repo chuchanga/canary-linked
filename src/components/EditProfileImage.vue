@@ -1,19 +1,20 @@
 <template>
-  <div class="self-center">
-    <div class="user-image mb-8 h-48 w-48 rounded-full">
-      <img class="h-48 w-48 rounded-full" :src=userImageUrl alt="Foto de perfil del usuario">
+  <div class="self-center mb-4">
+    <div class="user-image mb-8 h-48 w-48 rounded-full text-richblack">
+      <img class="h-48 w-48 rounded-full mb-2" :src=userImageUrl alt="Foto de perfil del usuario">
+      <i class="fas fa-camera fa-2x mr-2 self-center cursor-pointer" @click="browse()"></i>
     </div>
-    <!--<div>
+    <div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >
       <button class="hidden" @click="onUpload()" ref="uploadImg"></button>
-    </div>-->
+    </div>
   </div>
 </template>
 <script>
 import firebase from "firebase";
 
 export default {
-  name: "ProfileImage",
+  name: "EditProfileImage",
   data() {
     return {
       imageData: null,
@@ -24,7 +25,7 @@ export default {
   },
 
   methods: {
-    /* Browse() {
+    browse() {
       this.$refs.selectFile.click();
     },
     previewImage(event) {
@@ -36,9 +37,12 @@ export default {
     },
     onUpload() {
       this.picture = null;
-      firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").put(this.imageData);
-      this.$forceUpdate();
-    } */
+      firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").put(this.imageData).then(() => {
+        firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").getDownloadURL().then(imgUrl => {
+          this.userImageUrl = imgUrl;
+        });
+      });
+    }
 
   },
   mounted() {
