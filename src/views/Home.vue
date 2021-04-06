@@ -11,7 +11,6 @@
     <div class="bg-cyberyellow mt-12">
       <Help></Help>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -20,7 +19,6 @@ import Carousel from "../components/Carousel.vue";
 import CarouselComment from "../components/CarouselComment.vue";
 import ContentHome from "../components/ContentHome.vue";
 import Help from "../components/Help.vue";
-import Footer from "../components/Footer.vue";
 
 export default {
   name: "Home",
@@ -29,7 +27,6 @@ export default {
     CarouselComment,
     ContentHome,
     Help,
-    Footer,
   },
 };
 </script>
