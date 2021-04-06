@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center my-12">
-    <p class="justify-items-center">Estás en la página: {{ currentPage }}</p>
+    <!--p class="justify-items-center">Estás en la página: {{ currentPage }}</p-->
     <div class="flex text-black">
       <div class="flex h-12 font-medium rounded-full bg-cyberyellow">
         <div
