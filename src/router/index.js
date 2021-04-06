@@ -35,6 +35,16 @@ const routes = [
     }
   },
   {
+    path: "",
+    name: "home",
+    component: () => import("../views/Home.vue")
+  },
+  {
+    path: "/",
+    name: "home",
+    component: () => import("../views/Home.vue")
+  },
+  {
     path: "/home",
     name: "home",
     component: () => import("../views/Home.vue")
@@ -53,7 +63,8 @@ const routes = [
     path: "/board",
     name: "board",
     component: () => import("../views/Board.vue")
-  }
+  },
+
 ];
 
 const router = new VueRouter({

@@ -16,6 +16,7 @@
         >
           {{ paginationAnchorTexts.prev }}
         </div>
+
         <div
           class="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-cyberyellow text-white active"
           v-for="index in totalPages"

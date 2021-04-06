@@ -1,5 +1,4 @@
-
-  <template>
+ <template>
   <div>
     <ul class="flex flex-col 2xl:flex-row list-none cursor-pointer">
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
