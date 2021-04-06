@@ -132,24 +132,78 @@
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
         <p class="italic font-bold mt-24">Video</p>
-        <cardAbout></cardAbout>
       </div>
       <div>
         <p class="italic font-bold mt-24">Conoce a nuestro equipo</p>
-        <cardAbout></cardAbout>
+        <template>
+          <div
+            class="flex justify-center bg-cyberyellow mt-12 md:flex-col lg:flex-row"
+          >
+            <figure
+              v-for="photo of About"
+              :key="photo"
+              class="rounded-xl p-8 m-8"
+            >
+              <div class="pt-6 text-center space-y-4 mt-8">
+                <blockquote>
+                  <p class="text-base md:text-2xl xl:text-4xl -mt-20">
+                    {{ photo.name }}
+                  </p>
+                </blockquote>
+              </div>
+              <img
+                class="mx-auto rounded-lg"
+                :src="photo.image"
+                alt=""
+                width="500"
+                height="500"
+              />
+              <div class="pt-6 text-center space-y-4 mt-8">
+                <blockquote>
+                  <p class="text-base md:text-3xl xl:text-4xl font-semibold">
+                    {{ photo.description }}
+                  </p>
+                </blockquote>
+              </div>
+            </figure>
+          </div>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import saul from "../assets/saul.jpeg";
+import lucia from "../assets/lucia.jpg";
+import aythami from "../assets/aythami.jpg";
 import ButtonCard from "../components/ButtonCard.vue";
-import cardAbout from "../components/cardAbout.vue";
 
 export default {
+  name: "About",
   components: {
     ButtonCard,
-    cardAbout,
+  },
+  data() {
+    return {
+      About: [
+        {
+          name: "Lucía Muñoz González",
+          description: "Desarrolladora Frontend",
+          image: lucia,
+        },
+        {
+          name: "Saul Abreu",
+          description: "Periodista y Coaching",
+          image: saul,
+        },
+        {
+          name: "Aythami De Armas",
+          description: "Diseñador",
+          image: aythami,
+        },
+      ],
+    };
   },
 };
 </script>
