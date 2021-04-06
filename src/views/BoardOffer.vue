@@ -2,14 +2,13 @@
   <div class="flex justify-center mt-12 space-x-12 p-24 rounded-3xl">
     <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
       <div
-        v-for="card of Board"
+        v-for="card in arrayBoard"
         :key="card"
         class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
       >
-        <p class="text-4xl">{{ card.h1 }}</p>
-        <img class="h-24 absolute" :src="card.icon" />
-        <div>
-          <img :src="card.image" alt="" />
+        <div v-if="card.show">
+          <div>
+          <img :src="card.image" />
         </div>
         <div class="p-8 space-y-6">
           <div class="grid justify-items-stretch space-y-8">
@@ -18,7 +17,7 @@
             </p>
             <p class="text-sm text-gray-900 leading-sm justify-self-start">
               <i class="fas fa-map-marker-alt"></i>
-              {{ card.site }}
+              {{ card.place }}
             </p>
             <p class="text-sm text-gray-900 leading-sm justify-self-start">
               <i class="far fa-calendar-alt"></i>
@@ -27,81 +26,21 @@
           </div>
           <ButtonCard text="Guardar oferta"></ButtonCard>
         </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 <script>
-import job from "../assets/job.jpg";
-import connection from "../assets/connection.jpg";
-import offer from "../assets/offer.jpg";
-
 import ButtonCard from "../components/ButtonCard.vue";
+import { mapState } from "vuex";
 
 export default {
-  name: "CardAdvert",
   components: {
     ButtonCard,
   },
-  data() {
-    return {
-      Board: [
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: job,
-        },
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: connection,
-        },
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: offer,
-        },
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: offer,
-        },
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: offer,
-        },
-        {
-          title: "Técnico Prevención de Riesgos Laborales",
-          description:
-            "Buscamos persona formada y con experiencia en haber trabajado en Recursos Humanos para incorporación inmediata.",
-          site: "Los Cristianos",
-          time: "full time",
-          contact: "pepito@sd.com",
-          image: offer,
-        },
-      ],
-    };
+  computed: {
+    ...mapState("paginationBoard", ["arrayBoard"]),
   },
 };
 </script>

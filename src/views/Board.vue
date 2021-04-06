@@ -57,6 +57,7 @@
           <BoardProyect></BoardProyect>
         </div>
       </div>
+      <PaginationBoard></PaginationBoard>
     </div>
     <Help></Help>
   </div>
@@ -64,7 +65,8 @@
 
 <script>
 import BoardOffer from "../views/BoardOffer.vue";
-import BoardProyect from "../views/BoardProyect.vue";
+import BoardProyect from "./BoardProyect.vue";
+import PaginationBoard from "../components/PaginationBoard.vue";
 import Help from "../components/Help.vue";
 
 export default {
@@ -73,6 +75,7 @@ export default {
     BoardProyect,
     BoardOffer,
     Help,
+    PaginationBoard
   },
   data() {
     return {
