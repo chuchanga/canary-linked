@@ -2,12 +2,12 @@
   <div class="category-container w-full h-auto">
     <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 2, 'text-white bg-goldenrod': openTab === 2}">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 1, 'text-white bg-goldenrod': openTab === 1}">
             Mis Ofertas de Trabajo
           </a>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(3)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 3, 'text-white bg-goldenrod': openTab === 3}">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 2, 'text-white bg-goldenrod': openTab === 2}">
            Mis proyectos Colaborativos
           </a>
         </li>
@@ -16,14 +16,11 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCategoryDisplay />
-            </div>
-            <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
               <p>
                Aquí iría la vista de las ofertas de trabajo
               </p>
             </div>
-            <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}">
+            <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
               <p>
                Aquí iría la vista de los proyectos colaborativos
               </p>
@@ -35,11 +32,9 @@
 </template>
 
 <script>
-import ProfileCategoryDisplay from "../components/ProfileCategoryDisplay.vue";
 export default {
   name: "ProfileCategories",
   components: {
-    ProfileCategoryDisplay
   },
   data() {
     return {

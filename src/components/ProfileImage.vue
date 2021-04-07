@@ -1,7 +1,7 @@
 <template>
   <div class="self-center">
-    <div class="user-image mb-8 h-48 w-48 rounded-full">
-      <img class="h-48 w-48 rounded-full" :src=userImageUrl alt="Foto de perfil del usuario">
+    <div class="user-image h-48 w-48 mb-6 rounded-full overflow-hidden">
+      <img class="h-auto max-w-full rounded-full" :src=userImageUrl alt="Foto de perfil del usuario">
     </div>
     <!--<div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >

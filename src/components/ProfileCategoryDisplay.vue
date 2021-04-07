@@ -1,13 +1,13 @@
 <template>
-  <ProfileTextField />
+<div class=""></div>
 </template>
 
 <script>
-import ProfileTextField from "../components/ProfileTextField.vue";
+
 export default {
   name: "ProfileCategoryDisplay",
   components: {
-    ProfileTextField
+
   }
 };
 </script>
