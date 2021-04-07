@@ -1,7 +1,7 @@
 <template>
   <div class="self-center mb-4">
-    <div class="user-image mb-8 h-48 w-48 rounded-full text-richblack">
-      <img class="h-48 w-48 rounded-full mb-2" :src=userImageUrl alt="Foto de perfil del usuario">
+    <div class="user-image mb-8 h-48 w-48 rounded-full text-richblack overflow-hidden">
+      <img class="h-auto max-w-full rounded-full mb-2" :src=userImageUrl alt="Foto de perfil del usuario">
       <i class="fas fa-camera fa-2x mr-2 self-center cursor-pointer" @click="browse()"></i>
     </div>
     <div>
