@@ -59,11 +59,7 @@ export default {
     BoardProyect,
     BoardOffer,
     Help,
-<<<<<<< HEAD
-    PaginationBoard
-=======
     Subheader,
->>>>>>> new-feature
   },
   data() {
     return {
