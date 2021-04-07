@@ -1,31 +1,14 @@
  <template>
-  <div>
-    <div
-      class="bg-cover bg-center h-auto text-richblack py-24 px-10 object-fill"
-      style="
-        background-image: url(https://www.eluniversal.com.mx/sites/default/files/2016/02/29/tecnologia_oficina.jpg);
-      "
-    >
-      <div class="md:w-1/2 mt-24 space-y-8">
-        <p class="text-3xl font-bold">
-          Bienvenido a nuestra sección de Tablón de Ofertas y proyectos
-        </p>
-        <p class="text-2xl mb-10 leading-none space-y-8">
-          Encuentra tu oportunidad con nosotros
-        </p>
-        <div>
-          <a
-            href="/contact"
-            class="bg-cyberyellow py-4 px-8 text-richblack font-bold uppercase text-xs rounded hover:bg-minionyellow"
-            >Contact us</a
-          >
-        </div>
-      </div>
-    </div>
+  <div class="bg-gray-50">
+    <Subheader
+      title="Bienvenidos a nuestro tablón de ofertas y proyectos"
+      description="Encuentra lo que buscas"
+      text="Contáctanos"
+    ></Subheader>
     <ul class="flex flex-col 2xl:flex-row list-none cursor-pointer">
-      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+      <li class="flex-auto text-center">
         <a
-          class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+          class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
           v-on:click="toggleTabs(1)"
           v-bind:class="{
             'text-black bg-cyberyellow': openTab !== 1,
@@ -35,9 +18,9 @@
           <p class="text-xl 2xl:text-4xl p-12 italic semi-bold">Ofertas</p>
         </a>
       </li>
-      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+      <li class="flex-auto text-center">
         <a
-          class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+          class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
           v-on:click="toggleTabs(2)"
           v-bind:class="{
             'text-black bg-cyberyellow': openTab !== 2,
@@ -66,6 +49,7 @@
 import BoardOffer from "../views/BoardOffer.vue";
 import BoardProyect from "../views/BoardProyect.vue";
 import Help from "../components/Help.vue";
+import Subheader from "../components/Subheader.vue";
 
 export default {
   name: "Board",
@@ -73,6 +57,7 @@ export default {
     BoardProyect,
     BoardOffer,
     Help,
+    Subheader,
   },
   data() {
     return {

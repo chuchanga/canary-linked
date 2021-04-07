@@ -24,7 +24,7 @@
         >
           <div
             v-if="index == currentPage"
-            class="text-black"
+            class="text-black font-bold"
             @click="changePage(index)"
           >
             {{ index }}
