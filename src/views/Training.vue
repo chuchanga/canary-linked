@@ -1,27 +1,10 @@
 <template>
   <div>
-    <div
-      class="bg-cover bg-center h-auto text-richblack py-24 px-10 object-fill"
-      style="
-        background-image: url(https://www.eluniversal.com.mx/sites/default/files/2016/02/29/tecnologia_oficina.jpg);
-      "
-    >
-      <div class="md:w-1/2 mt-24 space-y-8">
-        <p class="text-3xl font-bold">
-          Bienvenido a nuestra sección de Tablón de Ofertas y proyectos
-        </p>
-        <p class="text-2xl mb-10 leading-none space-y-8">
-          Encuentra tu oportunidad con nosotros
-        </p>
-        <div>
-          <a
-            href="/contact"
-            class="bg-cyberyellow py-4 px-8 text-richblack font-bold uppercase text-xs rounded hover:bg-minionyellow"
-            >Contáctanos</a
-          >
-        </div>
-      </div>
-    </div>
+    <Subheader
+      title="Bienvenidos a nuestro portal de tips y consejos de orientación laboral"
+      description="Resuelve tus dudas con estos consejos"
+      text="Contáctanos"
+    ></Subheader>
     <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
       <div v-for="card in arrayTraining" :key="card.id">
         <div :id="card.id" v-if="card.show" class="flip-vertical-right">
@@ -45,6 +28,7 @@
       </div>
     </div>
     <Pagination />
+    <Help></Help>
   </div>
 </template>
 
@@ -52,12 +36,16 @@
 import Pagination from "../components/Pagination.vue";
 import Card from "../components/Card.vue";
 import { mapState, mapGetters } from "vuex";
+import Subheader from "../components/Subheader.vue";
+import Help from "../components/Help.vue";
 
 export default {
   name: "Training",
   components: {
     Pagination,
     Card,
+    Subheader,
+    Help,
   },
   computed: {
     ...mapState("pagination", ["arrayTraining"]),
