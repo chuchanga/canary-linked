@@ -1,9 +1,9 @@
 <template>
-  <div class="flex justify-items-center rounded-lg shadow-lg">
-    <div id="front" class="flex justify-center justify-items-center">
+  <div class="flex-col justify-center lg:flex-row rounded-lg shadow-lg">
+    <div id="front">
       <div v-if="arrayTraining[id].pos == true">
         <img class="w-full" :src="url" :alt="description" />
-        <div class="font-bold text-xl mb-2">{{ title }}</div>
+        <div class="font-bold text-xl mb-4">{{ title }}</div>
         <button
           @click="set_id(id)"
           class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center mt-12 space-x-12 p-24 rounded-3xl">
+  <div class="bg-minionyellow flex justify-center space-x-12 p-24 rounded-3xl">
     <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
       <div
         v-for="card in arrayBoard"
