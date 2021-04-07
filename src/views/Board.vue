@@ -59,6 +59,7 @@ export default {
     BoardProyect,
     BoardOffer,
     Help,
+    PaginationBoard,
     Subheader,
   },
   data() {
