@@ -25,6 +25,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 export default firebaseApp.firestore(); */
 
 Vue.config.productionTip = false;
+Vue.prototype.$firebaseDatabase = firebase.default.firestore();
 
 let app;
 firebase.auth().onAuthStateChanged(user => {
