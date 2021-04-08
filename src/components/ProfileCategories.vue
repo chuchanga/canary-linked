@@ -12,13 +12,17 @@
           </a>
         </li>
       </ul>
-      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+      <div class="relative flex flex-col min-w-0 break-words bg-culturedwhite w-full mb-6 shadow-lg rounded">
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <p>
-               Aquí iría la vista de las ofertas de trabajo
-              </p>
+              <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
+                    :title="ownOffer.title"
+                    :description="ownOffer.description"
+                    :location="ownOffer.location"
+                    :contactEmail="ownOffer.contactEmail"
+                    :website="ownOffer.website" />
+              </div>
             </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
               <p>
@@ -32,19 +36,37 @@
 </template>
 
 <script>
+import ProfileOfferCard from "../components/ProfileOfferCard.vue";
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "./firebaseInit.js";
+
 export default {
   name: "ProfileCategories",
   components: {
+    ProfileOfferCard,
   },
   data() {
     return {
-      openTab: 1
+      currentUserId: firebase.auth().currentUser.uid,
+      openTab: 1,
+      ownOffers: []
     };
   },
   methods: {
     toggleTabs: function(tabNumber) {
       this.openTab = tabNumber;
     }
+  },
+  created () {
+    db.collection("offers").where("submitterId", "==", this.currentUserId)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.ownOffers.push(doc.data());
+        });
+        console.log(this.ownOffers);
+      });
   }
 };
 </script>
