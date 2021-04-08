@@ -19,7 +19,7 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
+// Import db from "./firebaseInit.js";
 export default {
   props: {
     title: String,
