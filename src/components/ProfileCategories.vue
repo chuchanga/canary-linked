@@ -16,12 +16,20 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
-                    :title="ownOffer.title"
-                    :description="ownOffer.description"
-                    :location="ownOffer.location"
-                    :contactEmail="ownOffer.contactEmail"
-                    :website="ownOffer.website" />
+              <div class="own-offers">
+                <p class="text-lg font-semibold">Ofertas que has añadido</p>
+                <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
+                      :title="ownOffer.title"
+                      :description="ownOffer.description"
+                      :location="ownOffer.location"
+                      :contactEmail="ownOffer.contactEmail"
+                      :website="ownOffer.website" />
+                </div>
+              </div>
+              <div class="saved-offers mt-4">
+                <p class="text-lg font-semibold">Ofertas que has guardado</p>
+                <div>
+                </div>
               </div>
             </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
