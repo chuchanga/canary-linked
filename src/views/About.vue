@@ -4,13 +4,13 @@
       class="bg-minionyellow rounded-ls m-12 rounded-lg shadow-lg flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
-        class="text-4xl md:text-5xl lg:text-7xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
+        class="text-xl md:text-4xl lg:text-5xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
       >
         Con más de 10 años de experiencia CanaryLinked es la empresa líder en
         las islas canarias que facilita la incorporación de profesionales sin
         experiencia al mundo laboral.
         <ButtonCard
-          class="mt-12 rounded-lg m-auto text-2xl lg:text-5xl focus:outline-none p-12"
+          class="mt-12 rounded-lg m-auto text-2xl lg:text-4xl focus:outline-none shadow-2xl text-decoration:none"
           text="Contáctanos"
         ></ButtonCard>
       </p>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div
-      class="flex justify-around mt-24 m-auto max-w-prose text-4xl break-words md:flex-col 2xl:flex-row md:text2xl 2xl:text-5xl"
+      class="bg-minionyellow p-24 shadow-lg flex justify-around mt-24 m-auto max-w-prose text-xl break-words md:flex-col 2xl:flex-row md:text2xl lg:text-5xl"
     >
       <div>
         <p class="italic font-bold">Mision</p>

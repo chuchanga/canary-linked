@@ -35,6 +35,11 @@ export default {
             "Busca en nuestro tablón de empleo las ofertas que mejor se adapten a tus necesidades",
         },
         {
+          title: "Últimos Proyectos",
+          description:
+            "Busca en nuestro tablón de empleo los proyectos que mejor se adapten a tus necesidades",
+        },
+        {
           title: "Últimos Contenidos",
           description:
             "¿Necesitas consejos para emprender tu carrera profesional? Entra en esta sección para más información",

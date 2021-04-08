@@ -13,7 +13,7 @@
       class="bg-minionyellow rounded-lg shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
-        class="text-4xl md:text-5xl lg:text-7xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
+        class="text-2xl md:text-5xl lg:text-5xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
       >
         Con más de 10 años de experiencia CanaryLinked es la empresa líder en
         las islas canarias que facilita la incorporación de profesionales sin
