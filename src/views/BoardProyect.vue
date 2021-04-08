@@ -1,53 +1,3 @@
-<<<<<<< HEAD
-<template>
-  <div class="flex justify-center mt-12 space-x-12 p-24 rounded-3xl">
-    <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
-      <div
-        v-for="card in arrayBoard"
-        :key="card"
-        class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
-      >
-        <div v-if="card.show">
-          <div>
-          <img :src="card.image" />
-        </div>
-        <div class="p-8 space-y-6">
-          <div class="grid justify-items-stretch space-y-8">
-            <p class="text-gray-700 font-semibold text-md">
-              {{ card.title }}
-            </p>
-            <p class="text-sm text-gray-900 leading-sm justify-self-start">
-              <i class="fas fa-map-marker-alt"></i>
-              {{ card.place }}
-            </p>
-            <p class="text-sm text-gray-900 leading-sm justify-self-start">
-              <i class="far fa-calendar-alt"></i>
-              {{ card.time }}
-            </p>
-          </div>
-          <ButtonCard text="Guardar oferta"></ButtonCard>
-        </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</template>
-<script>
-import ButtonCard from "../components/ButtonCard.vue";
-import { mapState } from "vuex";
-
-export default {
-  components: {
-    ButtonCard,
-  },
-  computed: {
-    ...mapState("paginationBoard", ["arrayBoard"]),
-  },
-};
-</script>
-<style>
-</style>
-=======
 <template>
   <div class="bg-minionyellow flex justify-center space-x-12 p-24 rounded-3xl">
     <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
@@ -149,4 +99,3 @@ export default {
 </script>
 <style>
 </style>
->>>>>>> new-feature
