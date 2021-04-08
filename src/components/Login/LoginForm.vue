@@ -1,35 +1,52 @@
 <template>
   <form class="mt-2 flex flex-col lg:w-1/2 w-8/12 p-8">
-    <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8">
-      <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded">
+    <div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8"
+    >
+      <div
+        class="flex flex-wrap w-full relative h-15 bg-white items-center rounded"
+      >
         <div class="flex -mr-px justify-center w-15 p-4">
-          <span class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+          <span
+            class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+          >
             <i class="fas fa-at"></i>
           </span>
         </div>
-        <Input type="email" id="email" placeholder="Correo Electrónico" v-model="email" />
+        <Input
+          type="email"
+          id="email"
+          placeholder="Correo Electrónico"
+          v-model="email"
+        />
       </div>
     </div>
-    <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10">
+    <div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10"
+    >
       <div class="flex -mr-px justify-center w-15 p-4">
         <span
-          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+        >
           <i class="fas fa-lock"></i>
         </span>
       </div>
-        <Input type="password" id="password" placeholder="Contraseña" v-model="password" />
+      <Input
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        v-model="password"
+      />
     </div>
     <BlueButton :onClick="login"> INICIAR SESIÓN </BlueButton>
     <div class="m-auto -mt-4">
       <router-link
         to="/login"
-        class="m-auto text-base text-black text-right leading-normal
-        hover:underline mb-2 -mt-8"
+        class="m-auto text-base text-black text-right leading-normal hover:underline mb-2 -mt-8"
         >Ya estoy registrado, quiero iniciar sesión
       </router-link>
     </div>
   </form>
-
 </template>
 <script>
 // Import Button from "../components/Button.vue";
@@ -48,7 +65,7 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
@@ -63,22 +80,22 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
+          (user) => {
             console.log(user);
             alert(`Inició sesión como ${this.email}`);
             this.$router.go({ path: "/profile" });
           },
-          err => {
+          (err) => {
             alert(err.message);
           }
         );
-    }
+    },
   },
   components: {
     // Button,
     Input,
-    BlueButton
-  }
+    BlueButton,
+  },
 };
 </script>
 <style scoped></style>

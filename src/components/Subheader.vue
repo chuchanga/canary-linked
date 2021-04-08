@@ -13,14 +13,6 @@
       >
         {{ description }}
       </p>
-      <router-link to="/contact">
-        <button
-          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded focus:outline-none mt-12"
-          :text="text"
-        >
-          {{ text }}
-        </button>
-      </router-link>
     </div>
   </div>
 </template>

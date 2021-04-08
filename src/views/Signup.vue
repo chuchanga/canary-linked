@@ -1,5 +1,10 @@
 <template>
-  <div class="content">
+  <div
+    class="flex flex-col jutify-center lg:flex-row bg-cover"
+    style="
+      background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
+    "
+  >
     <Arrow />
     <div class="container mx-auto font-sans">
       <div class="logo">
@@ -35,29 +40,12 @@
         </svg>
       </div>
       <div
-        class=" bg-cyberyellow flex-col flex ml-auto mr-auto items-center w-full md:w-3/5  "
+        class="bg-minionyellow rounded-lg shadow-2xl flex-col flex ml-auto mr-auto items-center w-full md:w-3/5"
       >
         <h1 class="font-bold text-2xl my-10 text-richblack">
           Registrarme como nuevo usuario
         </h1>
         <FormSignup></FormSignup>
-      </div>
-
-      <div class="border-solid border-2 border-light-blue-500 m-8 "></div>
-      <p class="text-4xl m-8 bold ">CanaryLinked</p>
-      <div class="flex justify-center space-x-16 ">
-        <i class="fas fa-shield-alt">
-          <a href="#" class="no-underline hover:underline font-sans "
-            >Política de Privacidad</a
-          >
-        </i>
-        <i class="fas fa-shield-alt ">
-          <a
-            href="#"
-            class="no-underline hover:underline font-sans hover:text-login"
-            >Términos y Condiciones</a
-          >
-        </i>
       </div>
     </div>
   </div>
@@ -71,7 +59,7 @@ export default {
   components: {
     FormSignup,
     Arrow,
-  }
+  },
 };
 </script>
 <style scoped>

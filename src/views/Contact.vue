@@ -6,7 +6,7 @@
       background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
     "
   >
-    <div class="font sans lg:w-2/6 flex flex-col justify-center p-12 m-auto">
+    <div class="font sans flex flex-col justify-center p-12 m-auto w-2/6">
       <form
         action=""
         class="bg-minionyellow shadow-2xl flex-col lg:flex-row p-12 rounded-lg"

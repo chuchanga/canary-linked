@@ -47,7 +47,7 @@ export default {
 
 <style lang="postcss" scoped>
 .textcontent {
-  @apply bg-cyberyellow flex flex-col justify-center m-12 p-8 2xl:flex-row;
+  @apply bg-minionyellow shadow-2xl rounded-lg flex flex-col justify-center m-12 p-8 2xl:flex-row;
 }
 
 .textcontent:nth-child(2n) {

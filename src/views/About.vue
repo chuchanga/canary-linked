@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="bg-goldenrod flex flex-col justify-center p-8 2xl:flex-row">
+    <div
+      class="bg-minionyellow rounded-ls m-12 rounded-lg shadow-lg flex flex-col justify-center p-8 2xl:flex-row"
+    >
       <p
         class="text-4xl md:text-5xl lg:text-7xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
       >
@@ -137,7 +139,7 @@
         <p class="italic font-bold mt-24">Conoce a nuestro equipo</p>
         <template>
           <div
-            class="flex justify-center bg-cyberyellow mt-12 md:flex-col lg:flex-row"
+            class="flex justify-center bg-minionyellow mt-12 m-12 rounded-lg shadow-2xl md:flex-col lg:flex-row"
           >
             <figure
               v-for="photo of About"
@@ -169,6 +171,7 @@
           </div>
         </template>
       </div>
+      <Help></Help>
     </div>
   </div>
 </template>
@@ -178,11 +181,12 @@ import saul from "../assets/saul.jpeg";
 import lucia from "../assets/lucia.jpg";
 import aythami from "../assets/aythami.jpg";
 import ButtonCard from "../components/ButtonCard.vue";
-
+import Help from "../components/Help.vue";
 export default {
   name: "About",
   components: {
     ButtonCard,
+    Help,
   },
   data() {
     return {

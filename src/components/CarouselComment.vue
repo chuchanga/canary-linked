@@ -1,6 +1,9 @@
 
 <template>
-  <carousel :perPage="1" class="bg-goldenrod mt-8 text-xl lg:text-3xl">
+  <carousel
+    :perPage="1"
+    class="bg-minionyellow m-12 rounded-lg shadow-2xl mt-8 text-xl lg:text-3xl"
+  >
     <slide v-for="(testimonial, index) of Testimonials" :key="index">
       <img
         class="m-auto object-cover rounded-full h-48 w-48 flex items-center justify-center"

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-10 m-8 cursor-pointer">
+  <div class="w-10 m-8 text-minionyellow cursor-pointer">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

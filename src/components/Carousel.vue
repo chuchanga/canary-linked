@@ -9,11 +9,7 @@
         >
           {{ images.description }}
         </p>
-        <div class="flex justify-center">
-          <router-link to="/contact">
-            <ButtonCard class="btn" text="¡Contactanos!"> </ButtonCard>
-          </router-link>
-        </div>
+        <div class="flex justify-center"></div>
       </div>
     </slide>
   </carousel>
@@ -23,13 +19,11 @@ import { Carousel, Slide } from "vue-carousel";
 import search from "../assets/search.jpg";
 import connection from "../assets/connection.jpg";
 import offer from "../assets/offer.jpg";
-import ButtonCard from "../components/ButtonCard.vue";
 
 export default {
   components: {
     Carousel,
     Slide,
-    ButtonCard,
   },
   data() {
     return {

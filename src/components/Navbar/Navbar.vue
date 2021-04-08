@@ -1,7 +1,5 @@
 <template>
-  <nav
-    class="bg-richblack relative flex flex-wrap items-center justify-between"
-  >
+  <nav class="navbar relative flex flex-wrap items-center justify-between">
     <div
       class="flex justify-between container px-4 mx-auto flex-wrap items-center"
     >
@@ -159,4 +157,8 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+
+.navbar {
+  background: rgba(0, 0, 0, 0.885);
+}
 </style>

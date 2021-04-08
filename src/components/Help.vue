@@ -4,7 +4,7 @@
       <div
         class="bg-cover bg-center p-8"
         style="
-          background-image: url(https://cdn.shopify.com/s/files/1/0275/5752/7616/files/Contactanos_480x480.jpg?v=1590771329);
+          background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
         "
       >
         <p class="text-2xl lg:text-4xl m-8 italic font-bold">
