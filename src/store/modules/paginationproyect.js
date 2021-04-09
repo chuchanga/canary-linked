@@ -7,23 +7,23 @@ export default {
     cardsPerPages: 6,
     paginationAnchorTexts: { first: "<<", prev: "<", next: ">", last: ">>" },
     show: true,
-    arrayBoard: [],
+    Board: [],
 
   },
   mutations: {
     CHANGE_PAGE(state, index) {
       state.currentPage = index;
       const n = state.cardsPerPages;
-      console.log("Elementos" + state.arrayBoard.length);
-      for (let i = 0; i < state.arrayBoard.length; i++) {
+      console.log("Elementos" + state.Board.length);
+      for (let i = 0; i < state.Board.length; i++) {
         if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
-          state.arrayBoard[i].show = true;
-        } else state.arrayBoard[i].show = false;
-        console.log("Elementos" + state.arrayBoard[i].show);
+          state.Board[i].show = true;
+        } else state.Board[i].show = false;
+        console.log("Elementos" + state.Board[i].show);
       }
     },
     SET_CARD(state, card) {
-      state.arrayBoard = card;
+      state.Board = card;
       // State.totalPages = card.length / 3;
     }
   },
@@ -32,7 +32,7 @@ export default {
       context.commit("CHANGE_PAGE", index);
     },
     fetchCards(context) {
-      db.collection("arrayBoard").get().then(querySnapshot => {
+      db.collection("Board").get().then(querySnapshot => {
         const card = [];
         querySnapshot.forEach(doc => {
           const data = {

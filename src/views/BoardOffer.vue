@@ -8,24 +8,36 @@
       >
         <div v-if="card.show">
           <div>
-          <img :src="card.image" />
-        </div>
-        <div class="p-8 space-y-6">
-          <div class="grid justify-items-stretch space-y-8">
-            <p class="text-gray-700 font-semibold text-md">
-              {{ card.title }}
-            </p>
-            <p class="text-sm text-gray-900 leading-sm justify-self-start">
-              <i class="fas fa-map-marker-alt"></i>
-              {{ card.place }}
-            </p>
-            <p class="text-sm text-gray-900 leading-sm justify-self-start">
-              <i class="far fa-calendar-alt"></i>
-              {{ card.time }}
-            </p>
+            <img :src="card.image" />
           </div>
-          <ButtonCard text="Guardar oferta"></ButtonCard>
-        </div>
+          <div class="space-y-6 p-8">
+            <div class="grid justify-items-stretch space-y-8">
+              <p
+                class="text-richblack font-semibold text-md text-lg lg:text-2xl"
+              >
+                {{ card.title }}
+              </p>
+              <p
+                class="text-richblack leading-sm justify-self-start text-lg lg:text-xl"
+              >
+                <i class="text-cyberyellow fas fa-map-marker-alt"></i>
+                {{ card.place }}
+              </p>
+              <p
+                class="text-richblack leading-sm justify-self-start text-lg lg:text-xl"
+              >
+                <i class="text-cyberyellow far fa-calendar-alt"></i>
+                {{ card.time }}
+              </p>
+              <p
+                class="text-richblack leading-sm justify-self-start text-lg lg:text-xl"
+              >
+                <i class="text-cyberyellow fas fa-info-circle"></i>
+                {{ card.description }}
+              </p>
+            </div>
+            <ButtonCard text="Guardar proyecto"></ButtonCard>
+          </div>
         </div>
       </div>
     </section>

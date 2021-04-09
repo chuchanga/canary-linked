@@ -19,7 +19,7 @@
         <router-link to="/contact">
           <ButtonCard
             text="¡Contáctanos!"
-            class="text-xl lg:text-3xl"
+            class="text-xl lg:text-3xl shadow-2xl"
           ></ButtonCard
         ></router-link>
         <div
