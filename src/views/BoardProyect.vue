@@ -3,7 +3,7 @@
     <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
       <div
         v-for="card in Board"
-        :key="card"
+        :key="card.title"
         class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
       >
         <div v-if="card.show">

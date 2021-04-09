@@ -3,7 +3,7 @@
     <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
       <div
         v-for="card in arrayBoard"
-        :key="card"
+        :key="card.title"
         class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
       >
         <div v-if="card.show">
@@ -45,6 +45,7 @@
 </template>
 <script>
 import ButtonCard from "../components/ButtonCard.vue";
+
 import { mapState } from "vuex";
 
 export default {
