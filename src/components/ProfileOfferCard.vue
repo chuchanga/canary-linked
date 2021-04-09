@@ -9,11 +9,13 @@
       <div class="contact-email">{{contactEmail}}</div>
       <div class="website">{{website}}</div>
     </div>
-    <div class="button-container flex flex-col justify-end">
-      <EditButton :onClick="showEditWindow" class="mb-2" />
-      <DeleteButton :onClick="deleteOffer" class="mb-2" />
-      <edit-offer :currentOfferDescription="description" v-if="showModal" @close="showModal = false">
-        </edit-offer>
+    <div class="button-container flex justify-end">
+      <div class="flex flex-col">
+        <EditButton :onClick="showEditWindow" class="mb-2" />
+        <DeleteButton :onClick="deleteOffer" class="mb-2" />
+        </div>
+        <edit-offer :currentOfferDescription="description" v-if="showModal" @close="showModal = false">
+          </edit-offer>
     </div>
   </div>
 </template>
