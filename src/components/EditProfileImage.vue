@@ -29,7 +29,6 @@ export default {
       this.$refs.selectFile.click();
     },
     previewImage(event) {
-      console.log(this);
       this.picture = null;
       this.imageData = event.target.files[0];
       const elem = this.$refs.uploadImg;
