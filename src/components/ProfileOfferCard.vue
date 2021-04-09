@@ -10,8 +10,12 @@
       <div class="website">{{website}}</div>
     </div>
     <div class="button-container flex justify-end">
-      <div class="edit-button w-4 h-4 bg-honolulublue mr-2"></div>
-      <div class="delete-button w-4 h-4 bg-cyberyellow"></div>
+      <div class="flex flex-col">
+        <EditButton :onClick="showEditWindow" class="mb-2" />
+        <DeleteButton :onClick="deleteOffer" class="mb-2" />
+        </div>
+        <edit-offer :currentOfferDescription="description" v-if="showModal" @close="showModal = false">
+          </edit-offer>
     </div>
   </div>
 </template>
@@ -19,7 +23,10 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-// Import db from "./firebaseInit.js";
+import db from "./firebaseInit.js";
+import EditButton from "../components/Button/EditButton.vue";
+import DeleteButton from "../components/Button/DeleteButton.vue";
+import EditOffer from "../components/EditOffer.vue";
 export default {
   props: {
     title: String,
@@ -31,7 +38,30 @@ export default {
   data() {
     return {
       currentUserId: firebase.auth().currentUser.uid,
+      showModal: false
     };
+  },
+  methods: {
+    deleteOffer () {
+      let currentOfferId = "";
+      db.collection("offers").where("description", "==", this.description)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            currentOfferId = doc.id;
+          });
+        }).then(() => {
+          db.collection("offers").doc(currentOfferId).delete();
+        });
+    },
+    showEditWindow() {
+      this.showModal = true;
+    }
+  },
+  components: {
+    EditButton,
+    DeleteButton,
+    EditOffer
   },
 };
 </script>

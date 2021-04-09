@@ -2,8 +2,8 @@
   <div class="self-center mb-4">
     <div class="user-image mb-8 h-48 w-48 rounded-full text-richblack overflow-hidden">
       <img class="h-auto max-w-full rounded-full mb-2" :src=userImageUrl alt="Foto de perfil del usuario">
-      <i class="fas fa-camera fa-2x mr-2 self-center cursor-pointer" @click="browse()"></i>
     </div>
+    <i class="fas fa-camera fa-2x mr-2 self-center cursor-pointer" @click="browse()"></i>
     <div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >
       <button class="hidden" @click="onUpload()" ref="uploadImg"></button>
@@ -29,7 +29,6 @@ export default {
       this.$refs.selectFile.click();
     },
     previewImage(event) {
-      console.log(this);
       this.picture = null;
       this.imageData = event.target.files[0];
       const elem = this.$refs.uploadImg;
