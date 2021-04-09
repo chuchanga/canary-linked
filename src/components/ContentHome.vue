@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(text, index) in Content" :key="index" class="textcontent">
+    <div v-for="text in Content" :key="text.title" class="textcontent">
       <div class="col-start-1 col-end-5">
         <p class="text-xl lg:text-5xl italic font-bold mt-12">
           {{ text.title }}
@@ -15,12 +15,15 @@
           ></ButtonCard
         ></router-link>
       </div>
-      <img src="../assets/job.jpg" class="m-8" />
+      <img :src="text.src" class="m-8" />
     </div>
   </div>
 </template>
 <script>
 import ButtonCard from "../components/ButtonCard.vue";
+import job from "../assets/job.jpg";
+import connection from "../assets/connection.jpg";
+import notices from "../assets/notices.jpg";
 export default {
   name: "ContentHome",
   components: {
@@ -33,16 +36,19 @@ export default {
           title: "Últimas Ofertas",
           description:
             "Busca en nuestro tablón de empleo las ofertas que mejor se adapten a tus necesidades",
+          src: job,
         },
         {
           title: "Últimos Proyectos",
           description:
             "Busca en nuestro tablón de empleo los proyectos que mejor se adapten a tus necesidades",
+          src: connection,
         },
         {
           title: "Últimos Contenidos",
           description:
             "¿Necesitas consejos para emprender tu carrera profesional? Entra en esta sección para más información",
+          src: notices,
         },
       ],
     };

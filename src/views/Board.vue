@@ -5,6 +5,7 @@
       description="Encuentra lo que buscas"
       text="Contáctanos"
     ></Subheader>
+
     <ul class="flex flex-col 2xl:flex-row list-none cursor-pointer">
       <li class="flex-auto text-center">
         <a
@@ -36,6 +37,7 @@
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <BoardOffer></BoardOffer>
         </div>
+
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <BoardProyect></BoardProyect>
         </div>
