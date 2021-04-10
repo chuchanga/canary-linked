@@ -75,7 +75,18 @@ export default {
         });
         console.log(this.ownOffers);
       });
-  }
+  },
+  /* Updated () {
+    this.ownOffers = [];
+    db.collection("offers").where("submitterId", "==", this.currentUserId)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.ownOffers.push(doc.data());
+        });
+        console.log(this.ownOffers);
+      });
+  }, */
 };
 </script>
 
