@@ -16,11 +16,12 @@
     <div id="back">
       <div v-if="arrayTraining[id].pos == false" class="text-left py-8 px-8">
         <p>{{ text[0] }}</p>
-        <p>{{ text[1] }}</p>
-        <p>{{ text[2] }}</p>
-        <p>{{ text[3] }}</p>
-        <p>{{ text[4] }}</p>
-        <p>{{ text[5] }}</p>
+        <br>
+        <p class="ml-4">{{ text[1] }}</p>
+        <p class="ml-4">{{ text[2] }}</p>
+        <p class="ml-4">{{ text[3] }}</p>
+        <p class="ml-4">{{ text[4] }}</p>
+        <p class="ml-4">{{ text[5] }}</p>
         <button
           @click="set_id(id)"
           class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold mt-4 py-2 px-4 border hover:border-transparent rounded content-center"
