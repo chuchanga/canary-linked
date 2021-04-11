@@ -1,9 +1,7 @@
 <template>
-  <nav
-    class="bg-richblack relative flex flex-wrap items-center justify-between"
-  >
+  <nav class="bg-richblack relative flex flex-wrap items-center">
     <div
-      class="flex justify-between container px-4 mx-auto flex-wrap items-center"
+      class="flex justify-between container px-8 mx-auto flex-wrap items-center"
     >
       <div
         class="w-full relative flex justify-between lg:block lg:justify-startflex flex-row lg:w-auto px-4 lg:static lg:justify-center"
@@ -71,7 +69,7 @@
             @click="open = !open"
             class="mt-2 p-2 hover:text-cyberyellow bg-richblack items-center text-culturedwhite focus:outline-none rounded-full"
           >
-            <i class="far fa-user fa-2x rounded-full self-center"></i>
+            <i class="far fa-user fa-2x rounded-full self-center z-10"></i>
           </button>
           <span
             @click="open = !open"
