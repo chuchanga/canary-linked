@@ -38,6 +38,7 @@ import CarouselComment from "../components/CarouselComment.vue";
 import ContentHome from "../components/ContentHome.vue";
 import Help from "../components/Help.vue";
 import Carousel from "../components/Carousel.vue";
+import ButtonCard from "../components/ButtonCard.vue";
 
 export default {
   name: "Home",
@@ -46,6 +47,12 @@ export default {
     ContentHome,
     Help,
     Carousel,
+    ButtonCard,
+  },
+  methods: {
+    track() {
+      this.$ga.page("/");
+    },
   },
 };
 </script>

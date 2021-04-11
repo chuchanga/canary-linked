@@ -6,6 +6,12 @@ import "firebase/auth";
 import "./components/firebaseInit.js";
 import router from "./router/index.js";
 import store from "./store";
+import VueAnalytics from "vue-analytics";
+
+Vue.use(VueAnalytics, {
+  id: "UA-194336838-1",
+  router,
+});
 
 /* Import firebase from "firebase";
 import "firebase/firestore";
