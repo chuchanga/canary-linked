@@ -16,49 +16,32 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <div class="own-offers">
-                <p class="text-lg font-semibold">Ofertas que has añadido</p>
-                <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
-                      :title="ownOffer.title"
-                      :description="ownOffer.description"
-                      :location="ownOffer.location"
-                      :contactEmail="ownOffer.contactEmail"
-                      :website="ownOffer.website" />
+              <ProfileCardsDisplay :display="'Ofertas'" :ownCollection="'offers'" :savedCollection="'ownedOffers'" />
                 </div>
               </div>
-              <div class="saved-offers mt-4">
-                <p class="text-lg font-semibold">Ofertas que has guardado</p>
-                <div>
-                </div>
-              </div>
-            </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
               <p>
                Aquí iría la vista de los proyectos colaborativos
               </p>
+              <!-- Descomentar cuando se haya añadido la funcionalidad de los proyectos /> -->
+             <!-- <ProfileCardsDisplay :display="'Proyectos'" :ownCollection="'projects'" :savedCollection="'ownedProjects'" /> -->
+            </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 </template>
 
 <script>
-import ProfileOfferCard from "../components/ProfileOfferCard.vue";
-import firebase from "firebase/app";
-import "firebase/auth";
-import db from "./firebaseInit.js";
+import ProfileCardsDisplay from "../components/ProfileCardsDisplay.vue";
 
 export default {
   name: "ProfileCategories",
   components: {
-    ProfileOfferCard,
+    ProfileCardsDisplay
   },
   data() {
     return {
-      currentUserId: firebase.auth().currentUser.uid,
       openTab: 1,
-      ownOffers: []
     };
   },
   methods: {
@@ -66,27 +49,6 @@ export default {
       this.openTab = tabNumber;
     }
   },
-  created () {
-    db.collection("offers").where("submitterId", "==", this.currentUserId)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.ownOffers.push(doc.data());
-        });
-        console.log(this.ownOffers);
-      });
-  },
-  /* Updated () {
-    this.ownOffers = [];
-    db.collection("offers").where("submitterId", "==", this.currentUserId)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.ownOffers.push(doc.data());
-        });
-        console.log(this.ownOffers);
-      });
-  }, */
 };
 </script>
 

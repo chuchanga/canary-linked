@@ -4,12 +4,13 @@
         <div v-if="!editing">
           <UserDescription />
         </div>
-        <div v-if="editing">
-          <EditUserDescription />
-        </div>
         <div v-if="!editing" class="mb-2">
           <YellowButton :onClick="startEditing"> EDITAR PERFIL </YellowButton>
         </div>
+        <div v-if="editing">
+          <EditUserDescription />
+        </div>
+        <!--Este botón, la ventana modal y la función no va aquí realmente, iría en la pantalla del tablón de ofertas-->
         <AddButton :onClick="showModalWindow" />
       </div>
       <div class="categories-container w-4/5">
