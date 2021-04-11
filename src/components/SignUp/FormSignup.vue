@@ -123,7 +123,7 @@ export default {
       console.log(this.email);
       console.log(this.password);
       console.log(firebase);
-      // Para probar aquí iba console.log("register");
+
       e.preventDefault();
       firebase
         .auth()
@@ -143,7 +143,6 @@ export default {
               .then(() => {
                 this.$router.go({ path: "/profile" });
               });
-            //  Alert(`Se creó una cuenta para el correo ${this.email}`);
           },
           (err) => {
             alert(err.message);
