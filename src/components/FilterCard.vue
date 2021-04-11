@@ -5,38 +5,70 @@
           </div>
           <div class="my-2 space-x-8 flex sm:flex-row flex-col">
             <div class="space-x-8 flex flex-row mb-1 sm:mb-0">
+              <!--------------------------------------  Categorías  ---------------------------------------------->
               <div class="relative">
                 <p class="font-bold">Categorías</p>
-                <select id="categoria" v-model="array[0].category"
+                <div v-if="mymood == 'offers'">
+                <select id="categoria" v-model="array.category"
                   class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
                 >
-                  <option>Educación</option>
-                  <option>Reponedor</option>
-                  <option>Vigilante</option>
+                    <option>Todos</option>
+                    <option v-for="index in getOffers().category.length" :key="index"> {{getOffers().category[index - 1]}}</option>
                 </select>
-                <p class="font-bold">Elegida: {{ array[0].category }}</p>
+                </div>
+                  <div v-else>
+                  <select id="categoria" v-model="array.category"
+                  class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                >
+                    <option>Todos</option>
+                    <option v-for="index in getProjects().category.length" :key="index"> {{getProjects().category[index - 1]}}</option>
+                </select>
+                </div>
+                <p class="font-bold">Elegida: {{ array.category }}</p>
               </div>
+              <!--------------------------------------  Duracion  ---------------------------------------------->
               <div class="relative">
                 <p class="font-bold">Duración</p>
-                <select v-model="array[0].duration"
+                <div v-if="mymood == 'offers'">
+                <select id="categoria" v-model="array.duration"
                   class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
                 >
-                  <option>Parcial</option>
-                  <option>Completo</option>
+                    <option>Todos</option>
+                    <option v-for="index in getOffers().duration.length" :key="index"> {{getOffers().duration[index - 1]}}</option>
                 </select>
-                <p class="font-bold">Elegida: {{ array[0].duration }}</p>
+                </div>
+                  <div v-else>
+                  <select id="categoria" v-model="array.duration"
+                  class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                >
+                    <option>Todos</option>
+                    <option v-for="index in getProjects().duration.length" :key="index"> {{getProjects().duration[index - 1]}}</option>
+                </select>
+                </div>
+                <p class="font-bold">Elegida: {{ array.duration }}</p>
               </div>
+              <!--------------------------------------  Ubicación  ---------------------------------------------->
               <div class="relative">
                 <p class="font-bold">Ubicación</p>
-                <select v-model="array[0].location"
+                <div v-if="mymood == 'offers'">
+                <select id="categoria" v-model="array.place"
                   class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
                 >
-                  <option>Los Cristianos</option>
-                  <option>Santa Cruz</option>
+                    <option>Todos</option>
+                    <option v-for="index in getOffers().place.length" :key="index"> {{getOffers().place[index - 1]}}</option>
                 </select>
-                <p class="font-bold">Elegida: {{ array[0].location }}</p>
+                </div>
+                  <div v-else>
+                  <select id="categoria" v-model="array.place"
+                  class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                >
+                    <option>Todos</option>
+                    <option v-for="index in getProjects().place.length" :key="index"> {{getProjects().place[index - 1]}}</option>
+                </select>
+                </div>
+                <p class="font-bold">Elegida: {{ array.place }}</p>
               </div>
-            </div>
+            <!--------------------------------------  Barra de búsqueda  ---------------------------------------------->
             <div class="block relative mt-12">
               <span
                 class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
@@ -50,15 +82,20 @@
                   ></path>
                 </svg>
               </span>
-              <input v-model="array[0].search"
+              <input v-model="array.search"
                 placeholder="Search"
                 class="appearance-none text-lg lg:text-xl block pl-8 pr-6 py-2 w-full bg-white placeholder-gray-400 text-richblack focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
               />
-              <p class="font-bold">Elegida: {{ array[0].search }}</p>
+              <p class="font-bold">Elegida: {{ array.search }}</p>
             </div>
+            <!--------------------------------------  Botones  ---------------------------------------------->
             <button class="bg-cyberyellow hover:bg-goldenrod text-black font-semibold py-2 px-4 border hover:border-transparent rounded content-center items-center"
-             @click="filtercard(array)">
+             @click="setMood(mymood)">
               Filtrar
+            </button>
+            <button class="bg-cyberyellow hover:bg-goldenrod text-black font-semibold py-2 px-4 border hover:border-transparent rounded content-center items-center"
+             @click="stopFilter()">
+              Dejar de filtrar
             </button>
           </div>
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -67,26 +104,36 @@
             ></div>
           </div>
         </div>
+        </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
+  props: ["mymood"],
   data() {
     return {
-      array: [
-        {
-          category: "",
-          duration: "",
-          location: "",
-          search: "",
-        }
-      ]
+      array: {
+        category: "Todos",
+        duration: "Todos",
+        place: "Todos",
+        search: "",
+        mood: "offers"
+      }
     };
   },
   methods: {
-    ...mapActions("filtercard", ["filtercard"]),
+    ...mapActions("filterCard", ["filtercard"]),
+    ...mapActions("filterCard", ["stopFilter"]),
+    ...mapGetters("data", ["getOffers"]),
+    ...mapGetters("data", ["getProjects"]),
+    setMood(mymood) {
+      this.array.mood = mymood;
+      console.log(this.array.mood);
+      this.filtercard(this.array);
+    },
   },
+
 };
 </script>
 

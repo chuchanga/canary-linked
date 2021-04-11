@@ -7,51 +7,122 @@ export default {
     cardsPerPages: 6,
     paginationAnchorTexts: { first: "<<", prev: "<", next: ">", last: ">>" },
     show: true,
-    arrayBoard: [],
+    filtering: false,
+    offers: [],
+    projects: [],
+    itemsFiltered: [],
+  },
 
-  },
-  mutations: {
-    CHANGE_PAGE(state, index) {
-      state.currentPage = index;
-      const n = state.cardsPerPages;
-      console.log("Elementos" + state.arrayBoard.length);
-      for (let i = 0; i < state.arrayBoard.length; i++) {
-        if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
-          state.arrayBoard[i].show = true;
-        } else state.arrayBoard[i].show = false;
-        console.log("Elementos" + state.arrayBoard[i].show);
-      }
-    },
-    SET_CARD(state, card) {
-      state.arrayBoard = card;
-      // State.totalPages = card.length / 3;
-    }
-  },
   actions: {
-    changePage(context, index) {
-      context.commit("CHANGE_PAGE", index);
+    changePageOffers(context, index) {
+      context.commit("CHANGE_PAGE_OFFERS", index);
     },
-    fetchCards(context) {
-      db.collection("arrayBoard").get().then(querySnapshot => {
-        const card = [];
+    changePageProjects(context, index) {
+      context.commit("CHANGE_PAGE_PROJECTS", index);
+    },
+
+    fetchOffers(context) {
+      db.collection("offers").get().then(querySnapshot => {
+        const cardOffer = [];
         querySnapshot.forEach(doc => {
           const data = {
             title: doc.data().title,
             description: doc.data().description,
-            time: doc.data().time,
+            category: doc.data().category,
+            duration: doc.data().duration,
             place: doc.data().place,
             show: doc.data().show,
             image: doc.data().image,
           };
-          card.push(data);
+          cardOffer.push(data);
         });
-        context.commit("SET_CARD", card);
+        context.commit("SET_OFFERS", cardOffer);
+      });
+    },
+    fetchProjects(context) {
+      db.collection("projects").get().then(querySnapshot => {
+        const cardProject = [];
+        querySnapshot.forEach(doc => {
+          const data = {
+            title: doc.data().title,
+            description: doc.data().description,
+            category: doc.data().category,
+            duration: doc.data().duration,
+            place: doc.data().place,
+            show: doc.data().show,
+            image: doc.data().image,
+          };
+          cardProject.push(data);
+        });
+        context.commit("SET_PROJECTS", cardProject);
       });
     },
   },
-  getters: {
-    getCurrentPage(state) {
-      return state.currentPage;
-    }
+
+  mutations: {
+    CHANGE_PAGE_OFFERS(state, index) {
+      state.currentPage = index;
+      const n = state.cardsPerPages;
+
+      for (let i = 0; i < state.offers.length; i++) {
+        if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
+          state.offers[i].show = true;
+        } else state.offers[i].show = false;
+      }
+    },
+    CHANGE_PAGE_PROJECTS(state, index) {
+      state.currentPage = index;
+      const n = state.cardsPerPages;
+
+      for (let i = 0; i < state.projects.length; i++) {
+        if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
+          state.projects[i].show = true;
+        } else state.projects[i].show = false;
+      }
+    },
+
+    SET_OFFERS(state, cardOffer) {
+      state.offers = cardOffer;
+    },
+    SET_PROJECTS(state, cardProject) {
+      state.projects = cardProject;
+    },
+
+    FILTER(state, array) {
+      // State.filtering = true;
+
+      for (let i = 0; i < state.projects.length; i++) {
+        if ((state.projects[i].description.toLowerCase().includes(array.search) ||
+        state.projects[i].title.toLowerCase().includes(array.search))) {
+          if (array.category !== "") {
+            if (state.projects[i].category === array.category) {
+              console.log(array.category + " en " + i);
+              console.log("Encontrado: " + array.search + " en " + i);
+              state.projects[i].show = true;
+              console.log(state.projects[i].show);
+            }
+          } else {
+            console.log("Encontrado: " + array.search + " en " + i);
+            state.projects[i].show = true;
+            console.log(state.projects[i].show);
+          }
+        } else {
+          console.log("No encontrado: " + array.search + " en " + i);
+          state.projects[i].show = false;
+          console.log(state.projects[i].show);
+        }
+      }
+      /*
+      If (array.mood === "offers") {
+        if (state.offers.category === array.category) {
+
+        }
+      } else if (array.mood === "projects") {
+
+      } */
+    },
+    STOP_FILTER(state) {
+      state.filtering = false;
+    },
   },
 };
