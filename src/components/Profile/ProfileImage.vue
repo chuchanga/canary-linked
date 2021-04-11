@@ -1,8 +1,8 @@
 <template>
   <div class="self-center">
     <div class="user-image h-48 w-48 mb-6 rounded-full overflow-hidden">
-      <img class="h-auto max-w-full rounded-full" v-if="userImageUrl===null" src="././assets/profile.jpg" alt="Foto de perfil del usuario por defecto">
-      <img class="h-auto max-w-full rounded-full" v-if="userImageUrl!=null" :src=userImageUrl alt="Foto de perfil del usuario">
+      <img class="h-48 w-48 object-cover rounded-full" v-if="userImageUrl===null" src="../../assets/profile.jpg" alt="Foto de perfil del usuario por defecto">
+      <img class="h-48 w-48 object-cover rounded-full" v-if="userImageUrl!=null" :src=userImageUrl alt="Foto de perfil del usuario">
     </div>
     <!--<div>
       <input type="file" @change="previewImage" accept="image/*" class="hidden" ref="selectFile" >
