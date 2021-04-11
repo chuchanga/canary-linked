@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import ProfileCardsDisplay from "../components/ProfileCardsDisplay.vue";
+import ProfileCardsDisplay from "./ProfileCardsDisplay.vue";
 
 export default {
   name: "ProfileCategories",

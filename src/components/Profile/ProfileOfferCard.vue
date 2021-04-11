@@ -24,10 +24,10 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
-import EditButton from "../components/Button/EditButton.vue";
-import DeleteButton from "../components/Button/DeleteButton.vue";
-import EditOffer from "../components/EditOffer.vue";
+import db from "../firebaseInit.js";
+import EditButton from "../Button/EditButton.vue";
+import DeleteButton from "../Button/DeleteButton.vue";
+import EditOffer from "../EditOffer.vue";
 export default {
   props: {
     title: String,

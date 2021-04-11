@@ -21,8 +21,8 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
-import ProfileOfferCard from "../components/ProfileOfferCard.vue";
+import db from "../firebaseInit.js";
+import ProfileOfferCard from "./ProfileOfferCard.vue";
 
 export default {
   name: "ProfileCardsDisplay",

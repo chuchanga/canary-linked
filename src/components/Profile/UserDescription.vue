@@ -23,8 +23,8 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
-import ProfileImage from "../components/ProfileImage.vue";
+import db from "../firebaseInit.js";
+import ProfileImage from "./ProfileImage.vue";
 // Import YellowButton from "../components/Button/YellowButton.vue";
 export default {
   name: "UserDescription",
@@ -63,5 +63,4 @@ export default {
 };
 </script>
 <style scoped>
-  .bg-hero {background: url("../assets/img1.jpg") center center no-repeat;}
 </style>

@@ -24,9 +24,9 @@
 
 <script>
 // Aquí se importan los componentes
-import UserDescription from "../components/UserDescription.vue";
-import EditUserDescription from "../components/EditUserDescription.vue";
-import ProfileCategories from "../components/ProfileCategories.vue";
+import UserDescription from "../components/Profile/UserDescription.vue";
+import EditUserDescription from "../components/Profile/EditUserDescription.vue";
+import ProfileCategories from "../components/Profile/ProfileCategories.vue";
 import YellowButton from "../components/Button/YellowButton.vue";
 import AddButton from "../components/Button/AddButton.vue";
 import AddOffer from "../components/AddOffer.vue";

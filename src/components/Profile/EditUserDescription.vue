@@ -24,9 +24,9 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
+import db from "../firebaseInit.js";
 import EditProfileImage from "./EditProfileImage.vue";
-import YellowButton from "../components/Button/YellowButton.vue";
+import YellowButton from "../Button/YellowButton.vue";
 export default {
   name: "EditUserDescription",
   data () {
