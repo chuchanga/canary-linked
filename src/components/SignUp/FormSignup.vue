@@ -10,9 +10,9 @@
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" id="name" placeholder="Nombre" v-model="name" />
+      <Input type="text" id="name" placeholder="Nombre y Apellidos o Empresa" v-model="name" />
     </div>
-    <div
+    <!--<div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
     >
       <div class="flex -mr-px justify-center w-15 p-4">
@@ -28,7 +28,7 @@
         placeholder="Apellidos"
         v-model="surname"
       />
-    </div>
+    </div>-->
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
     >
