@@ -13,9 +13,8 @@
       <div class="flex flex-col">
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
-         <button class="hidden" @click="onEditSave()" ref="uploadProps"></button>
         </div>
-        <edit-offer :currentOfferDescription="description" v-if="showModal" @close="showModal = false">
+        <edit-offer :currentOfferDescription="description" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
           </edit-offer>
     </div>
   </div>
@@ -39,7 +38,7 @@ export default {
   data() {
     return {
       currentUserId: firebase.auth().currentUser.uid,
-      showModal: false
+      showEdit: false
     };
   },
   methods: {
@@ -53,13 +52,15 @@ export default {
           });
         }).then(() => {
           db.collection("offers").doc(currentOfferId).delete();
+        }).then(() => {
+          this.$emit("reRenderOffers");
         });
     },
     showEditWindow() {
-      this.showModal = true;
+      this.showEdit = true;
     },
     onEditSave () {
-      console.log("a");
+      this.$emit("reRenderOffers");
     }
   },
   components: {

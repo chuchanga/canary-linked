@@ -16,7 +16,7 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCardsDisplay :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'ownedOffers'" />
+              <ProfileCardsDisplay :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'ownedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
                 </div>
               </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
@@ -42,11 +42,15 @@ export default {
   data() {
     return {
       openTab: 1,
+      renderKey: 0
     };
   },
   methods: {
     toggleTabs: function(tabNumber) {
       this.openTab = tabNumber;
+    },
+    updateDisplay () {
+      this.renderKey += 1;
     }
   },
 };

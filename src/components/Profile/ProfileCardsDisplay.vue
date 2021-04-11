@@ -3,6 +3,7 @@
     <div class="own">
       <p class="text-lg font-semibold">{{display}} que has añadido</p>
         <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.title"> <ProfileOfferCard
+          @reRenderOffers="forceRerender()"
           :title="ownedOffer.title"
           :description="ownedOffer.description"
           :location="ownedOffer.location"
@@ -37,10 +38,14 @@ export default {
   data() {
     return {
       currentUserId: firebase.auth().currentUser.uid,
-      ownedOffers: []
+      ownedOffers: [],
+      offerEditKey: 0
     };
   },
   methods: {
+    forceRerender() {
+      this.$emit("forceRender");
+    }
   },
   created () {
     db.collection(this.ownedCollection).where("submitterId", "==", this.currentUserId)

@@ -99,22 +99,11 @@ export default {
           }
           );
         }).then(() => {
+          this.$emit("beforeCloseEdit");
+        }).then(() => {
           this.$emit("close");
         });
     }
-
-    /* Db.collection("offers").where("description", "==", this.currentOfferDescription).update(
-        {
-          title: this.offerData.title,
-          description: this.offerData.description,
-          contactEmail: this.offerData.contactEmail,
-          location: this.offerData.location,
-          website: this.offerData.website
-        }
-      ).then(() => {
-        this.$emit("close");
-      });
-    } */
   },
 };
 </script>
