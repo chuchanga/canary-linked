@@ -22,13 +22,7 @@
           v-for="index in totalPages"
           :key="index"
         >
-          <div
-            v-if="index == currentPage"
-            class="text-black font-bold"
-            @click="changePage(index)"
-          >
-            {{ index }}
-          </div>
+          <div v-if="index == currentPage" class="text-black"  @click="changePage(index)">{{ index }}</div>
           <div v-else @click="changePage(index)">{{ index }}</div>
         </div>
         <div

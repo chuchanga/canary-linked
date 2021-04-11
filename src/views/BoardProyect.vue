@@ -52,7 +52,7 @@ export default {
     ButtonCard,
   },
   computed: {
-    ...mapState("paginationproyect", ["Board"]),
+    ...mapState("paginationProyect", ["Board"]),
   },
 };
 </script>
