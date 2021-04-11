@@ -13,6 +13,7 @@
       <div class="flex flex-col">
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
+         <button class="hidden" @click="onUpload()" ref="uploadProps"></button>
         </div>
         <edit-offer :currentOfferDescription="description" v-if="showModal" @close="showModal = false">
           </edit-offer>
