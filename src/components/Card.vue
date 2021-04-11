@@ -38,7 +38,6 @@ import { mapState, mapActions } from "vuex";
 export default {
   props: ["title", "description", "text", "id", "url"],
   computed: {
-    ...mapState("animation", ["show"]),
     ...mapState("pagination", ["arrayTraining"]),
   },
   methods: {
