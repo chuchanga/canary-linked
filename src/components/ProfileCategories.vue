@@ -16,7 +16,7 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCardsDisplay :display="'Ofertas'" :ownCollection="'offers'" :savedCollection="'ownedOffers'" />
+              <ProfileCardsDisplay :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'ownedOffers'" />
                 </div>
               </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">

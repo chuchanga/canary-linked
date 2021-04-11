@@ -2,12 +2,12 @@
   <div class="card-display">
     <div class="own">
       <p class="text-lg font-semibold">{{display}} que has añadido</p>
-        <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
-          :title="ownOffer.title"
-          :description="ownOffer.description"
-          :location="ownOffer.location"
-          :contactEmail="ownOffer.contactEmail"
-          :website="ownOffer.website" />
+        <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.title"> <ProfileOfferCard
+          :title="ownedOffer.title"
+          :description="ownedOffer.description"
+          :location="ownedOffer.location"
+          :contactEmail="ownedOffer.contactEmail"
+          :website="ownedOffer.website" />
         </div>
     </div>
     <div class="saved mt-4">
@@ -31,29 +31,25 @@ export default {
   },
   props: {
     display: String,
-    ownCollection: String,
+    ownedCollection: String,
     savedCollection: String
   },
   data() {
     return {
       currentUserId: firebase.auth().currentUser.uid,
-      openTab: 1,
-      ownOffers: []
+      ownedOffers: []
     };
   },
   methods: {
-    toggleTabs: function(tabNumber) {
-      this.openTab = tabNumber;
-    }
   },
   created () {
-    db.collection(this.ownCollection).where("submitterId", "==", this.currentUserId)
+    db.collection(this.ownedCollection).where("submitterId", "==", this.currentUserId)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          this.ownOffers.push(doc.data());
+          this.ownedOffers.push(doc.data());
         });
-        console.log(this.ownOffers);
+        console.log(this.ownedOffers);
       });
   },
 };
