@@ -13,19 +13,38 @@
             <div class="offer-publication h-auto p-4 flex flex-col">
               <input placeholder="Título de la Oferta" class="offer-title h-12 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.title">
               <textarea placeholder="Descripción de la Oferta" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
-
-              <div class="user-contact ml-8 mt-8 md:w-4/5 sm:w-full">
-                <div class="contact-mail text-left text-sm">
-                  <i class="text-davysgray fas fa-envelope mr-1"></i>
-                  <input placeholder="E-mail de contacto" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
+              <div class="grid grid-cols-2 ml-8 mt-8 md:w-4/5 sm:w-full">
+                <div>
+                  <div class="contact-mail text-left text-sm">
+                    <i class="text-davysgray fas fa-envelope mr-1"></i>
+                    <input placeholder="E-mail de contacto" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
+                  </div>
+                  <div class="contact-location text-left text-sm">
+                    <i class="text-davysgray fas fa-map-marker-alt mr-2"></i>
+                    <input placeholder="Localización" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.location">
+                  </div>
+                  <div class="contact-web text-left text-sm">
+                    <i class=" text-davysgray fas fa-pager mr-1"></i>
+                    <input placeholder="Sitio Web de la empresa" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
+                  </div>
                 </div>
-                <div class="contact-location text-left text-sm">
-                  <i class="text-davysgray fas fa-map-marker-alt mr-2"></i>
-                  <input placeholder="Localización" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.location">
-                </div>
-                <div class="contact-web text-left text-sm">
-                  <i class=" text-davysgray fas fa-pager mr-1"></i>
-                  <input placeholder="Sitio Web de la empresa" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
+                <div>
+                  <div class="text-left text-sm">
+                    <i class=" text-davysgray fas fa-users mr-3"></i>
+                    <select id="categoria" v-model="offerData.category"
+                    class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal mt-1 mb-4 shadow-md">
+                      <option selected disabled class="text-gray-400">Categoría</option>
+                      <option v-for="index in getOffers().category.length" :key="index"> {{getOffers().category[index - 1]}}</option>
+                    </select>
+                  </div>
+                  <div class="text-left text-sm">
+                    <i class=" text-davysgray fas fa-user-clock mr-3"></i>
+                    <select id="categoria" v-model="offerData.duration"
+                    class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal shadow-md">
+                      <option selected disabled class="text-gray-400">Jornada</option>
+                      <option v-for="index in getOffers().duration.length" :key="index"> {{getOffers().duration[index - 1]}}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -45,6 +64,7 @@ import YellowButton from "../components/Button/YellowButton.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "./firebaseInit.js";
+import { mapActions, mapGetters } from "vuex";
 export default {
   props: {
     currentOfferDescription: String
@@ -59,6 +79,10 @@ export default {
         contactEmail: "",
         location: "",
         website: "",
+        category: "Categoría",
+        duration: "Jornada",
+        show: false,
+        image: ""
       }
     };
   },
@@ -77,10 +101,14 @@ export default {
           this.offerData.contactEmail = doc.data().contactEmail;
           this.offerData.location = doc.data().location;
           this.offerData.website = doc.data().website;
+          this.offerData.category = doc.data().category;
+          this.offerData.duration = doc.data().duration;
+          // Faltaría poner la imagen aquí para editarla
         });
       });
   },
   methods: {
+    ...mapGetters("data", ["getOffers"]),
     saveChanges() {
       let currentOfferId = "";
       db.collection("offers").where("description", "==", this.currentOfferDescription)
@@ -95,7 +123,9 @@ export default {
             description: this.offerData.description,
             contactEmail: this.offerData.contactEmail,
             location: this.offerData.location,
-            website: this.offerData.website
+            website: this.offerData.website,
+            category: this.offerData.category,
+            duration: this.offerData.duration
           }
           );
         }).then(() => {

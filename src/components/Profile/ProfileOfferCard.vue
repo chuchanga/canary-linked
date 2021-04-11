@@ -1,5 +1,5 @@
 <template>
-  <div class="offer-card-container w-full h-auto max-h-60 overflow-hidden bg-culturedwhite p-5 my-3 border-2 border-davysgray grid grid-cols-3 shadow-lg">
+  <div class="offer-card-container w-full h-auto max-h-48 overflow-hidden bg-culturedwhite p-5 my-3 border-2 border-davysgray grid grid-cols-3 shadow-lg">
     <div class="title-and-description-container flex flex-col">
       <div class="offer-title font-bold h-2/6 text-left">{{title}}</div>
       <div class="offer-description border-green">{{description}}</div>

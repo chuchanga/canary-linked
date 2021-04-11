@@ -30,7 +30,7 @@ export default {
             description: doc.data().description,
             category: doc.data().category,
             duration: doc.data().duration,
-            place: doc.data().place,
+            place: doc.data().location,
             show: doc.data().show,
             image: doc.data().image,
           };
@@ -48,7 +48,7 @@ export default {
             description: doc.data().description,
             category: doc.data().category,
             duration: doc.data().duration,
-            place: doc.data().place,
+            place: doc.data().location,
             show: doc.data().show,
             image: doc.data().image,
           };
