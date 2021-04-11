@@ -33,46 +33,105 @@
         </a>
       </li>
     </ul>
-    <div class="antialiased font-sans">
-      <div
-        class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
-      >
-        <FilterCard />
-      </div>
-    </div>
     <div class="px-4 py-5 flex-auto">
       <div class="tab-content tab-space">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
-          <BoardOffer></BoardOffer>
-        </div>
-
-        <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
-          <BoardProyect></BoardProyect>
-        </div>
+          <div class="antialiased font-sans">
+      <div
+        class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
+      >
+        <FilterCard mymood = "offers"/>
       </div>
-      <PaginationBoard></PaginationBoard>
+    </div>
+          <div v-if="filtering">
+          </div>
+        <div v-else>
+          <div
+        v-for="card in offers"
+        :key="card.title"
+      >
+        <div v-if="card.show">
+          <CardBoard
+            :title="card.title"
+            :image="card.image"
+            :place="card.place"
+            :duration="card.duration"
+            :description="card.description"
+            />
+        </div>
+          </div>
+          <PaginationOffers />
+        </div>
+        </div>
+        <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
+        <div class="antialiased font-sans">
+      <div
+        class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
+      >
+        <FilterCard mymood="projects"/>
+      </div>
+    </div>
+         <!--div v-if="filtering">
+           <div
+        v-for="card in itemsFiltered"
+        :key="card.title"
+        class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
+      >
+        <div v-if="card.show">
+          <CardBoard
+            :title="card.title"
+            :image="card.image"
+            :place="card.place"
+            :duration="card.duration"
+            :description="card.description"
+            />
+        </div>
+          </div>
+          </div>
+        <div v-else-->
+         <div
+        v-for="card in projects"
+        :key="card.title"
+        class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
+      >
+        <div v-if="card.show">
+          <CardBoard
+            :title="card.title"
+            :image="card.image"
+            :place="card.place"
+            :duration="card.duration"
+            :description="card.description"
+            />
+        </div>
+          </div>
+          <PaginationProjects />
+        </div>
+        <!--/div-->
+      </div>
     </div>
     <Help></Help>
   </div>
 </template>
 
 <script>
-import BoardOffer from "../views/BoardOffer.vue";
-import BoardProyect from "./BoardProyect.vue";
-import PaginationBoard from "../components/PaginationBoard.vue";
-import Help from "../components/Help.vue";
 import Subheader from "../components/Subheader.vue";
 import FilterCard from "../components/FilterCard.vue";
+import CardBoard from "../components/CardBoard.vue";
+import PaginationOffers from "../components/PaginationOffers.vue";
+import PaginationProjects from "../components/PaginationProjects.vue";
+import Help from "../components/Help.vue";
+
+import { mapState } from "vuex";
 
 export default {
   name: "Board",
   components: {
-    BoardProyect,
-    BoardOffer,
-    Help,
-    PaginationBoard,
     Subheader,
     FilterCard,
+    CardBoard,
+    PaginationOffers,
+    PaginationProjects,
+    Help,
   },
   data() {
     return {
@@ -83,6 +142,12 @@ export default {
     toggleTabs: function (tabNumber) {
       this.openTab = tabNumber;
     },
+  },
+  computed: {
+    ...mapState("paginationBoard", ["offers"]),
+    ...mapState("paginationBoard", ["projects"]),
+    ...mapState("paginationBoard", ["filtering"]),
+    ...mapState("paginationBoard", ["itemsFiltered"]),
   },
 };
 </script>
