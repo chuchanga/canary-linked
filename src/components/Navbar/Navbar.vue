@@ -1,7 +1,7 @@
 <template>
   <nav class="bg-richblack relative flex flex-wrap items-center">
     <div
-      class="flex justify-between container px-4 mx-auto flex-wrap items-center"
+      class="flex justify-between container px-8 mx-auto flex-wrap items-center"
     >
       <div
         class="w-full relative flex justify-between lg:block lg:justify-startflex flex-row lg:w-auto px-4 lg:static lg:justify-center"
