@@ -1,13 +1,8 @@
 <template>
-<<<<<<< HEAD
-  <nav class="bg-richblack relative flex flex-wrap items-center">
+  <nav class="nav relative flex flex-wrap items-center">
     <div
       class="flex justify-between container px-8 mx-auto flex-wrap items-center"
     >
-=======
-  <nav class="nav">
-    <div class="flex px-4 flex-wrap items-center">
->>>>>>> new-feature
       <div
         class="w-full flex justify-between lg:block lg:justify-startflex flex-row lg:w-auto lg:static lg:justify-center"
       >
