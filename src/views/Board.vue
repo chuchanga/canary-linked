@@ -37,53 +37,6 @@
       <div class="tab-content tab-space">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="antialiased font-sans">
-<<<<<<< HEAD
-      <div
-        class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
-      >
-        <FilterCard mymood = "offers"/>
-      </div>
-    </div>
-          <div v-if="filtering">
-            <div v-if="noresults">
-              No hay resultados
-            </div>
-            <div v-else>
-            <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
-          <div
-        v-for="card in itemsFiltered"
-        :key="card.title"
-      >
-        <div v-if="card.show">
-          <CardBoard
-            :title="card.title"
-            :image="card.image"
-            :place="card.place"
-            :duration="card.duration"
-            :description="card.description"
-            />
-        </div>
-          </div>
-          </div>
-          </div>
-          </div>
-        <div v-else>
-          <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
-          <div
-        v-for="card in offers"
-        :key="card.title"
-      >
-        <div v-if="card.show">
-          <CardBoard
-            :title="card.title"
-            :image="card.image"
-            :place="card.place"
-            :duration="card.duration"
-            :description="card.description"
-            />
-        </div>
-        </div>
-=======
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
@@ -104,7 +57,6 @@
                 </div>
               </div>
             </div>
->>>>>>> new-feature
           </div>
           <div v-else>
             <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4">
@@ -131,42 +83,12 @@
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
-<<<<<<< HEAD
-        <div class="antialiased font-sans">
-      <div
-        class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
-      >
-        <FilterCard mymood="projects"/>
-      </div>
-    </div>
-          <div v-if="filtering">
-            <div v-if="noresults">
-              No hay resultados
-            </div>
-            <div v-else>
-            <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
-          <div
-        v-for="card in itemsFiltered"
-        :key="card.title"
-      >
-        <div v-if="card.show">
-          <CardBoard
-            :title="card.title"
-            :image="card.image"
-            :place="card.place"
-            :duration="card.duration"
-            :description="card.description"
-            />
-        </div>
-          </div>
-=======
           <div class="antialiased font-sans">
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
               <FilterCard mymood="projects" />
             </div>
->>>>>>> new-feature
           </div>
           <div v-if="filtering">
             <div class="flex flex-col justify-center lg:grid grid-cols-3 gap-4">
@@ -183,26 +105,6 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-          </div>
-        <div v-else>
-          <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
-          <div
-        v-for="card in projects"
-        :key="card.title"
-      >
-        <div v-if="card.show">
-          <CardBoard
-            :title="card.title"
-            :image="card.image"
-            :place="card.place"
-            :duration="card.duration"
-            :description="card.description"
-            />
-        </div>
-        </div>
-        </div>
-=======
           <div v-else>
             <div class="flex flex-col justify-center lg:grid grid-cols-3 gap-4">
               <div v-for="card in projects" :key="card.title">
@@ -217,7 +119,6 @@
                 </div>
               </div>
             </div>
->>>>>>> new-feature
             <div v-if="seeMoreProjectsButton">
               <button
                 @click="seeMoreProjects()"
