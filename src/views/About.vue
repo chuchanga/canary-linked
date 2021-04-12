@@ -1,32 +1,34 @@
 <template>
   <div>
+    <Subheader title="Conócenos"></Subheader>
     <div
-      class="bg-minionyellow rounded-ls m-12 rounded-lg shadow-lg flex flex-col justify-center p-8 2xl:flex-row"
+      class="bg-cyberyellow rounded-ls m-12 rounded-lg shadow-2xl flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
-        class="text-xl md:text-4xl lg:text-5xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
+        class="text-xl md:text-4xl lg:text-5xl self-center flex flex-col w-4/5 m-12 break-words"
       >
         Con más de 10 años de experiencia CanaryLinked es la empresa líder en
         las islas canarias que facilita la incorporación de profesionales sin
         experiencia al mundo laboral.
-        <ButtonCard
+        <router-link
+          to="/contact"
           class="mt-12 rounded-lg m-auto text-2xl lg:text-4xl focus:outline-none shadow-2xl text-decoration:none"
           text="Contáctanos"
-        ></ButtonCard>
+        ></router-link>
       </p>
       <div>
-        <img class="rounded-lg" src="../assets/photo_about.jpg" alt="" />
+        <img class="rounded-lg" src="../assets/photo_about.jpg" />
       </div>
     </div>
     <div
-      class="bg-minionyellow p-24 shadow-lg flex justify-around mt-24 m-auto max-w-prose text-xl break-words md:flex-col 2xl:flex-row md:text2xl lg:text-5xl"
+      class="bg-cyberyellow m-12 p-12 rounded-lg shadow-2xl flex flex-col justify-center break-words lg:flex-row"
     >
       <div>
-        <p class="italic font-bold">Mision</p>
+        <p class="italic font-bold text-xl lg:text-5xl">Mision</p>
         <svg
           class="m-auto mt-24"
-          width="82"
-          height="81"
+          width="92"
+          height="95"
           viewBox="0 0 82 81"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -77,14 +79,14 @@
             </clipPath>
           </defs>
         </svg>
-        <p class="mt-12">
+        <p class="mt-8 m-8 text-lg lg:text-2xl">
           Nuestra misión en CanaryLinked es la de proporcionar oportunidades y
           conocimientos para que profesionales sin experiencia encuentren
           trabajo.
         </p>
       </div>
       <div>
-        <p class="italic font-bold">Valores</p>
+        <p class="italic font-bold text-xl lg:text-5xl">Valores</p>
         <svg
           class="m-auto mt-24"
           width="92"
@@ -123,14 +125,13 @@
             fill="#DE374B"
           />
         </svg>
-        <p class="mt-12">
+        <p class="m-8 text-lg lg:text-2xl">
           Creemos que el mayor valor se obtiene cuando trabajamos juntos.
           Creemos en el aprendizaje continuo y en el intercambio de nuestras
           percepciones e ideas.
         </p>
       </div>
     </div>
-
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
         <p class="italic font-bold mt-24">Video</p>
@@ -139,7 +140,7 @@
         <p class="italic font-bold mt-24">Conoce a nuestro equipo</p>
         <template>
           <div
-            class="flex justify-center bg-minionyellow mt-12 m-12 rounded-lg shadow-2xl md:flex-col lg:flex-row"
+            class="flex justify-center bg-cyberyellow mt-12 m-12 rounded-lg shadow-2xl md:flex-col lg:flex-row"
           >
             <figure
               v-for="photo of About"
@@ -169,9 +170,9 @@
               </div>
             </figure>
           </div>
+          <Help></Help>
         </template>
       </div>
-      <Help></Help>
     </div>
   </div>
 </template>
@@ -180,13 +181,13 @@
 import saul from "../assets/saul.jpeg";
 import lucia from "../assets/lucia.jpg";
 import aythami from "../assets/aythami.jpg";
-import ButtonCard from "../components/ButtonCard.vue";
 import Help from "../components/Help.vue";
+import Subheader from "../components/Subheader.vue";
 export default {
   name: "About",
   components: {
-    ButtonCard,
     Help,
+    Subheader,
   },
   data() {
     return {
