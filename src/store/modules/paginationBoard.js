@@ -10,6 +10,7 @@ export default {
     option: 0,
     seeMoreOffersButton: true,
     seeMoreProjectsButton: true,
+    noresults: true,
   },
 
   actions: {
@@ -111,6 +112,7 @@ export default {
 
     FILTER(state, array) {
       state.filtering = true;
+      state.noresults = true;
       state.itemsFiltered.length = 0;
       if (array.mood === "projects") {
         switch (state.option) {
@@ -122,6 +124,7 @@ export default {
             for (let i = 0; i < state.projects.length; i++) {
               if ((state.projects[i].description.toLowerCase().includes(array.search) || state.projects[i].title.toLowerCase().includes(array.search))) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -129,6 +132,7 @@ export default {
             for (let i = 0; i < state.projects.length; i++) {
               if (state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -138,6 +142,7 @@ export default {
               state.projects[i].title.toLowerCase().includes(array.search)) &&
               state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -145,6 +150,7 @@ export default {
             for (let i = 0; i < state.projects.length; i++) {
               if (state.projects[i].duration === array.duration) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -154,6 +160,7 @@ export default {
             state.projects[i].title.toLowerCase().includes(array.search)) &&
             state.projects[i].duration === array.duration) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -162,6 +169,7 @@ export default {
               if (state.projects[i].place === array.place &&
           state.projects[i].duration === array.duration) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -172,6 +180,7 @@ export default {
           state.projects[i].duration === array.duration &&
           state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -179,6 +188,7 @@ export default {
             for (let i = 0; i < state.projects.length; i++) {
               if (state.projects[i].category === array.category) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -188,6 +198,7 @@ export default {
         state.projects[i].title.toLowerCase().includes(array.search)) &&
         state.projects[i].category === array.category) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -196,6 +207,7 @@ export default {
               if (state.projects[i].place === array.place &&
       state.projects[i].category === array.category) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -206,6 +218,7 @@ export default {
       state.projects[i].category === array.category &&
       state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -214,6 +227,7 @@ export default {
               if (state.projects[i].duration === array.duration &&
     state.projects[i].category === array.category) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -224,6 +238,7 @@ export default {
     state.projects[i].category === array.category &&
     state.projects[i].duration === array.duration) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -233,6 +248,7 @@ export default {
     state.projects[i].category === array.category &&
     state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -244,6 +260,7 @@ export default {
   state.projects[i].duration === array.duration &&
   state.projects[i].place === array.place) {
                 state.itemsFiltered.push(state.projects[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -258,6 +275,7 @@ export default {
             for (let i = 0; i < state.offers.length; i++) {
               if ((state.offers[i].description.toLowerCase().includes(array.search) || state.offers[i].title.toLowerCase().includes(array.search))) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -265,6 +283,7 @@ export default {
             for (let i = 0; i < state.offers.length; i++) {
               if (state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -274,6 +293,7 @@ export default {
               state.offers[i].title.toLowerCase().includes(array.search)) &&
               state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -281,6 +301,7 @@ export default {
             for (let i = 0; i < state.offers.length; i++) {
               if (state.offers[i].duration === array.duration) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -290,6 +311,7 @@ export default {
             state.offers[i].title.toLowerCase().includes(array.search)) &&
             state.offers[i].duration === array.duration) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -298,6 +320,7 @@ export default {
               if (state.offers[i].place === array.place &&
           state.offers[i].duration === array.duration) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -308,6 +331,7 @@ export default {
           state.offers[i].duration === array.duration &&
           state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -315,6 +339,7 @@ export default {
             for (let i = 0; i < state.offers.length; i++) {
               if (state.offers[i].category === array.category) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -324,6 +349,7 @@ export default {
         state.offers[i].title.toLowerCase().includes(array.search)) &&
         state.offers[i].category === array.category) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -332,6 +358,7 @@ export default {
               if (state.offers[i].place === array.place &&
       state.offers[i].category === array.category) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -342,6 +369,7 @@ export default {
       state.offers[i].category === array.category &&
       state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -350,6 +378,7 @@ export default {
               if (state.offers[i].duration === array.duration &&
     state.offers[i].category === array.category) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -360,6 +389,7 @@ export default {
     state.offers[i].category === array.category &&
     state.offers[i].duration === array.duration) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -369,6 +399,7 @@ export default {
     state.offers[i].category === array.category &&
     state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
@@ -380,6 +411,7 @@ export default {
   state.offers[i].duration === array.duration &&
   state.offers[i].place === array.place) {
                 state.itemsFiltered.push(state.offers[i]);
+                state.noresults = false;
               }
             }
             break;
