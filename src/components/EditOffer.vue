@@ -64,7 +64,7 @@ import YellowButton from "../components/Button/YellowButton.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "./firebaseInit.js";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   props: {
     currentOfferDescription: String

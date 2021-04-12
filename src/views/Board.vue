@@ -78,6 +78,12 @@
         </div>
         </div>
           </div>
+          <div v-if="seeMoreOffersButton">
+              <button @click="seeMoreOffers()"
+               class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded focus:outline-none">
+               Ver más
+              </button>
+            </div>
         </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
@@ -123,6 +129,12 @@
         </div>
         </div>
         </div>
+            <div v-if="seeMoreProjectsButton">
+              <button @click="seeMoreProjects()"
+               class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 border hover:border-transparent rounded focus:outline-none">
+               Ver más
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -137,7 +149,7 @@ import FilterCard from "../components/FilterCard.vue";
 import CardBoard from "../components/CardBoard.vue";
 import Help from "../components/Help.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Board",
@@ -156,12 +168,16 @@ export default {
     toggleTabs: function (tabNumber) {
       this.openTab = tabNumber;
     },
+    ...mapActions("paginationBoard", ["seeMoreOffers"]),
+    ...mapActions("paginationBoard", ["seeMoreProjects"]),
   },
   computed: {
     ...mapState("paginationBoard", ["offers"]),
     ...mapState("paginationBoard", ["projects"]),
     ...mapState("paginationBoard", ["filtering"]),
     ...mapState("paginationBoard", ["itemsFiltered"]),
+    ...mapState("paginationBoard", ["seeMoreOffersButton"]),
+    ...mapState("paginationBoard", ["seeMoreProjectsButton"]),
   },
 };
 </script>

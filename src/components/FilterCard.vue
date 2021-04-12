@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   props: ["mymood"],
   data() {
@@ -114,7 +114,9 @@ export default {
         duration: "Todos",
         place: "Todos",
         search: "",
-        mood: "offers"
+        mood: "offers",
+        seeMoreOffersButton: this.seeMoreOffersButton,
+        seeMoreProjectsButton: this.seeMoreProjectsButton,
       }
     };
   },
@@ -135,7 +137,10 @@ export default {
       this.stop_filter(this.array);
     },
   },
-
+  computed: {
+    ...mapState("paginationBoard", ["seeMoreOffersButton"]),
+    ...mapState("paginationBoard", ["seeMoreProjectsButton"]),
+  }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-minionyellow flex justify-center space-x-12 p-24 rounded-3xl">
+  <div>
     <section class="flex flex-col rounded-lg">
           <div>
             <img :src="image" />

@@ -3,25 +3,21 @@ import db from "../../components/firebaseInit.js";
 export default {
   namespaced: true,
   state: {
-    currentPage: 1,
-    cardsPerPages: 6,
-    paginationAnchorTexts: { first: "<<", prev: "<", next: ">", last: ">>" },
-    show: true,
     offers: [],
     projects: [],
-    totalPagesOffers: 3,
-    totalPagesProjects: 3,
     itemsFiltered: [],
     filtering: false,
     option: 0,
+    seeMoreOffersButton: true,
+    seeMoreProjectsButton: true,
   },
 
   actions: {
-    changePageOffers(context, index) {
-      context.commit("CHANGE_PAGE_OFFERS", index);
+    seeMoreOffers(context) {
+      context.commit("SEE_MORE_OFFERS");
     },
-    changePageProjects(context, index) {
-      context.commit("CHANGE_PAGE_PROJECTS", index);
+    seeMoreProjects(context, index) {
+      context.commit("SEE_MORE_PROJECTS");
     },
 
     fetchOffers(context) { // Faltar ordenar por fecha .orderBy()
@@ -51,7 +47,7 @@ export default {
             description: doc.data().description,
             category: doc.data().category,
             duration: doc.data().duration,
-            place: doc.data().location,
+            place: doc.data().place,
             show: doc.data().show,
             image: doc.data().image,
           };
@@ -63,42 +59,54 @@ export default {
     filter_card(context, array) {
       context.commit("GET_OPTION", array);
       context.commit("FILTER", array);
+      context.commit("SET_TRUE");
     },
     stop_filter(context, array) {
       context.commit("STOP_FILTER");
-      if (array.mood === "projects") context.commit("CHANGE_PAGE_PROJECTS", 1);
-      else context.commit("CHANGE_PAGE_OFFERS", 1);
+      if (array.mood === "projects") {
+        if (array.seeMoreOffersButton === true) context.commit("SEE_MORE_PROJECTS");
+        else context.commit("SEE_LESS_PROJECTS");
+      } else {
+        if (array.seeMoreProjectsButton === true) context.commit("SEE_MORE_OFFERS");
+        else context.commit("SEE_LESS_OFFERS");
+      }
     },
   },
   mutations: {
-    CHANGE_PAGE_OFFERS(state, index) {
-      state.currentPage = index;
-      const n = state.cardsPerPages;
-
+    SEE_MORE_OFFERS(state) {
+      state.seeMoreOffersButton = false;
       for (let i = 0; i < state.offers.length; i++) {
-        if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
-          state.offers[i].show = true;
-        } else state.offers[i].show = false;
+        state.offers[i].show = true;
       }
     },
-    CHANGE_PAGE_PROJECTS(state, index) {
-      state.currentPage = index;
-      const n = state.cardsPerPages;
-
+    SEE_MORE_PROJECTS(state) {
+      state.seeMoreProjectsButton = false;
       for (let i = 0; i < state.projects.length; i++) {
-        if ((i >= ((index - 1) * n)) && (i < ((index - 1) * n + n))) {
-          state.projects[i].show = true;
-        } else state.projects[i].show = false;
+        state.projects[i].show = true;
       }
     },
-
+    SEE_LESS_OFFERS(state) {
+      state.seeMoreOffersButton = true;
+      for (let i = 0; i < state.offers.length; i++) {
+        if (i < 9) state.offers[i].show = true;
+      }
+    },
+    SEE_LESS_PROJECTS(state) {
+      state.seeMoreProjectsButton = true;
+      for (let i = 0; i < state.projects.length; i++) {
+        if (i < 9) state.projects[i].show = true;
+      }
+    },
     SET_OFFERS(state, cardOffer) {
       state.offers = cardOffer;
-      state.totalPagesOffers = Math.ceil(state.offers.length / state.cardsPerPages);
     },
     SET_PROJECTS(state, cardProject) {
       state.projects = cardProject;
-      state.totalPagesProjects = Math.ceil(state.projects.length / state.cardsPerPages);
+    },
+    SET_TRUE(state) {
+      for (let i = 0; i < state.itemsFiltered.length; i++) {
+        state.itemsFiltered[i].show = true;
+      }
     },
 
     FILTER(state, array) {
@@ -382,7 +390,6 @@ export default {
       state.filtering = false;
     },
     GET_OPTION(state, array) {
-      console.log("Estoy en getOption");
       const category = array.category;
       const duration = array.duration;
       const place = array.place;
@@ -433,7 +440,6 @@ export default {
           }
         }
       }
-      console.log("Option:" + state.option);
     },
   },
 };
