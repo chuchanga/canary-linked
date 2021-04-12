@@ -116,3 +116,8 @@ export default {
   components: {},
 };
 </script>
+<style>
+.footer {
+  background: rgba(8, 8, 8, 0.938);
+}
+</style>
