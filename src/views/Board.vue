@@ -44,8 +44,25 @@
       </div>
     </div>
           <div v-if="filtering">
+            <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
+          <div
+        v-for="card in itemsFiltered"
+        :key="card.title"
+      >
+        <div v-if="card.show">
+          <CardBoard
+            :title="card.title"
+            :image="card.image"
+            :place="card.place"
+            :duration="card.duration"
+            :description="card.description"
+            />
+        </div>
+          </div>
+          </div>
           </div>
         <div v-else>
+          <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
           <div
         v-for="card in offers"
         :key="card.title"
@@ -59,8 +76,8 @@
             :description="card.description"
             />
         </div>
+        </div>
           </div>
-          <PaginationOffers />
         </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
@@ -71,11 +88,11 @@
         <FilterCard mymood="projects"/>
       </div>
     </div>
-         <!--div v-if="filtering">
-           <div
+          <div v-if="filtering">
+            <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
+          <div
         v-for="card in itemsFiltered"
         :key="card.title"
-        class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
       >
         <div v-if="card.show">
           <CardBoard
@@ -88,11 +105,12 @@
         </div>
           </div>
           </div>
-        <div v-else-->
-         <div
+          </div>
+        <div v-else>
+          <div class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
+          <div
         v-for="card in projects"
         :key="card.title"
-        class="wrapper max-w-xs bg-white rounded-b-md shadow-lg"
       >
         <div v-if="card.show">
           <CardBoard
@@ -103,10 +121,10 @@
             :description="card.description"
             />
         </div>
-          </div>
-          <PaginationProjects />
         </div>
-        <!--/div-->
+        </div>
+          </div>
+        </div>
       </div>
     </div>
     <Help></Help>
@@ -117,8 +135,6 @@
 import Subheader from "../components/Subheader.vue";
 import FilterCard from "../components/FilterCard.vue";
 import CardBoard from "../components/CardBoard.vue";
-import PaginationOffers from "../components/PaginationOffers.vue";
-import PaginationProjects from "../components/PaginationProjects.vue";
 import Help from "../components/Help.vue";
 
 import { mapState } from "vuex";
@@ -129,8 +145,6 @@ export default {
     Subheader,
     FilterCard,
     CardBoard,
-    PaginationOffers,
-    PaginationProjects,
     Help,
   },
   data() {

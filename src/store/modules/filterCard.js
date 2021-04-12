@@ -28,6 +28,7 @@ export default {
     filtercard(context, array) {
       context.commit("FILTER", array);
       context.commit("paginationBoard/FILTER", array, { root: true });
+      context.commit("paginationBoard/GET_OPTION", array, { root: true });
     },
     stopFilter(context, array) {
       context.commit("paginationBoard/STOP_FILTER", array, { root: true });

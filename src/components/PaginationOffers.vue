@@ -18,8 +18,8 @@
         </div>
 
         <div
-          class="w-12 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-cyberyellow text-white active"
-          v-for="index in totalPages"
+          class="w-12 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-cyberyellow text-gray-500  active"
+          v-for="index in totalPagesOffers"
           :key="index"
         >
           <div
@@ -38,14 +38,14 @@
         </div>
         <div
           class="w-12 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full"
-          v-if="currentPage < totalPages"
+          v-if="currentPage < totalPagesOffers"
           @click="changePageOffers(currentPage + 1)"
         >
           {{ paginationAnchorTexts.next }}
         </div>
         <div
           class="w-12 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full"
-          @click="changePageOffers(totalPages)"
+          @click="changePageOffers(totalPagesOffers)"
         >
           {{ paginationAnchorTexts.last }}
         </div>
@@ -60,7 +60,7 @@ export default {
 
   computed: {
     ...mapState("paginationBoard", ["currentPage"]),
-    ...mapState("paginationBoard", ["totalPages"]),
+    ...mapState("paginationBoard", ["totalPagesOffers"]),
     ...mapState("paginationBoard", ["paginationAnchorTexts"]),
   },
   methods: {

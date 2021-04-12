@@ -1,6 +1,6 @@
 <template>
   <div class="bg-minionyellow flex justify-center space-x-12 p-24 rounded-3xl">
-    <section class="flex flex-col rounded-lg lg:grid grid-cols-3 gap-4">
+    <section class="flex flex-col rounded-lg">
           <div>
             <img :src="image" />
           </div>
