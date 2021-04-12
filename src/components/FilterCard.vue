@@ -24,7 +24,6 @@
                     <option v-for="index in getProjects().category.length" :key="index"> {{getProjects().category[index - 1]}}</option>
                 </select>
                 </div>
-                <p class="font-bold">Elegida: {{ array.category }}</p>
               </div>
               <!--------------------------------------  Duracion  ---------------------------------------------->
               <div class="relative">
@@ -45,7 +44,6 @@
                     <option v-for="index in getProjects().duration.length" :key="index"> {{getProjects().duration[index - 1]}}</option>
                 </select>
                 </div>
-                <p class="font-bold">Elegida: {{ array.duration }}</p>
               </div>
               <!--------------------------------------  Ubicación  ---------------------------------------------->
               <div class="relative">
@@ -66,7 +64,6 @@
                     <option v-for="index in getProjects().place.length" :key="index"> {{getProjects().place[index - 1]}}</option>
                 </select>
                 </div>
-                <p class="font-bold">Elegida: {{ array.place }}</p>
               </div>
             <!--------------------------------------  Barra de búsqueda  ---------------------------------------------->
             <div class="block relative mt-12">
@@ -86,7 +83,6 @@
                 placeholder="Search"
                 class="appearance-none text-lg lg:text-xl block pl-8 pr-6 py-2 w-full bg-white placeholder-gray-400 text-richblack focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
               />
-              <p class="font-bold">Elegida: {{ array.search }}</p>
             </div>
             <!--------------------------------------  Botones  ---------------------------------------------->
             <button class="bg-cyberyellow hover:bg-goldenrod text-black font-semibold py-2 px-4 border hover:border-transparent rounded content-center items-center"
@@ -123,14 +119,20 @@ export default {
     };
   },
   methods: {
-    ...mapActions("filterCard", ["filtercard"]),
-    ...mapActions("filterCard", ["stopFilter"]),
+    ...mapActions("paginationBoard", ["filter_card"]),
+    ...mapActions("paginationBoard", ["stop_filter"]),
     ...mapGetters("data", ["getOffers"]),
     ...mapGetters("data", ["getProjects"]),
     setMood(mymood) {
       this.array.mood = mymood;
-      console.log(this.array.mood);
-      this.filtercard(this.array);
+      this.filter_card(this.array);
+    },
+    stopFilter() {
+      this.array.category = "Todos";
+      this.array.duration = "Todos";
+      this.array.place = "Todos";
+      this.array.search = "";
+      this.stop_filter(this.array);
     },
   },
 

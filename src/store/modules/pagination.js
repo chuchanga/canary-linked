@@ -44,7 +44,7 @@ export default {
     },
     SET_CARD(state, card) {
       state.arrayTraining = card;
-      // State.totalPages = card.length / 3;
+      state.totalPages = Math.ceil(state.arrayTraining.length / state.cardsPerPages);
     }
   },
   actions: {

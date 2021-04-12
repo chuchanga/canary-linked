@@ -2,13 +2,13 @@ export default {
   namespaced: true,
   state: {
     offers: {
-      category: ["Educación", "Reponedor", "Vigilante", "Sociología"],
+      category: ["Sector Agrario", "Sector Digital", "Sector Comercial", "Sector Servicios"],
       duration: ["Tiempo completo", "Tiempo parcial", "Indefinido"],
       place: ["Tenerife", "Gran Canaria", "La Palma"],
     },
     projects: {
-      category: ["Arte", "Música", "Literatura", "Diseño"],
-      duration: ["Abril", "Mayo", "Junio"],
+      category: ["Arte", "Música", "Literatura", "Diseño", "Naturaleza"],
+      duration: ["Abril 2021", "Mayo 2021", "Junio 2021"],
       place: ["Tenerife", "Gran Canaria", "La Palma"],
     }
   },
