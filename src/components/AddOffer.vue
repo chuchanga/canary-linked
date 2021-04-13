@@ -15,13 +15,10 @@
               <textarea placeholder="Descripción de la Oferta" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
               <div class="grid grid-cols-2 ml-8 mt-8 md:w-4/5 sm:w-full">
                 <div>
-                  <div class="contact-mail text-left text-sm">
+                  <p class="text-richblack text-left mb-1">Información de Contacto</p>
+                  <div class="contact-mail text-left text-sm mb-2">
                     <i class="text-davysgray fas fa-envelope mr-1"></i>
                     <input placeholder="E-mail de contacto" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
-                  </div>
-                  <div class="contact-location text-left text-sm">
-                    <i class="text-davysgray fas fa-map-marker-alt mr-2"></i>
-                    <input placeholder="Localización" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.location">
                   </div>
                   <div class="contact-web text-left text-sm">
                     <i class=" text-davysgray fas fa-pager mr-1"></i>
@@ -29,6 +26,16 @@
                   </div>
                 </div>
                 <div>
+                  <div class="text-left text-sm">
+                    <i class="text-davysgray fas fa-map-marker-alt mr-4 ml-1"></i>
+                    <select id="location" v-model="offerData.location"
+                      class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal mt-1 mb-4 shadow-md">
+                      <option selected disabled class="text-gray-400">Lugar</option>
+                      <option v-for="index in getOffers().place.length" :key="index">
+                        {{ getOffers().place[index - 1] }}
+                      </option>
+                    </select>
+                  </div>
                   <div class="text-left text-sm">
                     <i class=" text-davysgray fas fa-users mr-3"></i>
                     <select id="categoria" v-model="offerData.category"
@@ -73,7 +80,7 @@ export default {
         title: "",
         description: "",
         contactEmail: "",
-        location: "",
+        location: "Lugar",
         website: "",
         category: "Categoría",
         duration: "Jornada",
