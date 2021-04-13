@@ -1,6 +1,8 @@
 <template>
-  <div class="p-12 flex flex-col lg:flex-row">
-    <div class="lg:space-x-32 flex flex-col lg:flex-row">
+  <div class="p-12 flex flex-col justify-center lg:flex-row">
+    <div
+      class="flex flex-col justify-center lg:flex-row lg:space-x-12 xl:space-x-24"
+    >
       <!--------------------------------------  Categorías  ---------------------------------------------->
       <div class="relative">
         <p class="font-bold">Categorías</p>
@@ -8,7 +10,7 @@
           <select
             id="categoria"
             v-model="array.category"
-            class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+            class="appearance-none shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
           >
             <option>Todos</option>
             <option v-for="index in getOffers().category.length" :key="index">
@@ -20,7 +22,7 @@
           <select
             id="categoria"
             v-model="array.category"
-            class="appearance-none h-full shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+            class="appearance-none shadow-2xl rounded-lg block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
           >
             <option>Todos</option>
             <option v-for="index in getProjects().category.length" :key="index">

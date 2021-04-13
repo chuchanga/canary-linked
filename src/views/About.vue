@@ -24,7 +24,7 @@
       class="bg-cyberyellow m-12 p-12 rounded-lg shadow-2xl flex flex-col justify-center break-words lg:flex-row"
     >
       <div>
-        <p class="italic font-bold text-xl lg:text-5xl">Mision</p>
+        <p class="italic font-bold text-3xl lg:text-5xl">Mision</p>
         <svg
           class="m-auto mt-24"
           width="92"
@@ -79,14 +79,14 @@
             </clipPath>
           </defs>
         </svg>
-        <p class="mt-8 m-8 text-lg lg:text-2xl">
+        <p class="mt-8 m-8 text-xl lg:text-2xl">
           Nuestra misión en CanaryLinked es la de proporcionar oportunidades y
           conocimientos para que profesionales sin experiencia encuentren
           trabajo.
         </p>
       </div>
       <div>
-        <p class="italic font-bold text-xl lg:text-5xl">Valores</p>
+        <p class="italic font-bold text-3xl lg:text-5xl">Valores</p>
         <svg
           class="m-auto mt-24"
           width="92"
@@ -125,7 +125,7 @@
             fill="#DE374B"
           />
         </svg>
-        <p class="m-8 text-lg lg:text-2xl">
+        <p class="m-8 text-xl lg:text-2xl">
           Creemos que el mayor valor se obtiene cuando trabajamos juntos.
           Creemos en el aprendizaje continuo y en el intercambio de nuestras
           percepciones e ideas.
@@ -134,37 +134,39 @@
     </div>
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
-        <p class="italic font-bold mt-24">Video</p>
+        <p class="italic font-bold mt-24 text-3xl lg:text-5xl">Video</p>
       </div>
       <div>
-        <p class="italic font-bold mt-24">Conoce a nuestro equipo</p>
+        <p class="italic font-bold mt-24 text-3xl lg:text-5xl">
+          Conoce a nuestro equipo
+        </p>
         <template>
           <div
-            class="flex justify-center bg-cyberyellow mt-12 m-12 rounded-lg shadow-2xl md:flex-col lg:flex-row"
+            class="flex flex-col justify-center bg-cyberyellow rounded-lg mt-12 m-8 shadow-2xl lg:flex-row"
           >
             <figure
               v-for="photo of About"
               :key="photo"
-              class="rounded-xl p-8 m-8"
+              class="rounded-xl p-4 m-4"
             >
-              <div class="pt-6 text-center space-y-4 mt-8">
+              <div class="text-center space-y-2">
                 <blockquote>
-                  <p class="text-base md:text-2xl xl:text-4xl -mt-20">
-                    {{ photo.name }}
+                  <p class="text-2xl md:text-3xl lg:text-4xl font-semibold">
+                    {{ photo.description }}
                   </p>
                 </blockquote>
               </div>
               <img
-                class="mx-auto rounded-lg"
+                class="mx-auto rounded-lg mt-4"
                 :src="photo.image"
                 alt=""
                 width="500"
                 height="500"
               />
-              <div class="pt-6 text-center space-y-4 mt-8">
+              <div class="text-center mt-4">
                 <blockquote>
-                  <p class="text-base md:text-3xl xl:text-4xl font-semibold">
-                    {{ photo.description }}
+                  <p class="text-2xl md:text-3xl lg:text-3xl">
+                    {{ photo.name }}
                   </p>
                 </blockquote>
               </div>
@@ -193,18 +195,18 @@ export default {
     return {
       About: [
         {
+          description: "Coaching",
           name: "Lucía Muñoz González",
-          description: "Desarrolladora Frontend",
           image: lucia,
         },
         {
+          description: "Desarrollador",
           name: "Saul Abreu",
-          description: "Periodista y Coaching",
           image: saul,
         },
         {
+          description: "Periodista",
           name: "Aythami De Armas",
-          description: "Diseñador",
           image: aythami,
         },
       ],
