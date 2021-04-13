@@ -7,7 +7,7 @@
     ></Subheader>
     <!-- component -->
 
-    <ul class="flex flex-col lg:flex-row list-none cursor-pointer">
+    <ul class="flex flex-col list-none cursor-pointer">
       <li class="flex-auto text-center">
         <a
           class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
@@ -17,7 +17,9 @@
             'text-white bg-goldenrod': openTab === 1,
           }"
         >
-          <p class="text-xl 2xl:text-4xl p-12 italic semi-bold">Ofertas</p>
+          <p class="text-xl lg:text-4xl p-12 italic semi-bold tracking-widest">
+            Ofertas
+          </p>
         </a>
       </li>
       <li class="flex-auto text-center">
@@ -29,11 +31,13 @@
             'text-white bg-goldenrod': openTab === 2,
           }"
         >
-          <p class="text-xl 2xl:text-4xl p-12 italic semi-bold">Proyectos</p>
+          <p class="text-xl lg:text-4xl p-12 italic semi-bold tracking-widest">
+            Proyectos
+          </p>
         </a>
       </li>
     </ul>
-    <div class="flex flex-col m-12">
+    <div class="flex flex-col md:flex-col m-12">
       <div class="tab-content tab-space">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="antialiased font-sans">
@@ -167,7 +171,6 @@ export default {
     ...mapState("paginationBoard", ["offers"]),
     ...mapState("paginationBoard", ["projects"]),
     ...mapState("paginationBoard", ["filtering"]),
-    ...mapState("paginationBoard", ["noresults"]),
     ...mapState("paginationBoard", ["itemsFiltered"]),
     ...mapState("paginationBoard", ["seeMoreOffersButton"]),
     ...mapState("paginationBoard", ["seeMoreProjectsButton"]),

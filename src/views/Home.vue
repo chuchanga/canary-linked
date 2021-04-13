@@ -11,11 +11,11 @@
       >
         <div class="mx-4 text-center text-white">
           <h1 class="font-bold text-6xl mb-4">Bienvenidos a Canary Linked</h1>
-          <h2 class="font-bold text-3xl mb-12">
+          <h2 class="font-bold text-3xl mb-12 mt-8">
             Encuentra tu oportunidad con nosotros
           </h2>
         </div>
-        <div class="absolute mt-48 overscroll-contain">
+        <div class="absolute mt-96 lg:mt-48 overscroll-contain">
           <div class="h-8 w-8 arrow bounce hover:text-cyberyellow">
             <a class="fa fa-arrow-down fa-2x" href="#section"></a>
           </div>
@@ -34,20 +34,22 @@
       class="bg-cyberyellow rounded-lg shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
-        class="text-2xl lg:text-5xl self-center flex flex-col w-4/5 m-12 break-words"
+        class="text-2xl lg:text-5xl self-center flex flex-col w-4/5 break-words"
       >
         Con más de 10 años de experiencia CanaryLinked es la empresa líder en
         las islas canarias que facilita la incorporación de profesionales sin
         experiencia al mundo laboral.
-        <router-link
-          to="/about"
-          class="text-2xl lg:text-4xl border-2 border-white text-richblack outline-none rounded-md px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-white mr-6 shadow-2xl mt-8"
+        <router-link to="/about">
+          <button
+            class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl mt-8 text-2xl lg:text-3xl"
+          >
+            Contáctanos
+          </button></router-link
         >
-          Conócenos
-        </router-link>
       </p>
+
       <div>
-        <img class="rounded-lg" src="../assets/photo_about.jpg" alt="" />
+        <img class="rounded-lg mt-8" src="../assets/photo_about.jpg" alt="" />
       </div>
     </div>
     <div class="bg-cyberyellow mt-12">

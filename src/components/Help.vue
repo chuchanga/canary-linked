@@ -2,7 +2,7 @@
   <div>
     <div>
       <div
-        class="bg-fixed p-8"
+        class="bg-fixed p-8 text-white"
         style="
           background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
         "
@@ -14,11 +14,12 @@
           No dudes en consultarnos tus dudas.
         </p>
         <router-link to="/contact">
-          <ButtonCard
-            text="¡Contáctanos!"
-            class="text-xl lg:text-3xl shadow-2xl"
-          ></ButtonCard
-        ></router-link>
+          <button
+            class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl text-2xl lg:text-3xl"
+          >
+            Contáctanos
+          </button></router-link
+        >
         <div
           class="w-full bg-gray-50 border-t border-b border-gray-200 px-5 mt-24 py-16 md:py-24 text-richblack font-light"
         >
@@ -76,12 +77,9 @@
   </div>
 </template>
 <script>
-import ButtonCard from "../components/ButtonCard.vue";
 export default {
   name: "Help",
-  components: {
-    ButtonCard,
-  },
+  components: {},
 };
 </script>
  <style>

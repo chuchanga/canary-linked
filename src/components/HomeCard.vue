@@ -13,11 +13,13 @@
         <p class="text-2xl lg:text-4xl mt-16">
           {{ text.description }}
         </p>
-        <div class="mt-12">
-          <router-link
-            to="/board"
-            class="border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack m-24 shadow-2xl"
-            >Leer más</router-link
+        <div class="mt-8">
+          <router-link to="/board">
+            <button
+              class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl text-2xl lg:text-3xl"
+            >
+              Contáctanos
+            </button></router-link
           >
         </div>
       </div>
@@ -33,10 +35,12 @@
           esta sección para más información
         </p>
         <div class="mt-12">
-          <router-link
-            to="/training"
-            class="border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack mr-6 shadow-2xl"
-            >Leer más</router-link
+          <router-link to="/training">
+            <button
+              class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl text-2xl lg:text-3xl"
+            >
+              Contáctanos
+            </button></router-link
           >
         </div>
       </div>
