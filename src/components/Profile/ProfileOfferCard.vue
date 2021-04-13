@@ -14,7 +14,7 @@
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
         </div>
-        <edit-offer :currentOfferDescription="description" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
+        <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
           </edit-offer>
     </div>
   </div>
@@ -33,7 +33,8 @@ export default {
     description: String,
     location: String,
     contactEmail: String,
-    website: String
+    website: String,
+    timeId: Object
   },
   data() {
     return {
@@ -44,7 +45,7 @@ export default {
   methods: {
     deleteOffer () {
       let currentOfferId = "";
-      db.collection("offers").where("description", "==", this.description)
+      db.collection("offers").where("creationTime", "==", this.timeId)
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {

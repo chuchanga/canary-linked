@@ -74,7 +74,7 @@ import db from "./firebaseInit.js";
 import { mapGetters } from "vuex";
 export default {
   props: {
-    currentOfferDescription: String
+    currentOfferTimeId: Object
   },
   data() {
     return {
@@ -97,8 +97,7 @@ export default {
     YellowButton,
   },
   created () {
-    console.log(this.currentOfferDescription);
-    db.collection("offers").where("description", "==", this.currentOfferDescription)
+    db.collection("offers").where("creationTime", "==", this.currentOfferTimeId)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -118,7 +117,7 @@ export default {
     ...mapGetters("data", ["getOffers"]),
     saveChanges() {
       let currentOfferId = "";
-      db.collection("offers").where("description", "==", this.currentOfferDescription)
+      db.collection("offers").where("creationTime", "==", this.currentOfferTimeId)
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {

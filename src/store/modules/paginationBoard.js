@@ -22,7 +22,7 @@ export default {
     },
 
     fetchOffers(context) { // Faltar ordenar por fecha .orderBy()
-      db.collection("offers").get().then(querySnapshot => {
+      db.collection("offers").orderBy("creationTime", "desc").get().then(querySnapshot => {
         const cardOffer = [];
         querySnapshot.forEach(doc => {
           const data = {

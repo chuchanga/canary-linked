@@ -2,12 +2,13 @@
   <div class="card-display">
     <div class="own">
       <p class="text-lg font-semibold">{{display}} que has añadido</p>
-        <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.title"> <ProfileOfferCard
+        <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.creationTime.seconds"> <ProfileOfferCard
           :title="ownedOffer.title"
           :description="ownedOffer.description"
           :location="ownedOffer.location"
           :contactEmail="ownedOffer.contactEmail"
           :website="ownedOffer.website"
+          :timeId="ownedOffer.creationTime"
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>
@@ -49,13 +50,14 @@ export default {
   },
   created () {
     // Al crear el componente pide a la colección de ofertas de firestore las ofertas que el propio usuario ha añadido
-    db.collection(this.ownedCollection).where("submitterId", "==", this.currentUserId)
+    db.collection(this.ownedCollection).where("submitterId", "==", this.currentUserId).orderBy("creationTime", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           this.ownedOffers.push(doc.data());
         });
       });
+    console.log(this.ownedOffers);
     // Aquí hay que añadir que coja también las ofertas que el usuario ha guardado. Para eso hay que coger el array de ofertas guardadas del usuario y recorrerlo de forma que para cada iteración coja el id de la oferta y se lo pida a la base de datos y lo vaya guardando en el array savedOffers.
   },
 };
