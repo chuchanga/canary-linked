@@ -21,6 +21,7 @@
           :contactEmail="savedOffer.contactEmail"
           :website="savedOffer.website"
           :timeId="savedOffer.creationTime"
+          :userType="userType"
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>

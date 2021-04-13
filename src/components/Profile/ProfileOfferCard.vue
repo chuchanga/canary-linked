@@ -10,12 +10,15 @@
       <div class="website">{{website}}</div>
     </div>
     <div class="button-container flex justify-end">
-      <div class="flex flex-col">
+      <div v-if="userType!='person'" class="flex flex-col">
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
-        </div>
-        <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
-          </edit-offer>
+      </div>
+      <div v-if="userType==='person'" class="flex flex-col ">
+        <DeleteButton :onClick="removeSavedOffer" class="mb-2 mt-4" />
+      </div>
+      <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
+      </edit-offer>
     </div>
   </div>
 </template>
@@ -34,7 +37,8 @@ export default {
     location: String,
     contactEmail: String,
     website: String,
-    timeId: Object
+    timeId: Object,
+    userType: String
   },
   data() {
     return {
@@ -57,6 +61,11 @@ export default {
           this.$emit("reRenderOffers");
         });
     },
+    removeSavedOffer() { // Este método tiene que quitar la oferta indicada del array de ofertas guardadas del usuario
+    // Buscar el doc del usuario, traer su array de ofertas guardadas y eliminar del mismo la oferta en concreto, con su id
+      console.log("Eliminar oferta de la lista de ofertas del usuario");
+    },
+
     showEditWindow() {
       this.showEdit = true;
     },
