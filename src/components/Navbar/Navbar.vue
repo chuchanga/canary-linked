@@ -21,7 +21,7 @@
           </router-link>
         </div>
         <button
-          class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none z-40"
+          class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
           type="button"
           v-on:click="toggleNavbar()"
         >
@@ -62,13 +62,13 @@
             >
           </li>
         </ul>
-        <div class="container w-32">
+        <div class="container w-32 z-40 hover:text-cyberyellow">
           <div class="flex flex-col lg:text-lg">
             <button
               @click="open = !open"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
             >
-              <i class="far fa-user fa-2x rounded-full self-center z-10"></i>
+              <i class="far fa-user fa-2x rounded-full self-center"></i>
             </button>
             <span
               @click="open = !open"
