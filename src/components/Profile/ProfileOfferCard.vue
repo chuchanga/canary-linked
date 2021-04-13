@@ -51,7 +51,7 @@ export default {
             currentOfferId = doc.id;
           });
         }).then(() => {
-          db.collection("offers").doc(currentOfferId).delete();
+          db.collection("offers").doc(currentOfferId).delete(); // Quizás deberíamos añadir aquí una especie de confirmación
         }).then(() => {
           this.$emit("reRenderOffers");
         });

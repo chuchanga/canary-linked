@@ -102,6 +102,7 @@ export default {
           image: this.offerData.image
         }
       ).then(() => {
+        this.$emit("forceRender");
         this.$emit("close");
       });
     },

@@ -24,7 +24,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebaseInit.js";
 import ProfileOfferCard from "./ProfileOfferCard.vue";
-
 export default {
   name: "ProfileCardsDisplay",
   components: {
@@ -40,13 +39,13 @@ export default {
       currentUserId: firebase.auth().currentUser.uid,
       ownedOffers: [],
       savedOffers: [],
-      offerEditKey: 0
+      offerEditKey: 0,
     };
   },
   methods: {
     forceRerender() {
       this.$emit("forceRender");
-    }
+    },
   },
   created () {
     // Al crear el componente pide a la colección de ofertas de firestore las ofertas que el propio usuario ha añadido

@@ -20,7 +20,7 @@
                 </div>
                 <div v-if="userType==='entity'" class="add-offer">
                   <AddButton :onClick="showModalWindow" />
-                   <add-offer v-if="showModal" @close="showModal = false">
+                   <add-offer v-if="showModal" @close="showModal = false" @forceRender="updateDisplay()">
                    </add-offer>
                 </div>
               </div>
@@ -74,7 +74,6 @@ export default {
     const userId = firebase.auth().currentUser.uid;
     db.collection("users").doc(userId).get().then(doc => {
       this.userType = doc.data().userType;
-      console.log(this.userType);
     });
   },
 };
