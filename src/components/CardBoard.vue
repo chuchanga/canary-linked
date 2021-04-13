@@ -41,14 +41,14 @@ export default {
     };
   },
   methods: {
-    saveOffer () {
+    saveOffer () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
       let userSavedOffers;
       db.collection("users").doc(this.userId).get().then(doc => {
         userSavedOffers = doc.data().savedOffers;
         console.log(userSavedOffers);
       }).then(() => {
         if (!userSavedOffers.includes(this.offerId)) {
-          userSavedOffers.push(this.offerId);
+          userSavedOffers.unshift(this.offerId); // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedOffers: userSavedOffers

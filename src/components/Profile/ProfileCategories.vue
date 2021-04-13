@@ -16,7 +16,7 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCardsDisplay :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'ownedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
+              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'offers'" :key="renderKey" @forceRender="updateDisplay()" />
                 </div>
                 <div v-if="userType==='entity'" class="add-offer">
                   <AddButton :onClick="showModalWindow" />
