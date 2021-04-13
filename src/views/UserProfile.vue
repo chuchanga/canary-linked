@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container m-4 flex flex-col lg:flex-row px-36">
-      <div class="description-container md:self-center">
+      <div class="description-container">
         <div v-if="!editing">
           <UserDescription />
         </div>

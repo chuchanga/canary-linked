@@ -8,9 +8,15 @@
       <div class="contact-mail h-1/6 text-left text-sm">
         <i class="text-davysgray fas fa-envelope mr-2"></i> {{loggedUserData.email}}
       </div>
-      <div class="contact-location h-1/6 text-left text-sm">
-        <i class="text-davysgray fas fa-map-marker-alt mr-2"></i>
-        <input placeholder="Localización" class="user-location mt-1 ml-2 h-1/6 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="loggedUserData.location">
+      <div class="text-left text-sm">
+        <i class="text-davysgray fas fa-map-marker-alt mr-4 ml-1"></i>
+        <select id="location" v-model="loggedUserData.location"
+          class="rounded-xl w-3/4 bg-white border-gray-400 text-gray-700 leading-normal mt-1 mb-4 shadow-md">
+          <option selected disabled class="text-gray-400">Lugar</option>
+          <option v-for="index in getOffers().place.length" :key="index">
+            {{ getOffers().place[index - 1] }}
+          </option>
+        </select>
       </div>
       <div class="contact-web h-1/6 text-left text-sm">
         <i class=" text-davysgray fas fa-pager mr-1"></i>
@@ -25,6 +31,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebaseInit.js";
+import { mapGetters } from "vuex";
 import EditProfileImage from "./EditProfileImage.vue";
 import YellowButton from "../Button/YellowButton.vue";
 export default {
@@ -54,6 +61,7 @@ export default {
     });
   },
   methods: {
+    ...mapGetters("data", ["getOffers"]),
     saveChanges() {
       db.collection("users").doc(this.loggedUserId).update(
         {
