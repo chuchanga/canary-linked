@@ -85,7 +85,8 @@ export default {
         category: "Categoría",
         duration: "Jornada",
         show: false,
-        image: ""
+        image: "",
+        creationTime: ""
       }
     };
   },
@@ -106,7 +107,8 @@ export default {
           category: this.offerData.category,
           duration: this.offerData.duration,
           show: this.offerData.show,
-          image: this.offerData.image
+          image: this.offerData.image,
+          creationTime: firebase.firestore.Timestamp.now()
         }
       ).then(() => {
         this.$emit("forceRender");
