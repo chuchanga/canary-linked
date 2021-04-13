@@ -20,18 +20,47 @@
             {{ description }}
           </p>
         </div>
-        <ButtonCard text="Guardar proyecto"></ButtonCard>
+        <YellowButton :onClick="saveOffer"> Guardar </YellowButton>
       </div>
     </section>
   </div>
 </template>
 <script>
-import ButtonCard from "../components/ButtonCard.vue";
-
+import YellowButton from "../components/Button/YellowButton";
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "./firebaseInit.js";
 export default {
-  props: ["title", "description", "place", "image", "duration"],
+  props: ["offerId", "title", "description", "place", "image", "duration"], // Tendría que pasar todas las props en verdad
   components: {
-    ButtonCard,
+    YellowButton,
+  },
+  data() {
+    return {
+      userId: firebase.auth().currentUser.uid
+    };
+  },
+  methods: {
+    saveOffer () {
+      let userSavedOffers;
+      db.collection("users").doc(this.userId).get().then(doc => {
+        userSavedOffers = doc.data().savedOffers;
+        console.log(userSavedOffers);
+      }).then(() => {
+        if (!userSavedOffers.includes(this.offerId)) {
+          userSavedOffers.push(this.offerId);
+          db.collection("users").doc(this.userId).update(
+            {
+              savedOffers: userSavedOffers
+            }
+          ).then(() => {
+            alert("Oferta Guardada, puedes verla en tu perfil");
+          });
+        } else {
+          alert("Ya habías guardado esta oferta");
+        }
+      });
+    },
   },
 };
 </script>

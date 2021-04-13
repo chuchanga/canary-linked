@@ -113,7 +113,6 @@ export default {
       email: "",
       password: "",
       name: "",
-      surname: "",
       userType: "",
     };
   },
@@ -133,12 +132,14 @@ export default {
             db.collection("users")
               .doc(userData.user.uid)
               .set({
-                name: this.name + " " + this.surname,
+                name: this.name,
                 description: "",
                 location: "",
                 displayName: "",
                 userType: this.userType,
                 website: "",
+                savedOffers: [],
+                savedProjects: []
               })
               .then(() => {
                 this.$router.go({ path: "/profile" });

@@ -26,13 +26,18 @@ export default {
         const cardOffer = [];
         querySnapshot.forEach(doc => {
           const data = {
+            offerId: doc.id,
+            submitterId: doc.data().submitterId,
             title: doc.data().title,
             description: doc.data().description,
+            contactEmail: doc.data().contactEmail,
             category: doc.data().category,
             duration: doc.data().duration,
             place: doc.data().location,
+            website: doc.data().website,
+            creationTime: doc.data().creationTime,
             show: doc.data().show,
-            image: doc.data().image,
+            image: doc.data().image
           };
           cardOffer.push(data);
         });
