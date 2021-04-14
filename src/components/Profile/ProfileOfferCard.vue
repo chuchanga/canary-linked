@@ -14,7 +14,7 @@
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
       </div>
-      <div v-if="userType==='person'" class="flex flex-col ">
+      <div v-if="userType=='person'" class="flex flex-col ">
         <DeleteButton :onClick="removeSavedOffer" class="mb-2 mt-4" />
       </div>
       <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
@@ -43,27 +43,44 @@ export default {
   data() {
     return {
       currentUserId: firebase.auth().currentUser.uid,
+      currentOfferId: "",
       showEdit: false
     };
   },
   methods: {
     deleteOffer () {
-      let currentOfferId = "";
       db.collection("offers").where("creationTime", "==", this.timeId)
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            currentOfferId = doc.id;
+            this.currentOfferId = doc.id;
           });
         }).then(() => {
-          db.collection("offers").doc(currentOfferId).delete(); // Quizás deberíamos añadir aquí una especie de confirmación
+          db.collection("offers").doc(this.currentOfferId).delete(); // Quizás deberíamos añadir aquí una especie de confirmación
         }).then(() => {
           this.$emit("reRenderOffers");
         });
     },
     removeSavedOffer() { // Este método tiene que quitar la oferta indicada del array de ofertas guardadas del usuario
     // Buscar el doc del usuario, traer su array de ofertas guardadas y eliminar del mismo la oferta en concreto, con su id
-      console.log("Eliminar oferta de la lista de ofertas del usuario");
+      let userSavedOffers;
+      db.collection("users").doc(this.currentUserId).get().then(doc => {
+        userSavedOffers = doc.data().savedOffers;
+        console.log(userSavedOffers);
+      }).then(() => {
+        const indexOfOffer = userSavedOffers.indexOf(this.currentOfferId);
+        console.log(this.currentOfferId);
+        console.log(indexOfOffer);
+        userSavedOffers.splice(indexOfOffer, 1); // Elimina del array de ofertas guardadas del usuario la oferta actual
+        db.collection("users").doc(this.currentUserId).update(
+          {
+            savedOffers: userSavedOffers
+          }
+        ).then(() => {
+          this.$emit("reRenderOffers");
+          alert("Ha eliminado la oferta de sus ofertas guardadas");
+        });
+      });
     },
 
     showEditWindow() {
@@ -72,6 +89,9 @@ export default {
     onEditSave () {
       this.$emit("reRenderOffers");
     }
+  },
+  created () {
+
   },
   components: {
     EditButton,

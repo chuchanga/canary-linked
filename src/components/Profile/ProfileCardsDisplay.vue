@@ -25,11 +25,6 @@
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>
-    <!--<div class="saved mt-4">
-      <p class="text-lg font-semibold">{{display}} que has guardado</p>
-      <div>
-      </div>
-    </div>-->
   </div>
 </template>
 
