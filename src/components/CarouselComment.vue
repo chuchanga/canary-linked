@@ -2,7 +2,9 @@
 <template>
   <carousel
     :perPage="1"
-    class="bg-minionyellow m-12 rounded-lg shadow-2xl mt-8 text-xl lg:text-3xl"
+    :autoplay="true"
+    :autoplayTimeout="2000"
+    class="bg-cyberyellow m-12 rounded-lg shadow-2xl mt-8 text-xl lg:text-3xl p-8"
   >
     <slide v-for="(testimonial, index) of Testimonials" :key="index">
       <img

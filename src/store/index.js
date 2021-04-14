@@ -1,22 +1,26 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import pagination from "./modules/pagination.js";
+
 import animation from "./modules/animation.js";
+import data from "./modules/data.js";
+import filterCard from "./modules/filterCard";
+import pagination from "./modules/pagination.js";
 import paginationBoard from "./modules/paginationBoard.js";
-import paginationproyect from "./modules/paginationproyect.js";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    pagination,
     animation,
+    data,
+    filterCard,
+    pagination,
     paginationBoard,
-    paginationproyect,
   }
 });
 
 store.dispatch("pagination/fetchCards");
-store.dispatch("paginationBoard/fetchCards");
-store.dispatch("paginationproyect/fetchCards");
+store.dispatch("paginationBoard/fetchOffers");
+store.dispatch("paginationBoard/fetchProjects");
 
 export default store;

@@ -5,10 +5,17 @@
       description="Resuelve tus dudas con estos consejos"
       text="Contáctanos"
     ></Subheader>
-    <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24">
+    <div
+      class="italic font-bold text-xl lg:text-4xl p-12 tracking-widest bg-cyberyellow"
+    >
+      CONSEJOS ORIENTATIVOS
+    </div>
+    <div
+      class="flex px-16 justify-center flex-col lg:grid grid-cols-3 gap-4 mt-24"
+    >
       <div v-for="card in arrayTraining" :key="card.id">
         <div :id="card.id" v-if="card.show" class="flip-vertical-right">
-          <br>
+          <br />
           <div v-if="card.id == getChoice">
             <div v-if="arrayTraining[getChoice].pos == true">
               {{ animate() }}

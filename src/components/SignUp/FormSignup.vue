@@ -1,49 +1,93 @@
 <template>
   <form class="mt-2 flex flex-col lg:w-1/2 w-8/12 p-8">
-    <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8">
+    <div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8"
+    >
       <div class="flex -mr-px justify-center w-15 p-4">
-        <span class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+        <span
+          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+        >
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" id="name" placeholder="Nombre" v-model="name" />
+      <Input type="text" id="name" placeholder="Nombre y Apellidos o Empresa" v-model="name" />
     </div>
-    <div class="flex flex-wrap  w-full relative h-15 bg-white items-center rounded mb-6">
+    <!--<div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
+    >
       <div class="flex -mr-px justify-center w-15 p-4">
-        <span class="flex items-center leading-normal bg-white rounded rounded-r-none text-2xl px-3 whitespace-no-wrap text-gray-600">
+        <span
+          class="flex items-center leading-normal bg-white rounded rounded-r-none text-2xl px-3 whitespace-no-wrap text-gray-600"
+        >
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" id="surname" placeholder="Apellidos" v-model="surname" />
-    </div>
-    <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6">
+      <Input
+        type="text"
+        id="surname"
+        placeholder="Apellidos"
+        v-model="surname"
+      />
+    </div>-->
+    <div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
+    >
       <div class="flex -mr-px justify-center w-15 p-4">
-        <span class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+        <span
+          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+        >
           <i class="fas fa-at"></i>
         </span>
       </div>
-      <Input type="email" id="email" placeholder="Correo Electrónico" v-model="email" />
+      <Input
+        type="email"
+        id="email"
+        placeholder="Correo Electrónico"
+        v-model="email"
+      />
     </div>
-    <div class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10">
+    <div
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10"
+    >
       <div class="flex -mr-px justify-center w-15 p-4">
-        <span class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+        <span
+          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+        >
           <i class="fas fa-lock"></i>
         </span>
       </div>
-        <Input type="password" id="password" placeholder="Contraseña" v-model="password" />
+      <Input
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        v-model="password"
+      />
     </div>
     <div>
-      <input type="radio" id="person" value="person" v-model="userType" class="mx-2 text-bluejeans">
-      <label class="text-richblack font-semibold mr-2" for="person">Persona</label>
-      <input type="radio" id="entity" value="entity" v-model="userType" class="mx-2 text-bluejeans">
+      <input
+        type="radio"
+        id="person"
+        value="person"
+        v-model="userType"
+        class="mx-2 text-bluejeans"
+      />
+      <label class="text-richblack font-semibold mr-2" for="person"
+        >Persona</label
+      >
+      <input
+        type="radio"
+        id="entity"
+        value="entity"
+        v-model="userType"
+        class="mx-2 text-bluejeans"
+      />
       <label class="text-richblack font-semibold" for="entity">Empresa</label>
     </div>
     <BlueButton :onClick="register"> REGISTRAR CUENTA </BlueButton>
     <div class="m-auto -mt-4">
       <router-link
         to="/login"
-        class="m-auto text-base text-black text-right leading-normal
-        hover:underline mb-2 -mt-8"
+        class="m-auto text-base text-black text-right leading-normal hover:underline mb-2 -mt-8"
         >Ya estoy registrado, quiero iniciar sesión
       </router-link>
     </div>
@@ -69,8 +113,7 @@ export default {
       email: "",
       password: "",
       name: "",
-      surname: "",
-      userType: ""
+      userType: "",
     };
   },
   methods: {
@@ -79,38 +122,40 @@ export default {
       console.log(this.email);
       console.log(this.password);
       console.log(firebase);
-      // Para probar aquí iba console.log("register");
+
       e.preventDefault();
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          userData => {
-            db.collection("users").doc(userData.user.uid).set(
-              {
-                name: this.name + " " + this.surname,
+          (userData) => {
+            db.collection("users")
+              .doc(userData.user.uid)
+              .set({
+                name: this.name,
                 description: "",
                 location: "",
                 displayName: "",
                 userType: this.userType,
                 website: "",
-              }
-            ).then(() => {
-              this.$router.go({ path: "/profile" });
-            });
-            //  Alert(`Se creó una cuenta para el correo ${this.email}`);
+                savedOffers: [],
+                savedProjects: []
+              })
+              .then(() => {
+                this.$router.go({ path: "/profile" });
+              });
           },
-          err => {
+          (err) => {
             alert(err.message);
           }
         );
-    }
+    },
   },
   components: {
     // Button,
     Input,
-    BlueButton
-  }
+    BlueButton,
+  },
 };
 </script>
 <style scoped></style>

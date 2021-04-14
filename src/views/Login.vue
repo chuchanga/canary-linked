@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col jutify-center lg:flex-row bg-cover"
+    class="flex flex-col jutify-center lg:flex-row bg-cover py-16"
     style="
       background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
     "
@@ -40,7 +40,7 @@
         </svg>
 
         <div
-          class="bg-minionyellow rounded-lg shadow-2xl flex-col flex ml-auto mr-auto items-center w-full md:w-3/5 mt-4"
+          class="bg-minionyellow rounded-lg shadow-2xl flex-col flex ml-auto mr-auto items-center w-full h-auto md:w-3/5 mt-4"
         >
           <h1 class="font-bold text-2xl my-10 text-richblack">
             Acceso para usuarios registrados

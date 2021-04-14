@@ -6,8 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "sitemap": "vue-cli-service sitemap",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@ocrv/vue-tailwind-pagination": "^0.0.4",
@@ -17,12 +18,13 @@
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
-    "dns": "^0.2.2",
+    "dns": "^0.1.2",
     "firebase": "^8.3.1",
     "firebase-functions": "^3.13.2",
     "google-maps-api-loader": "^1.1.1",
     "nodemailer": "^6.5.0",
     "vue": "^2.6.11",
+    "vue-analytics": "^5.22.1",
     "vue-carousel": "^0.18.0",
     "vue-carousel-3d": "^1.0.1",
     "vue-googlemaps": "^0.1.2",
@@ -57,7 +59,9 @@
     "jest": "^26.6.3",
     "lodash": "^4.17.21",
     "postcss": "^7.0.35",
+    "sitemap-webpack-plugin": "^1.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
+    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.11"
   }

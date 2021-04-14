@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer bg-black relative pt-1 border-b-2 border-yellow-500">
+  <footer class="footer relative pt-1 border-b-2 border-yellow-500">
     <div class="container mx-auto px-6">
       <div class="sm:flex sm:mt-8">
         <div
@@ -12,14 +12,14 @@
             <span class="my-2"
               ><router-link
                 to="/board"
-                class="text-culturedwhite text-md hover:text-minionyellow"
+                class="text-culturedwhite text-md hover:text-cyberyellow"
                 >Ofertas</router-link
               ></span
             >
             <span class="my-2"
               ><router-link
                 to="/board"
-                class="text-culturedwhite text-md hover:text-minionyellow"
+                class="text-culturedwhite text-md hover:text-cyberyellow"
                 >Proyectos</router-link
               ></span
             >
@@ -31,16 +31,16 @@
             <span class="my-2"
               ><router-link
                 to="/training"
-                class="text-culturedwhite text-md hover:text-minionyellow"
-                >Pautas orientativas</router-link
+                class="text-culturedwhite text-md hover:text-cyberyellow"
+                >Orientación</router-link
               ></span
             >
             <span class="my-2"
               ><router-link
                 to="/contact"
-                class="text-culturedwhite text-md hover:text-minionyellow"
-                >Ayuda orientativa</router-link
-              ></span
+                class="text-culturedwhite text-md hover:text-cyberyellow"
+                >Ayuda
+              </router-link></span
             >
           </div>
           <div class="flex flex-col">
@@ -50,21 +50,14 @@
             <span class="my-2"
               ><router-link
                 to="/contact"
-                class="text-culturedwhite text-md hover:text-minionyellow"
-                >Ubicación</router-link
-              ></span
-            >
-            <span class="my-2"
-              ><router-link
-                to="/contact"
-                class="text-culturedwhite text-md hover:text-minionyellow"
+                class="text-culturedwhite text-md hover:text-cyberyellow"
                 >Contacto</router-link
               ></span
             >
             <span class="my-2"
               ><router-link
                 to="/about"
-                class="text-culturedwhite text-md hover:text-minionyellow"
+                class="text-culturedwhite text-md hover:text-cyberyellow"
                 >Sobre Nosotros</router-link
               ></span
             >
@@ -116,3 +109,8 @@ export default {
   components: {},
 };
 </script>
+<style>
+.footer {
+  background: rgba(8, 8, 8, 0.938);
+}
+</style>

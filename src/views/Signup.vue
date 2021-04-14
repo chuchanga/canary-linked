@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col jutify-center lg:flex-row bg-cover"
+    class="flex flex-col jutify-center lg:flex-row bg-cover py-16"
     style="
       background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
     "

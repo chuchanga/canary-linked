@@ -6,11 +6,10 @@ export default {
     totalPages: 3,
     cardsPerPages: 6,
     paginationAnchorTexts: { first: "<<", prev: "<", next: ">", last: ">>" },
-    show: true,
     arrayTraining: [],
     /*
-    ArrayTraining2: [
-      { title: "1", description: "a", text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", id: "1", show: true },
+    ArrayTraining: [
+      { title: "1", description: "a", text: "1", id: "2", show: true},
       { title: "2", description: "b", text: "1", id: "2", show: true },
       { title: "3", description: "c", text: "1", id: "3", show: true },
       { title: "4", description: "d", text: "1", id: "4", show: false },
@@ -44,7 +43,7 @@ export default {
     },
     SET_CARD(state, card) {
       state.arrayTraining = card;
-      // State.totalPages = card.length / 3;
+      state.totalPages = Math.ceil(state.arrayTraining.length / state.cardsPerPages);
     }
   },
   actions: {

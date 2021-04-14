@@ -36,7 +36,8 @@ module.exports = {
     }
   }, /* De esta forma puedes coger los colores para todo */
   variants: {
-    extend: {}
+    extend: {
+    }
   },
   plugins: [require("@tailwindcss/forms")]
 };

@@ -6,7 +6,7 @@
             Mis Ofertas de Trabajo
           </a>
         </li>
-        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <li v-if="userType==='person'" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
           <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 2, 'text-white bg-goldenrod': openTab === 2}">
            Mis proyectos Colaborativos
           </a>
@@ -16,66 +16,66 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <div class="own-offers">
-                <p class="text-lg font-semibold">Ofertas que has añadido</p>
-                <div v-for="ownOffer in ownOffers" :key="ownOffer.title"> <ProfileOfferCard
-                      :title="ownOffer.title"
-                      :description="ownOffer.description"
-                      :location="ownOffer.location"
-                      :contactEmail="ownOffer.contactEmail"
-                      :website="ownOffer.website" />
+              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'offers'" :key="renderKey" @forceRender="updateDisplay()" />
+                </div>
+                <div v-if="userType==='entity'" class="add-offer">
+                  <AddButton :onClick="showModalWindow" />
+                   <add-offer v-if="showModal" @close="showModal = false" @forceRender="updateDisplay()">
+                   </add-offer>
                 </div>
               </div>
-              <div class="saved-offers mt-4">
-                <p class="text-lg font-semibold">Ofertas que has guardado</p>
-                <div>
-                </div>
-              </div>
-            </div>
             <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
               <p>
                Aquí iría la vista de los proyectos colaborativos
               </p>
+              <!-- Descomentar cuando se haya añadido la funcionalidad de los proyectos /> -->
+             <!-- <ProfileCardsDisplay :display="'Proyectos'" :ownCollection="'projects'" :savedCollection="'ownedProjects'" /> -->
+            </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 </template>
 
 <script>
-import ProfileOfferCard from "../components/ProfileOfferCard.vue";
+import ProfileCardsDisplay from "./ProfileCardsDisplay.vue";
+import AddButton from "../Button/AddButton.vue";
+import AddOffer from "../AddOffer.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "./firebaseInit.js";
-
+import db from "../firebaseInit.js";
 export default {
   name: "ProfileCategories",
   components: {
-    ProfileOfferCard,
+    ProfileCardsDisplay,
+    AddButton,
+    AddOffer
   },
   data() {
     return {
-      currentUserId: firebase.auth().currentUser.uid,
       openTab: 1,
-      ownOffers: []
+      renderKey: 0,
+      userType: "",
+      showModal: false
+
     };
   },
   methods: {
     toggleTabs: function(tabNumber) {
       this.openTab = tabNumber;
+    },
+    updateDisplay () {
+      this.renderKey += 1;
+    },
+    showModalWindow() {
+      this.showModal = true;
     }
   },
   created () {
-    db.collection("offers").where("submitterId", "==", this.currentUserId)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.ownOffers.push(doc.data());
-        });
-        console.log(this.ownOffers);
-      });
-  }
+    const userId = firebase.auth().currentUser.uid;
+    db.collection("users").doc(userId).get().then(doc => {
+      this.userType = doc.data().userType;
+    });
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="mt-2 flex flex-col lg:w-1/2 w-8/12 p-8">
+  <form class="flex flex-col lg:w-1/2 w-8/12 p-8">
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8"
     >

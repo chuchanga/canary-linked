@@ -1,8 +1,29 @@
 <template>
-  <div class="Subheader bg-cover">
-    <Carousel></Carousel>
+  <div class="bg-cover mt-12">
+    <div
+      class="w-full h-screen bg-no-repeat bg-cover -mt-12"
+      style="
+        background-image: url('https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg');
+      "
+    >
+      <div
+        class="w-full h-screen bg-opacity-10 bg-richblack flex justify-center items-center relative"
+      >
+        <div class="mx-4 text-center text-white">
+          <h1 class="font-bold text-6xl mb-4">Bienvenidos a Canary Linked</h1>
+          <h2 class="font-bold text-3xl mb-12 mt-8">
+            Encuentra tu oportunidad con nosotros
+          </h2>
+        </div>
+        <div class="absolute mt-96 lg:mt-48 overscroll-contain">
+          <div class="h-8 w-8 arrow bounce hover:text-cyberyellow">
+            <a class="fa fa-arrow-down fa-2x" href="#section"></a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div>
-      <ContentHome></ContentHome>
+      <HomeCard></HomeCard>
     </div>
     <p class="text-4xl lg:text-5xl mt-12 italic font-bold">
       Lo que dicen nuestros usuarios
@@ -10,21 +31,25 @@
     <CarouselComment></CarouselComment>
     <p class="text-4xl lg:text-5xl mt-12 italic font-bold">Sobre Nosotros</p>
     <div
-      class="bg-minionyellow rounded-lg shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
+      class="bg-cyberyellow rounded-lg shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
-        class="text-2xl md:text-5xl lg:text-5xl self-center italic font-bold flex flex-col w-4/5 m-12 break-words"
+        class="text-2xl lg:text-5xl self-center flex flex-col w-4/5 break-words"
       >
         Con más de 10 años de experiencia CanaryLinked es la empresa líder en
         las islas canarias que facilita la incorporación de profesionales sin
         experiencia al mundo laboral.
-        <ButtonCard
-          class="mt-12 rounded-lg m-auto text-2xl lg:text-5xl focus:outline-none p-12"
-          text="Contáctanos"
-        ></ButtonCard>
+        <router-link to="/about">
+          <button
+            class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl mt-8 text-2xl lg:text-3xl"
+          >
+            Contáctanos
+          </button></router-link
+        >
       </p>
+
       <div>
-        <img class="rounded-lg" src="../assets/photo_about.jpg" alt="" />
+        <img class="rounded-lg mt-8" src="../assets/photo_about.jpg" alt="" />
       </div>
     </div>
     <div class="bg-cyberyellow mt-12">
@@ -35,19 +60,56 @@
 
 <script>
 import CarouselComment from "../components/CarouselComment.vue";
-import ContentHome from "../components/ContentHome.vue";
+import HomeCard from "../components/HomeCard.vue";
 import Help from "../components/Help.vue";
-import Carousel from "../components/Carousel.vue";
 
 export default {
   name: "Home",
   components: {
     CarouselComment,
-    ContentHome,
+    HomeCard,
     Help,
-    Carousel,
+  },
+  methods: {
+    track() {
+      this.$ga.page("/");
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.arrow {
+  text-align: center;
+  margin: 8% 0;
+}
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-30px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+}
+</style>
