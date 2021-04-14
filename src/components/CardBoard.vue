@@ -1,38 +1,31 @@
 <template>
-  <div class="cursor-pointer">
-    <section class="flex flex-col justify-center rounded-lg">
-      <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
-        <img :src="image" />
-        <div class="grid justify-items-stretch space-y-8">
-          <p class="text-richblack font-semibold text-md text-lg lg:text-2xl">
-            {{ title }}
-          </p>
-          <p class="text-richblack justify-self-start text-lg lg:text-xl">
-            <i class="text-cyberyellow fas fa-map-marker-alt"></i>
-            {{ place }}
-          </p>
-          <p class="text-richblack justify-self-start text-lg lg:text-xl">
-            <i class="text-cyberyellow far fa-calendar-alt"></i>
-            {{ duration }}
-          </p>
-          <p class="text-richblack justify-self-start text-lg lg:text-xl">
-            <i class="text-cyberyellow fas fa-info-circle"></i>
-            {{ description }}
-          </p>
-        </div>
-        <YellowButton class="mx-2" :onClick="viewOffer"> Ver Oferta </YellowButton>
-        <YellowButton :onClick="saveOffer"> Guardar </YellowButton>
+  <div class="flex flex-col justify-center rounded-lg">
+    <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
+      <img :src="image" />
+      <div class="grid justify-items-stretch space-y-6">
+        <p class="text-richblack font-semibold text-md text-lg lg:text-2xl">
+          {{ title }}
+        </p>
+        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+          <i class="text-cyberyellow fas fa-map-marker-alt mr-2"></i>
+          {{ place }}
+        </p>
+        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+          <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
+          {{ duration }}
+        </p>
+        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+          <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
+          {{ brief }}
+        </p>
       </div>
-    </section>
-    <view-offer
-      :offerId="offerId"
-      :title="title"
-      :description="description"
-      :location="place"
-      :duration="duration"
-      :image="image"
-       v-if="showEdit" @close="showEdit = false">
-      </view-offer>
+      <div>
+        <YellowButton class="mx-2" :onClick="displayModal"> Ver Oferta </YellowButton>
+        <YellowButton :onClick="saveOffer"> Guardar </YellowButton>
+        <view-offer :offerId="offerId" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
+        </view-offer>
+      </div>
+  </div>
   </div>
 </template>
 <script>
@@ -50,10 +43,15 @@ export default {
   data() {
     return {
       userId: firebase.auth().currentUser.uid,
-      showEdit: false
+      showView: false,
+      brief: this.description.substring(0, 140) + "..."
     };
   },
   methods: {
+    displayModal() {
+      this.showView = true;
+    },
+
     saveOffer () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
       let userSavedOffers;
       db.collection("users").doc(this.userId).get().then(doc => {
@@ -62,7 +60,7 @@ export default {
       }).then(() => {
         if (!userSavedOffers.includes(this.offerId)) {
           userSavedOffers.unshift(this.offerId);
-          console.log("ESTOY EN EL SAVEDOFFER" + userSavedOffers);// Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedOffers: userSavedOffers
@@ -75,11 +73,8 @@ export default {
         }
       });
     },
-    viewOffer() {
-      this.showEdit = true;
-    }
-  },
+  }
 };
 </script>
-<style>
+<style scoped>
 </style>

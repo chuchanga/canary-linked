@@ -2,10 +2,11 @@
   <div class="offer-card-container w-full h-auto max-h-48 overflow-hidden bg-culturedwhite p-5 my-3 border-2 border-davysgray grid grid-cols-3 shadow-lg">
     <div class="title-and-description-container flex flex-col">
       <div class="offer-title font-bold h-2/6 text-left">{{title}}</div>
-      <div class="offer-description border-green">{{description}}</div>
+      <div class="offer-description border-green">{{brief}}</div>
     </div>
     <div class="contactinfo-container flex-col">
       <div class="location">{{location}}</div>
+       <div class="duration">{{duration}}</div>
       <div class="contact-email">{{contactEmail}}</div>
       <div class="website">{{website}}</div>
     </div>
@@ -16,9 +17,12 @@
       </div>
       <div v-if="userType=='person'" class="flex flex-col ">
         <DeleteButton :onClick="removeSavedOffer" class="mb-2 mt-4" />
+        <YellowButton :onClick="showViewWindow" class="mb-2 mt-4"> Ver </YellowButton>
       </div>
       <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
       </edit-offer>
+      <view-offer :title="title" :description="description" :location="location" :duration="duration" v-if="showView" @close="showView = false">
+      </view-offer>
     </div>
   </div>
 </template>
@@ -30,11 +34,14 @@ import db from "../firebaseInit.js";
 import EditButton from "../Button/EditButton.vue";
 import DeleteButton from "../Button/DeleteButton.vue";
 import EditOffer from "../EditOffer.vue";
+import ViewOffer from "../ViewOffer.vue";
+import YellowButton from "../Button/YellowButton.vue";
 export default {
   props: {
     title: String,
     description: String,
     location: String,
+    duration: String,
     contactEmail: String,
     website: String,
     timeId: Object,
@@ -44,7 +51,9 @@ export default {
     return {
       currentUserId: firebase.auth().currentUser.uid,
       currentOfferId: "",
-      showEdit: false
+      showEdit: false,
+      showView: false,
+      brief: this.description.substring(0, 100) + "..."
     };
   },
   methods: {
@@ -86,6 +95,9 @@ export default {
     showEditWindow() {
       this.showEdit = true;
     },
+    showViewWindow() {
+      this.showView = true;
+    },
     onEditSave () {
       this.$emit("reRenderOffers");
     }
@@ -96,7 +108,9 @@ export default {
   components: {
     EditButton,
     DeleteButton,
-    EditOffer
+    EditOffer,
+    ViewOffer,
+    YellowButton
   },
 };
 </script>

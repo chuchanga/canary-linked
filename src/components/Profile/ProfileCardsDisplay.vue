@@ -18,6 +18,7 @@
           :title="savedOffer.title"
           :description="savedOffer.description"
           :location="savedOffer.location"
+          :duration="savedOffer.duration"
           :contactEmail="savedOffer.contactEmail"
           :website="savedOffer.website"
           :timeId="savedOffer.creationTime"

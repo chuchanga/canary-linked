@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="categories-container w-4/5">
-        <ProfileCategories />
+       <ProfileCategories />
       </div>
   </div>
 

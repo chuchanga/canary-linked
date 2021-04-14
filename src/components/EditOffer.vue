@@ -54,7 +54,6 @@
               </div>
             </div>
           </div>
-
           <div class="modal-footer mt-8">
              <YellowButton :onClick="saveChanges">Guardar Cambios</YellowButton>
           </div>
