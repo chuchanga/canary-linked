@@ -1,32 +1,29 @@
 <template>
-  <form class="flex flex-col lg:w-1/2 w-8/12 p-8">
+  <form class="flex flex-col p-4 w-4/6 md:w-4/6 lg:w-4/6">
     <div
-      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8"
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
     >
-      <div
-        class="flex flex-wrap w-full relative h-15 bg-white items-center rounded"
-      >
-        <div class="flex -mr-px justify-center w-15 p-4">
-          <span
-            class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
-          >
-            <i class="fas fa-at"></i>
-          </span>
-        </div>
-        <Input
-          type="email"
-          id="email"
-          placeholder="Correo Electrónico"
-          v-model="email"
-        />
+      <div class="flex -mr-px justify-center w-15 p-4">
+        <span
+          class="flex items-center leading-normal bg-white rounded text-2xl text-gray-900"
+        >
+          <i class="fas fa-at"></i>
+        </span>
       </div>
+      <Input
+        class="focus:outline-none"
+        type="email"
+        id="email"
+        placeholder="Correo Electrónico"
+        v-model="email"
+      />
     </div>
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10"
     >
-      <div class="flex -mr-px justify-center w-15 p-4">
+      <div class="flex justify-center w-15 p-4">
         <span
-          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+          class="flex items-center leading-normal bg-white rounded text-2xl text-gray-900"
         >
           <i class="fas fa-lock"></i>
         </span>
@@ -41,9 +38,9 @@
     <BlueButton :onClick="login"> INICIAR SESIÓN </BlueButton>
     <div class="m-auto -mt-4">
       <router-link
-        to="/login"
-        class="m-auto text-base text-black text-right leading-normal hover:underline mb-2 -mt-8"
-        >Ya estoy registrado, quiero iniciar sesión
+        to="/signup"
+        class="m-auto text-base text-black text-right leading-normal hover:underline mb-2"
+        >No estoy registrado,¡quiero registrarme!
       </router-link>
     </div>
   </form>

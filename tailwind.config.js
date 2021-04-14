@@ -37,6 +37,7 @@ module.exports = {
   }, /* De esta forma puedes coger los colores para todo */
   variants: {
     extend: {
+      translate: ["motion-safe"],
     }
   },
   plugins: [require("@tailwindcss/forms")]

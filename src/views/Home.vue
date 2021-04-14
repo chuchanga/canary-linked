@@ -41,13 +41,12 @@
         experiencia al mundo laboral.
         <router-link to="/about">
           <button
-            class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl mt-8 text-2xl lg:text-3xl"
+            class="focus:outline-none relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl mt-8 text-2xl lg:text-3xl"
           >
             Contáctanos
           </button></router-link
         >
       </p>
-
       <div>
         <img class="rounded-lg mt-8" src="../assets/photo_about.jpg" alt="" />
       </div>
