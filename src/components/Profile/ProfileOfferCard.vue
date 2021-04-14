@@ -17,7 +17,7 @@
       </div>
       <div v-if="userType=='person'" class="flex flex-col ">
         <DeleteButton :onClick="removeSavedOffer" class="mb-2 mt-4" />
-        <YellowButton :onClick="showViewWindow" class="mb-2 mt-4"> Ver </YellowButton>
+        <YellowButton :onClick="showViewWindow" class="mb-2 mt-4"> Ver Oferta </YellowButton>
       </div>
       <edit-offer :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
       </edit-offer>
