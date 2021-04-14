@@ -48,6 +48,10 @@
             </div>
           </div>
           <div v-if="filtering">
+            <div v-if="noresults">
+              No hay resultados
+            </div>
+            <div v-else>
             <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4">
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
@@ -60,6 +64,7 @@
                     :description="card.description"
                   />
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -97,6 +102,10 @@
             </div>
           </div>
           <div v-if="filtering">
+            <div v-if="noresults">
+              No hay resultados
+            </div>
+            <div v-else>
             <div class="flex flex-col justify-center lg:grid grid-cols-3 gap-4">
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
@@ -110,6 +119,7 @@
                   />
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div v-else>
@@ -174,6 +184,7 @@ export default {
     ...mapState("paginationBoard", ["offers"]),
     ...mapState("paginationBoard", ["projects"]),
     ...mapState("paginationBoard", ["filtering"]),
+    ...mapState("paginationBoard", ["noresults"]),
     ...mapState("paginationBoard", ["itemsFiltered"]),
     ...mapState("paginationBoard", ["seeMoreOffersButton"]),
     ...mapState("paginationBoard", ["seeMoreProjectsButton"]),
