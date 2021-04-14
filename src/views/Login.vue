@@ -1,15 +1,10 @@
 <template>
-  <div
-    class="flex flex-col jutify-center lg:flex-row bg-cover py-16"
-    style="
-      background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
-    "
-  >
+  <div class="flex flex-col jutify-center lg:flex-row bg-cover py-16">
     <Arrow />
-    <div class="container mx-auto font-sans">
+    <div class="container m-auto font-sans">
       <div class="logo">
         <svg
-          class="m-auto -mt-8"
+          class="m-auto -mt-16"
           width="189"
           height="171"
           viewBox="0 0 189 171"
@@ -38,9 +33,8 @@
             />
           </defs>
         </svg>
-
         <div
-          class="bg-minionyellow rounded-lg shadow-2xl flex-col flex ml-auto mr-auto items-center w-full h-auto md:w-3/5 mt-4"
+          class="bg-minionyellow -mt-4 rounded-lg shadow-2xl flex-col flex ml-auto mr-auto items-center w-full lg:w-2/5"
         >
           <h1 class="font-bold text-2xl my-10 text-richblack">
             Acceso para usuarios registrados

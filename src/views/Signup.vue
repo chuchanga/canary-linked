@@ -1,12 +1,7 @@
 <template>
-  <div
-    class="flex flex-col jutify-center lg:flex-row bg-cover py-16"
-    style="
-      background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
-    "
-  >
+  <div class="flex flex-col jutify-center w-full lg:flex-row bg-cover py-16">
     <Arrow />
-    <div class="container mx-auto font-sans">
+    <div class="container m-auto font-sans">
       <div class="logo">
         <svg
           class="m-auto -mt-8"

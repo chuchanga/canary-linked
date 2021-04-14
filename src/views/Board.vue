@@ -6,7 +6,6 @@
       text="Contáctanos"
     ></Subheader>
     <!-- component -->
-
     <ul class="flex flex-col list-none cursor-pointer">
       <li class="flex-auto text-center">
         <a
