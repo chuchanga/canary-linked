@@ -52,6 +52,7 @@
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
+                    :offerId="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"

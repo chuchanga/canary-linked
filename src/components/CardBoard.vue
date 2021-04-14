@@ -48,7 +48,8 @@ export default {
         console.log(userSavedOffers);
       }).then(() => {
         if (!userSavedOffers.includes(this.offerId)) {
-          userSavedOffers.unshift(this.offerId); // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          userSavedOffers.unshift(this.offerId);
+          console.log("ESTOY EN EL SAVEDOFFER" + userSavedOffers);// Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedOffers: userSavedOffers
