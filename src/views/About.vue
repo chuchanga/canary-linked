@@ -24,7 +24,7 @@
       class="bg-cyberyellow m-12 p-12 rounded-lg shadow-2xl flex flex-col justify-center break-words lg:flex-row"
     >
       <div>
-        <p class="italic font-bold text-3xl lg:text-5xl">Mision</p>
+        <p class="italic font-bold text-3xl lg:text-5xl">Misión</p>
         <svg
           class="m-auto mt-24"
           width="92"

@@ -3,7 +3,7 @@
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
       <img :src="image" />
       <div class="grid justify-items-stretch space-y-6">
-        <p class="text-richblack font-semibold text-md text-lg lg:text-2xl">
+        <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
           {{ title }}
         </p>
         <p class="text-richblack justify-self-start text-lg lg:text-xl">
@@ -14,7 +14,7 @@
           <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
           {{ duration }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+        <p class="text-richblack justify-self-start text-lg lg:text-xl text-justify">
           <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
           {{ brief }}
         </p>
