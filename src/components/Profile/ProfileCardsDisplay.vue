@@ -1,7 +1,7 @@
 <template>
-  <div class="card-display">
-    <div v-if="userType=='entity'" class="own">
-      <p class="text-lg font-semibold">{{display}} que has añadido</p>
+  <div class="card-display pb-8">
+    <div class="own">
+      <p class="text-lg font-semibold" v-if="ownedCollection=='projects'">{{display}} que has creado</p>
         <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.creationTime.seconds"> <ProfileOfferCard
           :title="ownedOffer.title"
           :description="ownedOffer.description"
@@ -12,8 +12,8 @@
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>
-    <div v-if="userType=='person'" class="saved">
-      <p class="text-lg font-semibold">{{display}} que has guardado</p>
+    <div v-if="userType=='person'" class="saved mt-2">
+      <p class="text-lg font-semibold" v-if="savedLength != undefined">{{display}} que has guardado</p>
         <div v-for="savedOffer in savedOffers" :key="savedOffer.creationTime.seconds"> <ProfileOfferCard
           :title="savedOffer.title"
           :description="savedOffer.description"
@@ -50,7 +50,9 @@ export default {
       currentUserId: firebase.auth().currentUser.uid,
       ownedOffers: [],
       savedOffersIds: [],
+      savedProjectsIds: [],
       savedOffers: [],
+      savedLength: Number,
       offerEditKey: 0,
     };
   },
@@ -60,19 +62,39 @@ export default {
     },
 
     loadSavedOffers() {
-      db.collection("users").doc(this.currentUserId)
-        .get()
-        .then(doc => {
-          this.savedOffersIds = doc.data().savedOffers;
-          this.savedOffersIds.forEach(element => {
-            db.collection(this.savedCollection)
-              .doc(element)
-              .get()
-              .then((doc2) => {
-                this.savedOffers.push(doc2.data());
-              });
+      if (this.savedCollection === "savedOffers") {
+        db.collection("users").doc(this.currentUserId)
+          .get()
+          .then(doc => {
+            this.savedOffersIds = doc.data().savedOffers;
+            this.savedOffersIds.forEach(element => {
+              db.collection(this.ownedCollection)
+                .doc(element)
+                .get()
+                .then((doc2) => {
+                  this.savedOffers.push(doc2.data());
+                  this.savedLength = this.savedOffers.length;
+                  console.log("Aquí va el savedLength de ofertas" + this.savedLength);
+                });
+            });
           });
-        });
+      } else if (this.savedCollection === "savedProjects") {
+        db.collection("users").doc(this.currentUserId)
+          .get()
+          .then(doc => {
+            this.savedProjectsIds = doc.data().savedProjects;
+            this.savedProjectsIds.forEach(element => {
+              db.collection(this.ownedCollection)
+                .doc(element)
+                .get()
+                .then((doc2) => {
+                  this.savedOffers.push(doc2.data());
+                  this.savedLength = this.savedOffers.length;
+                  console.log("Aquí va el savedLength de proyectos " + this.savedLength);
+                });
+            });
+          });
+      }
     }
   },
   created () {

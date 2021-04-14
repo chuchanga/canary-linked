@@ -117,6 +117,7 @@
               <div v-for="card in projects" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
+                    :offerId="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"

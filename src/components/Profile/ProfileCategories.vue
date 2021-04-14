@@ -16,21 +16,24 @@
         <div class="px-4 py-5 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'offers'" :key="renderKey" @forceRender="updateDisplay()" />
-                </div>
-                <div v-if="userType==='entity'" class="add-offer">
-                  <AddButton :onClick="showModalWindow" />
-                   <add-offer v-if="showModal" @close="showModal = false" @forceRender="updateDisplay()">
-                   </add-offer>
-                </div>
+              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'savedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
+              <div v-if="userType=='entity'" class="add-offer">
+                <p class="mt-2"> Nueva Oferta </p>
+                <AddButton class="mt-2" :onClick="showModalWindowOffer" />
+                <add-offer v-if="showModalOffer" @close="showModalOffer = false" @forceRender="updateDisplay()">
+                </add-offer>
               </div>
-            <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
-              <p>
-               Aquí iría la vista de los proyectos colaborativos
-              </p>
-              <!-- Descomentar cuando se haya añadido la funcionalidad de los proyectos /> -->
-             <!-- <ProfileCardsDisplay :display="'Proyectos'" :ownCollection="'projects'" :savedCollection="'ownedProjects'" /> -->
             </div>
+          </div>
+          <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
+            <div v-if="userType=='person'" class="add-project">Crea un Nuevo Proyecto
+                <AddButton class="ml-2 mb-4" :onClick="showModalWindowProject" />
+                  <add-project v-if="showModalProject" @close="showModalProject = false" @forceRender="updateDisplay()">
+                  </add-project>
+            </div>
+            <ProfileCardsDisplay :userType="userType" :display="'Proyectos'" :ownedCollection="'projects'" :savedCollection="'savedProjects'" :key="renderKey" @forceRender="updateDisplay()" />
+          </div>
+
             </div>
           </div>
         </div>
@@ -40,6 +43,7 @@
 import ProfileCardsDisplay from "./ProfileCardsDisplay.vue";
 import AddButton from "../Button/AddButton.vue";
 import AddOffer from "../AddOffer.vue";
+import AddProject from "../AddProject.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebaseInit.js";
@@ -48,15 +52,16 @@ export default {
   components: {
     ProfileCardsDisplay,
     AddButton,
-    AddOffer
+    AddOffer,
+    AddProject
   },
   data() {
     return {
       openTab: 1,
       renderKey: 0,
       userType: "",
-      showModal: false
-
+      showModalOffer: false,
+      showModalProject: false
     };
   },
   methods: {
@@ -66,8 +71,11 @@ export default {
     updateDisplay () {
       this.renderKey += 1;
     },
-    showModalWindow() {
-      this.showModal = true;
+    showModalWindowOffer() {
+      this.showModalOffer = true;
+    },
+    showModalWindowProject() {
+      this.showModalProject = true;
     }
   },
   created () {
