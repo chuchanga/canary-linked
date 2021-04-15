@@ -55,12 +55,13 @@
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="offers"
                   />
                 </div>
               </div>
@@ -72,12 +73,13 @@
               <div v-for="card in offers" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="offers"
                   />
                 </div>
               </div>
@@ -109,12 +111,13 @@
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.projectId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="projects"
                   />
                 </div>
               </div>
@@ -126,12 +129,13 @@
               <div v-for="card in projects" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.projectId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="projects"
                   />
                 </div>
               </div>

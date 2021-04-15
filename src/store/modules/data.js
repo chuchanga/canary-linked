@@ -58,6 +58,7 @@ export default {
       category: [
         "Animador 3D",
         "Alfarería",
+        "Arte",
         "Artesanía",
         "Cantautor",
         "Cine",
@@ -78,7 +79,7 @@ export default {
         "Literatura",
         "Manualidad",
         "Marketing digital",
-        "Música instrumental",
+        "Música",
         "Narrativa",
         "Naturaleza",
         "Poesía",

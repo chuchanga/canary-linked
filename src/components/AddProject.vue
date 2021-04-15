@@ -71,7 +71,7 @@ import YellowButton from "../components/Button/YellowButton.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "./firebaseInit.js";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -85,7 +85,7 @@ export default {
         category: "Categoría",
         duration: "Mes",
         show: false,
-        image: "",
+        image: "https://firebasestorage.googleapis.com/v0/b/canarylinked.appspot.com/o/Boardphotos%2FCanary%20Linked.png?alt=media&token=7e99d61b-4421-4792-b6a9-6f1cb3cf47aa",
         creationTime: ""
       }
     };
@@ -94,7 +94,6 @@ export default {
     YellowButton,
   },
   methods: {
-    ...mapGetters("data", ["getOffers"]),
     ...mapGetters("data", ["getProjects"]),
     addProject() {
       db.collection("projects").doc().set(

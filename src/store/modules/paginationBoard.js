@@ -45,17 +45,22 @@ export default {
       });
     },
     fetchProjects(context) { // Faltar ordenar por fecha .orderBy()
-      db.collection("projects").get().then(querySnapshot => {
+      db.collection("projects").orderBy("creationTime", "asc").get().then(querySnapshot => {
         const cardProject = [];
         querySnapshot.forEach(doc => {
           const data = {
+            projectId: doc.id,
+            submitterId: doc.data().submitterId,
             title: doc.data().title,
             description: doc.data().description,
+            contactEmail: doc.data().contactEmail,
             category: doc.data().category,
             duration: doc.data().duration,
-            place: doc.data().place,
+            place: doc.data().location,
+            website: doc.data().website,
+            creationTime: doc.data().creationTime,
             show: doc.data().show,
-            image: doc.data().image,
+            image: doc.data().image
           };
           cardProject.push(data);
         });

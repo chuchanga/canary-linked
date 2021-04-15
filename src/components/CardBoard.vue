@@ -21,8 +21,13 @@
       </div>
       <div>
         <YellowButton class="mx-2" :onClick="displayModal"> Ver Oferta </YellowButton>
-        <YellowButton :onClick="saveOffer"> Guardar </YellowButton>
-        <view-offer :offerId="offerId" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
+        <div v-if="mymood === 'offers'">
+          <YellowButton :onClick="saveOffer"> Guardar oferta </YellowButton>
+        </div>
+        <div v-else-if="mymood === 'projects'">
+          <YellowButton :onClick="saveProject"> Guardar proyecto </YellowButton>
+        </div>
+        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
         </view-offer>
       </div>
   </div>
@@ -35,7 +40,7 @@ import "firebase/auth";
 import db from "./firebaseInit.js";
 import ViewOffer from "./ViewOffer.vue";
 export default {
-  props: ["offerId", "title", "description", "place", "image", "duration"], // Tendría que pasar todas las props en verdad
+  props: ["id", "title", "description", "place", "image", "duration", "mymood"], // Tendría que pasar todas las props en verdad
   components: {
     YellowButton,
     ViewOffer
@@ -58,18 +63,39 @@ export default {
         userSavedOffers = doc.data().savedOffers;
         console.log(userSavedOffers);
       }).then(() => {
-        if (!userSavedOffers.includes(this.offerId)) {
-          userSavedOffers.unshift(this.offerId);
+        if (!userSavedOffers.includes(this.id)) {
+          userSavedOffers.unshift(this.id);
           // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedOffers: userSavedOffers
             }
           ).then(() => {
-            alert("Oferta Guardada, puedes verla en tu perfil");
+            alert("Oferta guardada, puedes verla en tu perfil");
           });
         } else {
           alert("Ya habías guardado esta oferta");
+        }
+      });
+    },
+    saveProject () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
+      let userSavedProjects;
+      db.collection("users").doc(this.userId).get().then(doc => {
+        userSavedProjects = doc.data().savedOffers;
+        console.log(userSavedProjects);
+      }).then(() => {
+        if (!userSavedProjects.includes(this.id)) {
+          userSavedProjects.unshift(this.id);
+          // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          db.collection("users").doc(this.userId).update(
+            {
+              savedProjects: userSavedProjects
+            }
+          ).then(() => {
+            alert("Proyecto guardado, puedes verla en tu perfil");
+          });
+        } else {
+          alert("Ya habías guardado este proyecto");
         }
       });
     },
