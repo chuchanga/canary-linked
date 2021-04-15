@@ -149,6 +149,15 @@ export default {
 </script>
 
 <style>
+input:focus,
+input.form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 .bg-cover {
   background-size: cover;
 }
