@@ -113,6 +113,24 @@ export default {
       ).then(() => {
         this.$emit("forceRender");
         this.$emit("close");
+        this.changeVisibility();
+      });
+    },
+    changeVisibility() {
+      const listOfId = [];
+      db.collection("offers").orderBy("creationTime", "desc").get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          const data = {
+            id: doc.id,
+          };
+          listOfId.push(data);
+        });
+      }).then(() => {
+        db.collection("offers").doc(listOfId[9].id).update(
+          {
+            show: false
+          }
+        );
       });
     },
   },

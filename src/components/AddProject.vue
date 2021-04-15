@@ -84,7 +84,7 @@ export default {
         website: "",
         category: "Categoría",
         duration: "Mes",
-        show: false,
+        show: true,
         image: "https://firebasestorage.googleapis.com/v0/b/canarylinked.appspot.com/o/Boardphotos%2FCanary%20Linked.png?alt=media&token=7e99d61b-4421-4792-b6a9-6f1cb3cf47aa",
         creationTime: ""
       }
@@ -113,6 +113,24 @@ export default {
       ).then(() => {
         this.$emit("forceRender");
         this.$emit("close");
+        this.changeVisibility();
+      });
+    },
+    changeVisibility() {
+      const listOfId = [];
+      db.collection("projects").orderBy("creationTime", "desc").get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          const data = {
+            id: doc.id,
+          };
+          listOfId.push(data);
+        });
+      }).then(() => {
+        db.collection("projects").doc(listOfId[9].id).update(
+          {
+            show: false
+          }
+        );
       });
     },
   },
