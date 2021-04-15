@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav flex flex-col lg:flex-row">
+  <nav class="nav flex flex-col px-4 lg:flex-row">
     <div
       class="flex justify-between lg:block lg:justify-start lg:w-auto lg:static"
     >

@@ -20,10 +20,10 @@
                   <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
                   {{ duration }}
                 </p>
+                <YellowButton class="mt-8 w-4/5 mx-1 self-center" :onClick="saveOffer">Guardar Oferta</YellowButton>
               </div>
           </div>
         <div class="modal-footer mt-8">
-             <YellowButton :onClick="saveOffer">Guardar Oferta</YellowButton>
           </div>
       </div>
     </div>
@@ -73,6 +73,8 @@ export default {
 .modal-container {
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
+  overflow-y: auto;
+  max-height: 640px;
 }
 
 /*

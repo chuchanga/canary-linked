@@ -144,7 +144,7 @@ export default {
                 userType: this.userType,
                 website: "",
                 savedOffers: [],
-                savedProjects: []
+                savedProjects: [],
               })
               .then(() => {
                 this.$router.go({ path: "/profile" });
@@ -163,4 +163,13 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+input:focus,
+input.form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+</style>

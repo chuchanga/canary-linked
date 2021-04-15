@@ -1,8 +1,6 @@
 <template>
-  <div class="p-12 flex flex-col justify-center lg:flex-row">
-    <div
-      class="flex flex-col justify-center lg:flex-row lg:space-x-12 xl:space-x-24"
-    >
+  <div class="flex flex-col justify-center p-8">
+    <div class="flex flex-col justify-center xl:flex-row xl:space-x-8">
       <!--------------------------------------  Categorías  ---------------------------------------------->
       <div class="relative">
         <p class="font-bold">Categorías</p>
@@ -88,11 +86,11 @@
         </div>
       </div>
       <!--------------------------------------  Barra de búsqueda  ---------------------------------------------->
-      <div class="block relative mt-4">
+      <div class="block relative mt-12 xl:mt-4">
         <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
           <svg
             viewBox="0 0 24 24"
-            class="h-4 w-4 lg:-mt-16 fill-current text-gray-500"
+            class="h-4 w-4 mr-24 xl:-mt-20 2xl:-mt-14 fill-current text-gray-500"
           >
             <path
               d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
