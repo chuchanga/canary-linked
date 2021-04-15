@@ -75,10 +75,12 @@ export default {
     stop_filter(context, array) {
       context.commit("STOP_FILTER");
       if (array.mood === "projects") {
-        if (array.seeMoreOffersButton === true) context.commit("SEE_MORE_PROJECTS");
+        console.log("estado " + array.button);
+        if (array.button === false) context.commit("SEE_MORE_PROJECTS");
         else context.commit("SEE_LESS_PROJECTS");
       } else {
-        if (array.seeMoreProjectsButton === true) context.commit("SEE_MORE_OFFERS");
+        console.log("estado " + array.button);
+        if (array.button === false) context.commit("SEE_MORE_OFFERS");
         else context.commit("SEE_LESS_OFFERS");
       }
     },
@@ -100,12 +102,14 @@ export default {
       state.seeMoreOffersButton = true;
       for (let i = 0; i < state.offers.length; i++) {
         if (i < 9) state.offers[i].show = true;
+        else state.offers[i].show = false;
       }
     },
     SEE_LESS_PROJECTS(state) {
       state.seeMoreProjectsButton = true;
       for (let i = 0; i < state.projects.length; i++) {
         if (i < 9) state.projects[i].show = true;
+        else state.projects[i].show = false;
       }
     },
     SET_OFFERS(state, cardOffer) {

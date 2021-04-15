@@ -43,7 +43,7 @@
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
-              <FilterCard mymood="offers" />
+              <FilterCard mymood="offers" :mybutton="seeMoreOffersButton"/>
             </div>
           </div>
           <div v-if="filtering">
@@ -99,7 +99,7 @@
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
-              <FilterCard mymood="projects" />
+              <FilterCard mymood="projects" :button="seeMoreProjectsButton"/>
             </div>
           </div>
           <div v-if="filtering">

@@ -113,7 +113,7 @@
         </button>
         <button
           class="bg-cyberyellow hover:bg-goldenrod focus:outline-none shadow-2xl mt-4 p-2 text-black font-semibold border hover:border-transparent rounded-lg content-center items-center"
-          @click="stopFilter()"
+          @click="stopFilter(mybutton)"
         >
           Dejar de filtrar
         </button>
@@ -123,9 +123,9 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
-  props: ["mymood"],
+  props: ["mymood", "mybutton"],
   data() {
     return {
       array: {
@@ -134,8 +134,7 @@ export default {
         place: "Todos",
         search: "",
         mood: "offers",
-        seeMoreOffersButton: this.seeMoreOffersButton,
-        seeMoreProjectsButton: this.seeMoreProjectsButton,
+        button: true,
       },
     };
   },
@@ -148,17 +147,14 @@ export default {
       this.array.mood = mymood;
       this.filter_card(this.array);
     },
-    stopFilter() {
+    stopFilter(mybutton) {
       this.array.category = "Todos";
       this.array.duration = "Todos";
       this.array.place = "Todos";
       this.array.search = "";
+      this.array.button = mybutton;
       this.stop_filter(this.array);
     },
-  },
-  computed: {
-    ...mapState("paginationBoard", ["seeMoreOffersButton"]),
-    ...mapState("paginationBoard", ["seeMoreProjectsButton"]),
   },
 };
 </script>
