@@ -4,7 +4,7 @@
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
       <div class="grid justify-items-stretch space-y-6">
         <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
-          {{ title }}
+          {{ briefTitle }}
         </p>
         <p class="text-richblack justify-self-start text-lg lg:text-xl">
           <i class="text-cyberyellow fas fa-map-marker-alt mr-2"></i>
@@ -16,11 +16,11 @@
         </p>
         <p class="text-richblack justify-self-start text-lg lg:text-xl text-justify">
           <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
-          {{ brief }}
+          {{ briefDescription }}
         </p>
       </div>
       <div>
-        <YellowButton class="mx-2" :onClick="displayModal"> Ver Oferta </YellowButton>
+        <YellowButton class="my-2" :onClick="displayModal"> Ver Más </YellowButton>
         <div v-if="mymood === 'offers'">
           <YellowButton :onClick="saveOffer"> Guardar oferta </YellowButton>
         </div>
@@ -49,12 +49,25 @@ export default {
     return {
       userId: firebase.auth().currentUser.uid,
       showView: false,
-      brief: this.description.substring(0, 140) + "..."
+      briefDescription: "",
+      briefTitle: "",
     };
   },
   methods: {
     displayModal() {
       this.showView = true;
+    },
+    createBriefs() {
+      if (this.title.length > 60) {
+        this.briefTitle = this.title.substring(0, 60) + "...";
+      } else {
+        this.briefTitle = this.title;
+      }
+      if (this.description.length > 60) {
+        this.briefDescription = this.description.substring(0, 60) + "...";
+      } else {
+        this.briefDescription = this.description;
+      }
     },
 
     saveOffer () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
@@ -99,7 +112,10 @@ export default {
         }
       });
     },
-  }
+  },
+  created () {
+    this.createBriefs();
+  },
 };
 </script>
 <style scoped>
