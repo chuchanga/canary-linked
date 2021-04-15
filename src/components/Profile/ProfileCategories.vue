@@ -18,7 +18,7 @@
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
               <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'savedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
               <div v-if="userType=='entity'" class="add-offer">
-                <p class="mt-2"> Nueva Oferta </p>
+                <p class=""> Añadir Nueva Oferta </p>
                 <AddButton class="mt-2" :onClick="showModalWindowOffer" />
                 <add-offer v-if="showModalOffer" @close="showModalOffer = false" @forceRender="updateDisplay()">
                 </add-offer>
@@ -26,8 +26,11 @@
             </div>
           </div>
           <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
-            <div v-if="userType=='person'" class="add-project">Crea un Nuevo Proyecto
+            <div v-if="userType=='person'" class="add-project">
+              <div class="flex flex-col items-center justify-center">
+              <div class="mr-2 font-semibold mb-3">Crea un Nuevo Proyecto</div>
                 <AddButton class="ml-2 mb-4" :onClick="showModalWindowProject" />
+                </div>
                   <add-project v-if="showModalProject" @close="showModalProject = false" @forceRender="updateDisplay()">
                   </add-project>
             </div>

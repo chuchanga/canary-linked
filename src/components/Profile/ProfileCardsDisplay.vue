@@ -1,19 +1,26 @@
 <template>
   <div class="card-display pb-8">
     <div class="own">
-      <p class="text-lg font-semibold" v-if="ownedCollection=='projects'">{{display}} que has creado</p>
+      <p class="text-lg font-semibold" v-if="userType==='entity'">{{display}} que has creado</p>
         <div v-for="ownedOffer in ownedOffers" :key="ownedOffer.creationTime.seconds"> <ProfileOfferCard
           :title="ownedOffer.title"
           :description="ownedOffer.description"
           :location="ownedOffer.location"
+          :duration="ownedOffer.duration"
           :contactEmail="ownedOffer.contactEmail"
           :website="ownedOffer.website"
           :timeId="ownedOffer.creationTime"
+          :userType="userType"
+          :collection="ownedCollection"
+          :isOwn="true"
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>
-    <div v-if="userType=='person'" class="saved mt-2">
-      <p class="text-lg font-semibold" v-if="savedLength != undefined">{{display}} que has guardado</p>
+    <div class="saved mt-2">
+     <div v-if="userType==='person'">
+        <p class="text-lg font-semibold">{{display}} que has guardado</p>
+        <p v-if="savedLength <= 0" class=" text-md mt-2">Aún no has guardado {{display}}</p>
+     </div>
         <div v-for="savedOffer in savedOffers" :key="savedOffer.creationTime.seconds"> <ProfileOfferCard
           :title="savedOffer.title"
           :description="savedOffer.description"
@@ -23,6 +30,8 @@
           :website="savedOffer.website"
           :timeId="savedOffer.creationTime"
           :userType="userType"
+          :collection="ownedCollection"
+          :isOwn="false"
           @reRenderOffers="forceRerender()"/>
         </div>
     </div>
@@ -52,7 +61,7 @@ export default {
       savedOffersIds: [],
       savedProjectsIds: [],
       savedOffers: [],
-      savedLength: Number,
+      savedLength: 0,
       offerEditKey: 0,
     };
   },
@@ -91,6 +100,7 @@ export default {
                   this.savedOffers.push(doc2.data());
                   this.savedLength = this.savedOffers.length;
                   console.log("Aquí va el savedLength de proyectos " + this.savedLength);
+                  console.log(this.savedOffers);
                 });
             });
           });
@@ -98,15 +108,13 @@ export default {
     }
   },
   created () {
-    // Al crear el componente pide a la colección de ofertas de firestore las ofertas que el propio usuario entity ha añadido
+    // Al crear el componente pide a la colección concreta de firestore las ofertas o proyectos que el propio usuario ha añadido
     db.collection(this.ownedCollection)
       .where("submitterId", "==", this.currentUserId)
       .orderBy("creationTime", "desc")
       .get()
       .then((querySnapshot) => {
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
-          console.log(doc);
           this.ownedOffers.push(doc.data());
         });
       }).then(() => {
