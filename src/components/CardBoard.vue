@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center rounded-lg">
+  <div class="flex flex-col justify-center rounded-lg shadow-lg overflow-hidden">
+    <img :src="image" />
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
-      <img :src="image" />
       <div class="grid justify-items-stretch space-y-6">
         <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
           {{ title }}
