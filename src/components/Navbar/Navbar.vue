@@ -1,67 +1,63 @@
 <template>
-  <nav class="nav relative flex flex-wrap items-center">
+  <nav class="nav flex flex-col lg:flex-row">
     <div
-      class="flex justify-between container px-8 mx-auto flex-wrap items-center"
+      class="flex justify-between lg:block lg:justify-start lg:w-auto lg:static"
     >
-      <div
-        class="w-full flex justify-between lg:block lg:justify-startflex flex-row lg:w-auto lg:static lg:justify-center"
-      >
-        <div>
-          <router-link to="/home"
-            ><img
-              class="-mb-3 -mt-3 h-24 w-24 m-auto"
-              src="../../assets/logo.svg"
-              alt="logo"
-            />
-            <div
-              class="text-lg uppercase font-bold tracking-wide text-white hover:text-cyberyellow"
-            >
-              Canary Linked
-            </div>
-          </router-link>
-        </div>
-        <button
-          class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-          type="button"
-          v-on:click="toggleNavbar()"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
+      <div>
+        <router-link to="/home"
+          ><img
+            class="h-24 w-24 m-auto"
+            src="../../assets/logo.svg"
+            alt="logo"
+          />
+          <div
+            class="text-lg uppercase font-bold tracking-wide -mt-4 p-2 text-white hover:text-cyberyellow"
+          >
+            Canary Linked
+          </div>
+        </router-link>
       </div>
-      <div
-        v-bind:class="{ hidden: !showMenu, flex: showMenu }"
-        class="lg:flex lg:flex-grow items-center flex justify-center"
+      <button
+        class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+        type="button"
+        v-on:click="toggleNavbar()"
       >
-        <ul class="flex flex-col lg:flex-row list-none ml-auto">
-          <li class="nav-item">
-            <router-link
-              class="px-3 py-2 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
-              to="/board"
-              >Tablón Formativo</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="px-3 py-2 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
-              to="/training"
-              >Orientación Laboral</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="px-3 py-2 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
-              to="/contact"
-              >Contacto</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="px-3 py-2 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
-              to="/about"
-              >Sobre Nosotros</router-link
-            >
-          </li>
-        </ul>
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div
+      v-bind:class="{ hidden: !showMenu, flex: showMenu }"
+      class="flex lg:flex lg:flex-grow items-center"
+    >
+      <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+        <li class="nav-item">
+          <router-link
+            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            to="/board"
+            >Tablón Formativo</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            to="/training"
+            >Orientación Laboral</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            to="/contact"
+            >Contacto</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            to="/about"
+            >Sobre Nosotros</router-link
+          >
+        </li>
         <div class="container w-32 z-40 hover:text-cyberyellow">
           <div class="flex flex-col lg:text-lg">
             <button
@@ -112,7 +108,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </ul>
     </div>
   </nav>
 </template>

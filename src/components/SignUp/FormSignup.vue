@@ -1,16 +1,21 @@
 <template>
-  <form class="mt-2 flex flex-col lg:w-1/2 w-8/12 p-8">
+  <form class="flex flex-col p-8 w-4/6 md:w-4/6 lg:w-4/6">
     <div
-      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 -mt-8"
+      class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
     >
       <div class="flex -mr-px justify-center w-15 p-4">
         <span
-          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+          class="flex items-center leading-normal bg-white text-2xl text-gray-900"
         >
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <Input type="text" id="name" placeholder="Nombre y Apellidos o Empresa" v-model="name" />
+      <Input
+        type="text"
+        id="name"
+        placeholder="Nombre y Apellidos o Empresa"
+        v-model="name"
+      />
     </div>
     <!--<div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
@@ -34,7 +39,7 @@
     >
       <div class="flex -mr-px justify-center w-15 p-4">
         <span
-          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+          class="flex items-center leading-normal bg-white text-2xl text-gray-900"
         >
           <i class="fas fa-at"></i>
         </span>
@@ -51,7 +56,7 @@
     >
       <div class="flex -mr-px justify-center w-15 p-4">
         <span
-          class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600"
+          class="flex items-center leading-normal bg-white text-2xl text-gray-900"
         >
           <i class="fas fa-lock"></i>
         </span>

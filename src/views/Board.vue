@@ -6,7 +6,6 @@
       text="Contáctanos"
     ></Subheader>
     <!-- component -->
-
     <ul class="flex flex-col list-none cursor-pointer">
       <li class="flex-auto text-center">
         <a
@@ -48,18 +47,24 @@
             </div>
           </div>
           <div v-if="filtering">
+            <div v-if="noresults">
+              No hay resultados
+            </div>
+            <div v-else>
             <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4">
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="offers"
                   />
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -68,12 +73,13 @@
               <div v-for="card in offers" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.offerId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="offers"
                   />
                 </div>
               </div>
@@ -97,19 +103,25 @@
             </div>
           </div>
           <div v-if="filtering">
+            <div v-if="noresults">
+              No hay resultados
+            </div>
+            <div v-else>
             <div class="flex flex-col justify-center lg:grid grid-cols-3 gap-4">
               <div v-for="card in itemsFiltered" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
-                    :offerId="card.offerId"
+                    :id="card.projectId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="projects"
                   />
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div v-else>
@@ -117,11 +129,13 @@
               <div v-for="card in projects" :key="card.title">
                 <div v-if="card.show">
                   <CardBoard
+                    :id="card.projectId"
                     :title="card.title"
                     :image="card.image"
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    mymood="projects"
                   />
                 </div>
               </div>
@@ -174,6 +188,7 @@ export default {
     ...mapState("paginationBoard", ["offers"]),
     ...mapState("paginationBoard", ["projects"]),
     ...mapState("paginationBoard", ["filtering"]),
+    ...mapState("paginationBoard", ["noresults"]),
     ...mapState("paginationBoard", ["itemsFiltered"]),
     ...mapState("paginationBoard", ["seeMoreOffersButton"]),
     ...mapState("paginationBoard", ["seeMoreProjectsButton"]),

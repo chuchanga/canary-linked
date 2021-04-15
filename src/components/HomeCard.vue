@@ -16,7 +16,7 @@
         <div class="mt-8">
           <router-link to="/board">
             <button
-              class="relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl text-2xl lg:text-3xl"
+              class="focus:outline-none relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl text-2xl lg:text-3xl"
             >
               Contáctanos
             </button></router-link

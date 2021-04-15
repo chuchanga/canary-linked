@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col justify-center rounded-lg">
+  <div class="flex flex-col justify-center rounded-lg shadow-lg overflow-hidden">
+    <img :src="image" />
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
-      <img :src="image" />
       <div class="grid justify-items-stretch space-y-6">
-        <p class="text-richblack font-semibold text-md text-lg lg:text-2xl">
-          {{ title }}
+        <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
+          {{ briefTitle }}
         </p>
         <p class="text-richblack justify-self-start text-lg lg:text-xl">
           <i class="text-cyberyellow fas fa-map-marker-alt mr-2"></i>
@@ -14,15 +14,20 @@
           <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
           {{ duration }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+        <p class="text-richblack justify-self-start text-lg lg:text-xl text-justify">
           <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
-          {{ brief }}
+          {{ briefDescription }}
         </p>
       </div>
       <div>
-        <YellowButton class="mx-2" :onClick="displayModal"> Ver Oferta </YellowButton>
-        <YellowButton :onClick="saveOffer"> Guardar </YellowButton>
-        <view-offer :offerId="offerId" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
+        <YellowButton class="my-2" :onClick="displayModal"> Ver Más </YellowButton>
+        <div v-if="mymood === 'offers'">
+          <YellowButton :onClick="saveOffer"> Guardar oferta </YellowButton>
+        </div>
+        <div v-else-if="mymood === 'projects'">
+          <YellowButton :onClick="saveProject"> Guardar proyecto </YellowButton>
+        </div>
+        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
         </view-offer>
       </div>
   </div>
@@ -35,7 +40,7 @@ import "firebase/auth";
 import db from "./firebaseInit.js";
 import ViewOffer from "./ViewOffer.vue";
 export default {
-  props: ["offerId", "title", "description", "place", "image", "duration"], // Tendría que pasar todas las props en verdad
+  props: ["id", "title", "description", "place", "image", "duration", "mymood"], // Tendría que pasar todas las props en verdad
   components: {
     YellowButton,
     ViewOffer
@@ -44,12 +49,25 @@ export default {
     return {
       userId: firebase.auth().currentUser.uid,
       showView: false,
-      brief: this.description.substring(0, 140) + "..."
+      briefDescription: "",
+      briefTitle: "",
     };
   },
   methods: {
     displayModal() {
       this.showView = true;
+    },
+    createBriefs() {
+      if (this.title.length > 60) {
+        this.briefTitle = this.title.substring(0, 60) + "...";
+      } else {
+        this.briefTitle = this.title;
+      }
+      if (this.description.length > 60) {
+        this.briefDescription = this.description.substring(0, 60) + "...";
+      } else {
+        this.briefDescription = this.description;
+      }
     },
 
     saveOffer () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
@@ -58,22 +76,46 @@ export default {
         userSavedOffers = doc.data().savedOffers;
         console.log(userSavedOffers);
       }).then(() => {
-        if (!userSavedOffers.includes(this.offerId)) {
-          userSavedOffers.unshift(this.offerId);
+        if (!userSavedOffers.includes(this.id)) {
+          userSavedOffers.unshift(this.id);
           // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedOffers: userSavedOffers
             }
           ).then(() => {
-            alert("Oferta Guardada, puedes verla en tu perfil");
+            alert("Oferta guardada, puedes verla en tu perfil");
           });
         } else {
           alert("Ya habías guardado esta oferta");
         }
       });
     },
-  }
+    saveProject () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
+      let userSavedProjects;
+      db.collection("users").doc(this.userId).get().then(doc => {
+        userSavedProjects = doc.data().savedOffers;
+        console.log(userSavedProjects);
+      }).then(() => {
+        if (!userSavedProjects.includes(this.id)) {
+          userSavedProjects.unshift(this.id);
+          // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          db.collection("users").doc(this.userId).update(
+            {
+              savedProjects: userSavedProjects
+            }
+          ).then(() => {
+            alert("Proyecto guardado, puedes verla en tu perfil");
+          });
+        } else {
+          alert("Ya habías guardado este proyecto");
+        }
+      });
+    },
+  },
+  created () {
+    this.createBriefs();
+  },
 };
 </script>
 <style scoped>
