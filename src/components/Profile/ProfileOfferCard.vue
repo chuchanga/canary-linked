@@ -17,7 +17,7 @@
       </div>
       <div v-if="userType==='person'" class="flex flex-col ">
         <ViewButton :onClick="showViewWindow" class="mb-2 mt-2" />
-        <EditButton :onClick="showEditWindow" class="m1-2" />
+        <EditButton v-if="isOwn===true" :onClick="showEditWindow" class="m1-2" />
         <DeleteButton v-if="isOwn===false" :onClick="removeSavedOffer" class="mb-1 mt-2" />
         <DeleteButton v-if="isOwn===true" :onClick="deleteOffer" class="mb-1 mt-2" />
       </div>
