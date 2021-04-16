@@ -1,8 +1,8 @@
 <template>
 <transition name="modal">
     <div class="modal-mask overflow-hidden">
-      <div class="modal-wrapper w-2/3">
-        <div class="modal-container m-auto w-3/5 pb-8 bg-culturedwhite rounded-md">
+      <div class="modal-wrapper w-9/12">
+        <div class="modal-container m-auto w-9/12 pb-8 bg-culturedwhite rounded-md">
 
           <div class="modal-header w-full h-3/5 p-4 mb-4 flex-row inline-flex bg-cyberyellow align-middle ">
               <div class="font-semibold text-lg justify-self-center mr-auto">Crear Nuevo Proyecto</div>
@@ -13,7 +13,7 @@
             <div class="offer-publication h-auto p-4 flex flex-col">
               <input placeholder="Título del Proyecto" class="offer-title h-12 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.title">
               <textarea placeholder="Descripción del Proyecto" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
-              <div class="grid grid-cols-2 ml-8 mt-8 md:w-4/5 sm:w-full">
+              <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
                   <div class="contact-mail text-left text-sm mb-2">
@@ -53,6 +53,11 @@
                     </select>
                   </div>
                 </div>
+                <div class="image-upload flex flex-col">
+                  <p class="mb-4 font-semibold">Selecciona una imagen de cabecera</p>
+                  <input type="file" @change="previewImage" accept="image/*" class="" ref="" >
+                  <img @load="clearURL" class=" mt-4 mx-2 max-h-48 max-w-xs object-cover" :src="previewUrl" alt="Imagen elegida como cabecera">
+                </div>
               </div>
             </div>
           </div>
@@ -87,7 +92,10 @@ export default {
         show: true,
         image: "https://firebasestorage.googleapis.com/v0/b/canarylinked.appspot.com/o/Boardphotos%2FCanary%20Linked.png?alt=media&token=7e99d61b-4421-4792-b6a9-6f1cb3cf47aa",
         creationTime: ""
-      }
+      },
+      imageData: null,
+      previewUrl: "",
+      projectImageUrl: null
     };
   },
   components: {
@@ -96,6 +104,7 @@ export default {
   methods: {
     ...mapGetters("data", ["getProjects"]),
     addProject() {
+      this.offerData.creationTime = firebase.firestore.Timestamp.now();
       db.collection("projects").doc().set(
         {
           submitterId: firebase.auth().currentUser.uid,
@@ -108,9 +117,11 @@ export default {
           duration: this.offerData.duration,
           show: this.offerData.show,
           image: this.offerData.image,
-          creationTime: firebase.firestore.Timestamp.now()
+          creationTime: this.offerData.creationTime
         }
       ).then(() => {
+        this.storeImage();
+      }).then(() => {
         this.$emit("forceRender");
         this.$emit("close");
         this.changeVisibility();
@@ -133,6 +144,43 @@ export default {
         );
       });
     },
+    previewImage(event) {
+      this.picture = null;
+      this.imageData = event.target.files[0];
+      this.previewUrl = URL.createObjectURL(event.target.files[0]);
+    },
+    clearURL () {
+      URL.revokeObjectURL(this.previewUrl);
+    },
+    storeImage() {
+      let currentProjectId = "";
+      db.collection("projects").where("creationTime", "==", this.offerData.creationTime)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            currentProjectId = doc.id;
+          });
+        }).then(() => {
+          firebase.storage()
+            .ref("projects/" + currentProjectId + "/projectsPic.jpg")
+            .put(this.imageData)
+            .then(() => {
+              firebase.storage()
+                .ref("projects/" + currentProjectId + "/projectsPic.jpg").getDownloadURL().then(imgUrl => {
+                  this.projectImageUrl = imgUrl;
+                }).then(() => {
+                  db.collection("projects").doc(currentProjectId).update({
+                    image: this.projectImageUrl
+                  }
+                  );
+                }).then(() => {
+                  this.$emit("beforeCloseEdit");
+                }).then(() => {
+                  this.$emit("close");
+                });
+            });
+        });
+    }
   },
 };
 </script>

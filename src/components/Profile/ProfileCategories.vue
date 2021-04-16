@@ -13,16 +13,16 @@
         </li>
       </ul>
       <div class="relative flex flex-col min-w-0 break-words bg-culturedwhite w-full mb-6 shadow-lg rounded">
-        <div class="px-4 py-5 flex-auto">
+        <div class="px-4 py-2 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'savedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
               <div v-if="userType=='entity'" class="add-offer">
-                <p class=""> Añadir Nueva Oferta </p>
-                <AddButton class="mt-2" :onClick="showModalWindowOffer" />
+                <p class=""> Crear Nueva Oferta </p>
+                <AddButton class="mt-2 mb-4" :onClick="showModalWindowOffer" />
                 <add-offer v-if="showModalOffer" @close="showModalOffer = false" @forceRender="updateDisplay()">
                 </add-offer>
               </div>
+              <ProfileCardsDisplay :userType="userType" :display="'Ofertas'" :ownedCollection="'offers'" :savedCollection="'savedOffers'" :key="renderKey" @forceRender="updateDisplay()" />
             </div>
           </div>
           <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
