@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-cover bg-center h-auto text-richblack py-24 px-10 object-fill"
+    class="bg-cover bg-center h-auto text-culturedwhite py-24 px-10 object-fill"
     style="
       background-image: url(https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276784_960_720.jpg);
     "

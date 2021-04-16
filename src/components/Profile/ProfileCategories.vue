@@ -1,13 +1,13 @@
 <template>
   <div class="category-container w-full h-auto">
-    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
-        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 1, 'text-white bg-goldenrod': openTab === 1}">
+    <ul class="mb-0 list-none grid grid-cols-2 pt-3 pb-4 cursor-pointer">
+        <li class="-mb-px flex-auto text-center">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-black bg-cyberyellow hover:bg-minionyellow': openTab !== 1, 'text-white bg-goldenrod': openTab === 1}">
             Mis Ofertas de Trabajo
           </a>
         </li>
-        <li v-if="userType==='person'" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-black bg-cyberyellow': openTab !== 2, 'text-white bg-goldenrod': openTab === 2}">
+        <li v-if="userType==='person'" class="-mb-px flex-auto text-center">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-black bg-cyberyellow hover:bg-minionyellow': openTab !== 2, 'text-white bg-goldenrod': openTab === 2}">
            Mis proyectos Colaborativos
           </a>
         </li>

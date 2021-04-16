@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center rounded-lg shadow-lg overflow-hidden w-12/12">
+  <div class="flex flex-col justify-center rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden w-12/12">
     <img class="w-full h-auto object-cover" :src="image" />
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
       <div class="grid justify-items-stretch space-y-6">

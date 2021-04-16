@@ -34,7 +34,7 @@
           <router-link
             class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/board"
-            >Tablón Formativo</router-link
+            >Nuestro Tablón</router-link
           >
         </li>
         <li class="nav-item">

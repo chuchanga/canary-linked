@@ -2,8 +2,8 @@
   <div class="bg-gray-50">
     <Subheader
       class="textcontent-title"
-      title="Bienvenidos a nuestro tablón de ofertas y proyectos"
-      description="Encuentra lo que buscas"
+      title="Bienvenido a nuestro Tablón de Ofertas y Proyectos"
+      description="Aquí podrás encontrar las mejores oportunidades para tu carrera profesional"
       text="Contáctanos"
     ></Subheader>
     <!-- component -->
@@ -12,26 +12,26 @@
     >
       <li class="flex-auto text-center">
         <a
-          class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
+          class="text-xs font-bold uppercase shadow-lg block leading-normal"
           v-on:click="toggleTabs(1)"
           v-bind:class="{
-            'text-black bg-cyberyellow': openTab !== 1,
+            'text-black bg-cyberyellow hover:bg-minionyellow': openTab !== 1,
             'text-white bg-goldenrod': openTab === 1,
           }"
         >
-          <p class="text-xl lg:text-4xl p-12 semi-bold">Ofertas</p>
+          <p class="textcontent-title text-xl lg:text-4xl p-12 semi-bold">Ofertas</p>
         </a>
       </li>
       <li class="flex-auto text-center">
         <a
-          class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
+          class="text-xs font-bold uppercase shadow-lg block leading-normal"
           v-on:click="toggleTabs(2)"
           v-bind:class="{
-            'text-black bg-cyberyellow': openTab !== 2,
+            'text-black bg-cyberyellow hover:bg-minionyellow': openTab !== 2,
             'text-white bg-goldenrod': openTab === 2,
           }"
         >
-          <p class="text-xl lg:text-4xl p-12 semi-bold">Proyectos</p>
+          <p class="textcontent-title text-xl lg:text-4xl p-12 semi-bold">Proyectos</p>
         </a>
       </li>
     </ul>
