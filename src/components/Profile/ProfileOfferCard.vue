@@ -1,25 +1,38 @@
 <template>
-  <div class="offer-card-container w-full h-auto overflow-hidden bg-culturedwhite p-5 my-3 border-2 border-davysgray grid grid-cols-3 shadow-lg">
-    <div class="title-and-description-container flex flex-col">
-      <div class="offer-title font-bold h-2/6 text-left">{{title}}</div>
-      <div class="offer-description border-green">{{brief}}</div>
+  <div class="offer-card-container grid grid-cols-12  w-full h-auto overflow-hidden rounded-md bg-culturedwhite py-4 px-5 my-3 border-2 border-gray-200 shadow-md">
+      <img class="w-10/12 h-auto col-span-2 rounded-md mt-2" :src="image" />
+    <div class="col-span-5 title-and-description-container flex flex-col">
+      <div class="offer-title font-bold h-2/6 text-left mb-1">{{title}}</div>
+      <div class="offer-description border-green text-left">{{brief}}</div>
     </div>
-    <div class="contactinfo-container flex-col">
-      <div class="location">{{location}}</div>
-       <div class="duration">{{duration}}</div>
-      <div class="contact-email">{{contactEmail}}</div>
-      <div class="website">{{website}}</div>
+    <div class="pl-3 col-span-4 contactinfo-container flex-col">
+      <div class="location text-left text-sm">
+        <i class="text-davysgray fas fa-map-marker-alt mr-2 mt-1"></i>
+        {{location}}
+      </div>
+      <div class="duration text-left text-sm">
+        <i class="text-davysgray fas fa-user-clock mt-1"></i>
+         {{duration}}
+      </div>
+      <div class="contact-email text-left text-sm flex flex-row overflow-hidden">
+        <i class="text-davysgray fas fa-envelope mr-2 mt-1"></i>
+        {{contactEmail}}
+      </div>
+      <div class="website text-left text-sm">
+        <i class="text-davysgray fas fa-pager mr-1 mt-1"></i>
+        {{website}}
+      </div>
     </div>
-    <div class="button-container flex justify-end">
+    <div class="col-span-1 button-container flex justify-end">
       <div v-if="userType!='person'" class="flex flex-col">
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />
       </div>
       <div v-if="userType==='person'" class="flex flex-col ">
-        <ViewButton :onClick="showViewWindow" class="mb-2 mt-2" />
-        <EditButton v-if="isOwn===true" :onClick="showEditWindow" class="m1-2" />
-        <DeleteButton v-if="isOwn===false" :onClick="removeSavedOffer" class="mb-1 mt-2" />
-        <DeleteButton v-if="isOwn===true" :onClick="deleteOffer" class="mb-1 mt-2" />
+        <ViewButton :onClick="showViewWindow" class="mb-2" />
+        <EditButton v-if="isOwn===true" :onClick="showEditWindow" class="" />
+        <DeleteButton v-if="isOwn===false" :onClick="removeSavedOffer" class="mt-2" />
+        <DeleteButton v-if="isOwn===true" :onClick="deleteOffer" class="mt-2" />
       </div>
       <edit-offer :collection="collection" :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
       </edit-offer>
@@ -47,6 +60,7 @@ export default {
     contactEmail: String,
     website: String,
     timeId: Object,
+    image: String,
     userType: String,
     collection: String,
     isOwn: Boolean

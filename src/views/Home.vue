@@ -25,13 +25,13 @@
     <div>
       <HomeCard></HomeCard>
     </div>
-    <p class="text-4xl lg:text-5xl mt-12 italic font-bold">
+    <p class="text-4xl lg:text-5xl mt-12 font-bold">
       Lo que dicen nuestros usuarios
     </p>
     <CarouselComment></CarouselComment>
-    <p class="text-4xl lg:text-5xl mt-12 italic font-bold">Sobre Nosotros</p>
+    <p class="text-4xl lg:text-5xl mt-12 font-bold">Sobre Nosotros</p>
     <div
-      class="bg-cyberyellow rounded-lg shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
+      class="bg-cyberyellow shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
         class="text-2xl lg:text-5xl self-center flex flex-col w-4/5 break-words"
@@ -48,7 +48,7 @@
         >
       </p>
       <div>
-        <img class="rounded-lg mt-8" src="../assets/photo_about.jpg" alt="" />
+        <img class="mt-8" src="../assets/photo_about.jpg" alt="" />
       </div>
     </div>
     <div class="bg-cyberyellow mt-12">

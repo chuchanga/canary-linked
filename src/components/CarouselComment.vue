@@ -4,7 +4,7 @@
     :perPage="1"
     :autoplay="true"
     :autoplayTimeout="2000"
-    class="bg-cyberyellow m-12 rounded-lg shadow-2xl mt-8 text-xl lg:text-3xl p-8"
+    class="bg-cyberyellow m-12 shadow-2xl mt-8 text-xl lg:text-3xl p-8"
   >
     <slide v-for="(testimonial, index) of Testimonials" :key="index">
       <img
