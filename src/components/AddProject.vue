@@ -153,33 +153,36 @@ export default {
       URL.revokeObjectURL(this.previewUrl);
     },
     storeImage() {
-      let currentProjectId = "";
-      db.collection("projects").where("creationTime", "==", this.offerData.creationTime)
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            currentProjectId = doc.id;
-          });
-        }).then(() => {
-          firebase.storage()
-            .ref("projects/" + currentProjectId + "/projectsPic.jpg")
-            .put(this.imageData)
-            .then(() => {
-              firebase.storage()
-                .ref("projects/" + currentProjectId + "/projectsPic.jpg").getDownloadURL().then(imgUrl => {
-                  this.projectImageUrl = imgUrl;
-                }).then(() => {
-                  db.collection("projects").doc(currentProjectId).update({
-                    image: this.projectImageUrl
-                  }
-                  );
-                }).then(() => {
-                  this.$emit("beforeCloseEdit");
-                }).then(() => {
-                  this.$emit("close");
-                });
+      // Si no se sube imagen, deja la que está por defecto. Si se sube imagen, la sube a firestore, coge la url y sustituye
+      if (this.imageData != null) {
+        let currentProjectId = "";
+        db.collection("projects").where("creationTime", "==", this.offerData.creationTime)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              currentProjectId = doc.id;
             });
-        });
+          }).then(() => {
+            firebase.storage()
+              .ref("projects/" + currentProjectId + "/projectsPic.jpg")
+              .put(this.imageData)
+              .then(() => {
+                firebase.storage()
+                  .ref("projects/" + currentProjectId + "/projectsPic.jpg").getDownloadURL().then(imgUrl => {
+                    this.projectImageUrl = imgUrl;
+                  }).then(() => {
+                    db.collection("projects").doc(currentProjectId).update({
+                      image: this.projectImageUrl
+                    }
+                    );
+                  }).then(() => {
+                    this.$emit("beforeCloseEdit");
+                  }).then(() => {
+                    this.$emit("close");
+                  });
+              });
+          });
+      }
     }
   },
 };

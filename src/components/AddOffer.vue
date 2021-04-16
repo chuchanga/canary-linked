@@ -153,33 +153,36 @@ export default {
       URL.revokeObjectURL(this.previewUrl);
     },
     storeImage() {
-      let currentOfferId = "";
-      db.collection("offers").where("creationTime", "==", this.offerData.creationTime)
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            currentOfferId = doc.id;
-          });
-        }).then(() => {
-          firebase.storage()
-            .ref("offers/" + currentOfferId + "/offersPic.jpg")
-            .put(this.imageData)
-            .then(() => {
-              firebase.storage()
-                .ref("offers/" + currentOfferId + "/offersPic.jpg").getDownloadURL().then(imgUrl => {
-                  this.offerImageUrl = imgUrl;
-                }).then(() => {
-                  db.collection("offers").doc(currentOfferId).update({
-                    image: this.offerImageUrl
-                  }
-                  );
-                }).then(() => {
-                  this.$emit("beforeCloseEdit");
-                }).then(() => {
-                  this.$emit("close");
-                });
+      // Si no se sube imagen, deja la que está por defecto. Si se sube imagen, la sube a firestore, coge la url y sustituye
+      if (this.imageData != null) {
+        let currentOfferId = "";
+        db.collection("offers").where("creationTime", "==", this.offerData.creationTime)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              currentOfferId = doc.id;
             });
-        });
+          }).then(() => {
+            firebase.storage()
+              .ref("offers/" + currentOfferId + "/offersPic.jpg")
+              .put(this.imageData)
+              .then(() => {
+                firebase.storage()
+                  .ref("offers/" + currentOfferId + "/offersPic.jpg").getDownloadURL().then(imgUrl => {
+                    this.offerImageUrl = imgUrl;
+                  }).then(() => {
+                    db.collection("offers").doc(currentOfferId).update({
+                      image: this.offerImageUrl
+                    }
+                    );
+                  }).then(() => {
+                    this.$emit("beforeCloseEdit");
+                  }).then(() => {
+                    this.$emit("close");
+                  });
+              });
+          });
+      }
     }
   },
 };

@@ -171,6 +171,7 @@ export default {
     YellowButton,
   },
   created () {
+    console.log(this.imageData);
     db.collection(this.collection).where("creationTime", "==", this.currentOfferTimeId)
       .get()
       .then((querySnapshot) => {
@@ -211,9 +212,13 @@ export default {
             duration: this.offerData.duration
           }
           ).then(() => {
-            firebase.storage()
-              .ref(this.collection + "/" + this.currentOfferImageId + "/" + this.collection + "Pic.jpg")
-              .put(this.imageData);
+            // Si no se sube imagen, deja la que ya tiene. Si se sube imagen, sustituye la anterior en firestore.
+            if (this.imageData != null) {
+              firebase.storage()
+                .ref(this.collection + "/" + this.currentOfferImageId + "/" + this.collection + "Pic.jpg")
+                .put(this.imageData);
+            } else {
+            }
           });
         }).then(() => {
           this.$emit("beforeCloseEdit");
