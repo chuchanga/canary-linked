@@ -1,15 +1,17 @@
 <template>
   <div>
-    <Subheader class="textcontent-title" title="Conócenos"></Subheader>
+    <Subheader
+      class="textcontent-title"
+      title="Conoce nuestra empresa, objetivos, metas y descubre quienes la componen"
+    ></Subheader>
     <div
       class="bg-cyberyellow rounded-ls m-12 rounded-lg shadow-2xl flex flex-col justify-center p-8 2xl:flex-row"
     >
       <p
         class="text-xl md:text-4xl lg:text-5xl self-center flex flex-col w-4/5 m-12 break-words"
       >
-        Con más de 10 años de experiencia CanaryLinked es la empresa líder en
-        las islas canarias que facilita la incorporación de profesionales sin
-        experiencia al mundo laboral.
+        CanaryLinked es la empresa líder en las islas canarias que facilita la
+        incorporación de profesionales sin experiencia al mundo laboral.
         <router-link
           to="/contact"
           class="mt-12 rounded-lg m-auto text-2xl lg:text-4xl focus:outline-none shadow-2xl text-decoration:none"
@@ -28,7 +30,7 @@
       class="bg-cyberyellow m-12 p-12 rounded-lg shadow-2xl flex flex-col justify-center break-words lg:flex-row"
     >
       <div>
-        <p class="italic font-bold text-3xl lg:text-5xl">Misión</p>
+        <p class="font-bold text-3xl lg:text-5xl">Misión</p>
         <svg
           class="m-auto mt-24"
           width="92"
@@ -90,7 +92,7 @@
         </p>
       </div>
       <div>
-        <p class="italic font-bold text-3xl lg:text-5xl">Valores</p>
+        <p class="font-bold text-3xl lg:text-5xl">Valores</p>
         <svg
           class="m-auto mt-24"
           width="92"
@@ -138,12 +140,10 @@
     </div>
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
-        <p class="textcontent-title font-bold mt-24 text-3xl lg:text-5xl">
-          Video
-        </p>
+        <p class="font-bold mt-24 text-3xl lg:text-5xl">Video</p>
       </div>
       <div>
-        <p class="textcontent-title font-bold mt-24 text-3xl lg:text-5xl">
+        <p class="font-bold mt-24 text-3xl lg:text-5xl">
           Conoce a nuestro equipo
         </p>
         <template>

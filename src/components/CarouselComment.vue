@@ -10,6 +10,7 @@
       <img
         class="m-auto object-cover rounded-full h-48 w-48 flex items-center justify-center"
         :src="testimonial.image"
+        alt="Imagen de una persona comentando lo que le parece la web CanaryLinked"
       />
       <p class="mt-8">{{ testimonial.description }}</p>
       <div class="star mt-4">
