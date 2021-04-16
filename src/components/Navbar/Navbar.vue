@@ -32,28 +32,28 @@
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/board"
             >Tablón Formativo</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/training"
             >Orientación Laboral</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/contact"
             >Contacto</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-lg leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/about"
             >Sobre Nosotros</router-link
           >

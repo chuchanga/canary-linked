@@ -27,7 +27,7 @@
     </div>
     <div class="bg-cyberyellow textcontent lg:flex-row">
       <div class="flex-col justify-center lg:flex-row">
-        <p class=" textcontent-title text-xl lg:text-5xl font-bold mt-12">
+        <p class="textcontent-title text-3xl lg:text-5xl font-bold mt-12">
           Últimos Consejos
         </p>
         <p class="text-2xl lg:text-4xl mt-12">
@@ -61,14 +61,14 @@ export default {
         {
           title: "Últimas Ofertas",
           description:
-          "Encuentra en nuestro Tablón de Ofertas la Oportunidad que buscabas para dar comienzo a tu carrera",
+            "Encuentra en nuestro Tablón de Ofertas la Oportunidad que buscabas para dar comienzo a tu carrera",
           // "Busca en nuestro tablón de empleo las ofertas que mejor se adapten a tus necesidades",
           src: job,
         },
         {
           title: "Últimos Proyectos",
           description:
-          "Colabora con otros profesionales en proyectos que os ayudarán a conseguir experiencia y a ampliar vuestra red",
+            "Colabora con otros profesionales en proyectos que os ayudarán a conseguir experiencia y a ampliar vuestra red",
           // "Busca en nuestro tablón de empleo los proyectos que mejor se adapten a tus necesidades",
           src: connection,
         },
@@ -79,15 +79,15 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap");
 
 .textcontent {
-  @apply bg-cyberyellow shadow-2xl flex flex-col justify-center m-12 p-8 2xl:flex-row;
-
+  @apply bg-cyberyellow shadow-2xl flex flex-col justify-center m-12 p-8 xl:flex-row;
 }
+
 .textcontent-title {
-font-family: 'Merriweather Sans', sans-serif;
-font-weight: 400;
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
 }
 
 .textcontent:nth-child(2n) {

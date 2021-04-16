@@ -31,25 +31,21 @@
     <CarouselComment></CarouselComment>
     <p class="text-4xl lg:text-5xl mt-12 font-bold">Sobre Nosotros</p>
     <div
-      class="bg-cyberyellow shadow-2xl m-12 flex flex-col justify-center p-8 2xl:flex-row"
+      class="bg-cyberyellow shadow-2xl m-12 flex flex-col justify-center p-8 lg:flex-row"
     >
       <p
-        class="text-2xl lg:text-5xl self-center flex flex-col w-4/5 break-words"
+        class="text-xl lg:text-4xl self-center flex flex-col w-4/5 break-words"
       >
-        Con más de 10 años de experiencia CanaryLinked es la empresa líder en
-        las islas canarias que facilita la incorporación de profesionales sin
-        experiencia al mundo laboral.
+        CanaryLinked es la empresa líder en las islas canarias que facilita la
+        incorporación de profesionales sin experiencia al mundo laboral.
         <router-link to="/about">
           <button
             class="focus:outline-none relative border-2 border-white rounded-md font-bold px-4 py-3 transition duration-300 ease-in-out hover:bg-cyberyellow hover:text-richblack shadow-2xl mt-8 text-2xl lg:text-3xl"
           >
-            Contáctanos
+            Conócenos
           </button></router-link
         >
       </p>
-      <div>
-        <img class="mt-8" src="../assets/photo_about.jpg" alt="" />
-      </div>
     </div>
     <div class="bg-cyberyellow mt-12">
       <Help></Help>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Subheader title="Conócenos"></Subheader>
+    <Subheader class="textcontent-title" title="Conócenos"></Subheader>
     <div
       class="bg-cyberyellow rounded-ls m-12 rounded-lg shadow-2xl flex flex-col justify-center p-8 2xl:flex-row"
     >
@@ -17,7 +17,11 @@
         ></router-link>
       </p>
       <div>
-        <img class="rounded-lg" src="../assets/photo_about.jpg" />
+        <img
+          class="rounded-lg"
+          src="../assets/photo_about.jpg"
+          alt="Foto de grupo hablando entre ellos"
+        />
       </div>
     </div>
     <div
@@ -134,10 +138,12 @@
     </div>
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
-        <p class="italic font-bold mt-24 text-3xl lg:text-5xl">Video</p>
+        <p class="textcontent-title font-bold mt-24 text-3xl lg:text-5xl">
+          Video
+        </p>
       </div>
       <div>
-        <p class="italic font-bold mt-24 text-3xl lg:text-5xl">
+        <p class="textcontent-title font-bold mt-24 text-3xl lg:text-5xl">
           Conoce a nuestro equipo
         </p>
         <template>
@@ -157,11 +163,11 @@
                 </blockquote>
               </div>
               <img
-                class="mx-auto rounded-lg mt-4"
+                class="mx-auto rounded-full mt-4"
                 :src="photo.image"
-                alt=""
-                width="500"
-                height="500"
+                alt="Foto de integrante del equipo"
+                width="400"
+                height="400"
               />
               <div class="text-center mt-4">
                 <blockquote>
@@ -214,3 +220,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.textcontent-title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 500;
+}
+</style>

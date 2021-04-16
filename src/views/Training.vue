@@ -1,13 +1,12 @@
 <template>
   <div>
     <Subheader
+      class="textcontent-title"
       title="Bienvenidos a nuestro portal de tips y consejos de orientación laboral"
       description="Resuelve tus dudas con estos consejos"
       text="Contáctanos"
     ></Subheader>
-    <div
-      class="italic font-bold text-xl lg:text-4xl p-12 tracking-widest bg-cyberyellow"
-    >
+    <div class="font-bold text-xl lg:text-4xl p-12 bg-cyberyellow">
       CONSEJOS ORIENTATIVOS
     </div>
     <div
@@ -80,6 +79,11 @@ export default {
 </script>
 
 <style>
+.textcontent-title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
+}
+
 .flip-vertical-right {
   animation: flip-vertical-right 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }

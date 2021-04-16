@@ -1,12 +1,15 @@
  <template>
   <div class="bg-gray-50">
     <Subheader
+      class="textcontent-title"
       title="Bienvenidos a nuestro tablón de ofertas y proyectos"
       description="Encuentra lo que buscas"
       text="Contáctanos"
     ></Subheader>
     <!-- component -->
-    <ul class="flex flex-col list-none cursor-pointer">
+    <ul
+      class="flex flex-col lg:flex-row list-none cursor-pointer textcontent-title"
+    >
       <li class="flex-auto text-center">
         <a
           class="text-xs font-bold uppercase shadow-lg rounded block leading-normal"
@@ -16,9 +19,7 @@
             'text-white bg-goldenrod': openTab === 1,
           }"
         >
-          <p class="text-xl lg:text-4xl p-12 italic semi-bold tracking-widest">
-            Ofertas
-          </p>
+          <p class="text-xl lg:text-4xl p-12 semi-bold">Ofertas</p>
         </a>
       </li>
       <li class="flex-auto text-center">
@@ -30,9 +31,7 @@
             'text-white bg-goldenrod': openTab === 2,
           }"
         >
-          <p class="text-xl lg:text-4xl p-12 italic semi-bold tracking-widest">
-            Proyectos
-          </p>
+          <p class="text-xl lg:text-4xl p-12 semi-bold">Proyectos</p>
         </a>
       </li>
     </ul>
@@ -43,28 +42,28 @@
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
-              <FilterCard mymood="offers" :mybutton="seeMoreOffersButton"/>
+              <FilterCard mymood="offers" :mybutton="seeMoreOffersButton" />
             </div>
           </div>
           <div v-if="filtering">
-            <div v-if="noresults">
-              No hay resultados
-            </div>
+            <div v-if="noresults">No hay resultados</div>
             <div v-else>
-            <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4">
-              <div v-for="card in itemsFiltered" :key="card.title">
-                <div v-if="card.show">
-                  <CardBoard
-                    :id="card.offerId"
-                    :title="card.title"
-                    :image="card.image"
-                    :place="card.place"
-                    :duration="card.duration"
-                    :description="card.description"
-                    mymood="offers"
-                  />
+              <div
+                class="flex justify-center flex-col lg:grid grid-cols-3 gap-4"
+              >
+                <div v-for="card in itemsFiltered" :key="card.title">
+                  <div v-if="card.show">
+                    <CardBoard
+                      :id="card.offerId"
+                      :title="card.title"
+                      :image="card.image"
+                      :place="card.place"
+                      :duration="card.duration"
+                      :description="card.description"
+                      mymood="offers"
+                    />
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -99,29 +98,29 @@
             <div
               class="container mx-auto px-4 sm:px-8 bg-minionyellow shadow-2xl m-12"
             >
-              <FilterCard mymood="projects" :button="seeMoreProjectsButton"/>
+              <FilterCard mymood="projects" :button="seeMoreProjectsButton" />
             </div>
           </div>
           <div v-if="filtering">
-            <div v-if="noresults">
-              No hay resultados
-            </div>
+            <div v-if="noresults">No hay resultados</div>
             <div v-else>
-            <div class="flex flex-col justify-center lg:grid grid-cols-3 gap-4">
-              <div v-for="card in itemsFiltered" :key="card.title">
-                <div v-if="card.show">
-                  <CardBoard
-                    :id="card.projectId"
-                    :title="card.title"
-                    :image="card.image"
-                    :place="card.place"
-                    :duration="card.duration"
-                    :description="card.description"
-                    mymood="projects"
-                  />
+              <div
+                class="flex flex-col justify-center lg:grid grid-cols-3 gap-4"
+              >
+                <div v-for="card in itemsFiltered" :key="card.title">
+                  <div v-if="card.show">
+                    <CardBoard
+                      :id="card.projectId"
+                      :title="card.title"
+                      :image="card.image"
+                      :place="card.place"
+                      :duration="card.duration"
+                      :description="card.description"
+                      mymood="projects"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
           <div v-else>
@@ -195,3 +194,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.textcontent-title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
+}
+</style>

@@ -43,19 +43,19 @@ export default {
       Testimonials: [
         {
           description:
-            "Increíble página, gracias a ella he encontrado el trabajo de mis sueños",
+            "Encontrar esta página fue lo mejor que he hecho, gracias a todos por haberme ayudado a encontrar el trabajo que me gusta.",
           image: img1,
           rate: 4,
         },
         {
           description:
-            "Increíble página, gracias a ella he encontrado el trabajo de mis sueños",
+            "CanaryLinked es oportunidad, gracias a ella he encontrado el trabajo de mis sueños.",
           image: img2,
           rate: 2,
         },
         {
           description:
-            "Increíble página, gracias a ella he encontrado el trabajo de mis sueños",
+            "Estoy muy satisfecho con la ayuda recibida por parte del equipo, gracias a ellos, he encontrado mi vocación en el mundo del marketing.",
           image: img3,
           rate: 3,
         },
