@@ -11,6 +11,7 @@
         </span>
       </div>
       <Input
+        class="text-base lg:text-xl 2xl:text-2xl"
         type="text"
         id="name"
         placeholder="Nombre y Apellidos o Empresa"
@@ -45,6 +46,7 @@
         </span>
       </div>
       <Input
+        class="text-base lg:text-xl 2xl:text-2xl"
         type="email"
         id="email"
         placeholder="Correo Electrónico"
@@ -62,6 +64,7 @@
         </span>
       </div>
       <Input
+        class="text-base lg:text-xl 2xl:text-2xl"
         type="password"
         id="password"
         placeholder="Contraseña"
@@ -74,7 +77,7 @@
         id="person"
         value="person"
         v-model="userType"
-        class="mx-2 text-bluejeans"
+        class="mx-2 text-bluejeans text-base lg:text-xl 2xl:text-2xl"
       />
       <label class="text-richblack font-semibold mr-2" for="person"
         >Persona</label
@@ -84,7 +87,7 @@
         id="entity"
         value="entity"
         v-model="userType"
-        class="mx-2 text-bluejeans"
+        class="mx-2 text-bluejeans text-base lg:text-xl 2xl:text-2xl"
       />
       <label class="text-richblack font-semibold" for="entity">Empresa</label>
     </div>

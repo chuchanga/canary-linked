@@ -18,13 +18,13 @@
         <div class="flex relative bg-white items-center rounded mb-6 mt-8">
           <div class="flex justify-center p-4">
             <span
-              class="flex items-center leading-normal bg-white rounded text-2xl text-gray-900"
+              class="flex items-center leading-normal bg-white rounded text-xl text-gray-900"
             >
               <i class="fas fa-user"></i>
             </span>
           </div>
           <Input
-            class="form-control text-gray-900"
+            class="form-control text-base lg:text-xl 2xl:text-2xl"
             type="text"
             placeholder="Nombre"
             v-model="messagesRef.name"
@@ -33,13 +33,13 @@
         <div class="flex relative bg-white items-center rounded mb-6">
           <div class="flex justify-center p-4">
             <span
-              class="flex items-center leading-normal bg-white rounded text-2xl text-gray-900"
+              class="flex items-center leading-normal bg-white rounded text-xl text-gray-900"
             >
               <i class="fas fa-at"></i>
             </span>
           </div>
           <Input
-            class="form-control"
+            class="form-control text-base lg:text-xl 2xl:text-2xl"
             type="Email"
             placeholder="Correo Electrónico"
             v-model="messagesRef.email"
@@ -47,7 +47,7 @@
         </div>
         <div>
           <textarea
-            class="resize border rounded-md form-control w-full h-80"
+            class="resize border rounded-md form-control w-full h-80 text-base lg:text-xl 2xl:text-2xl"
             placeholder="Escribe tu texto aquí..."
             v-model="messagesRef.message"
           >
