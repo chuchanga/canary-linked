@@ -1,8 +1,10 @@
 <template>
-  <div class="flex-col justify-center mx-2 lg:flex-row rounded-lg shadow-lg">
+  <div
+    class="flex flex-col justify-center mx-2 lg:flex-row rounded-lg shadow-lg"
+  >
     <div id="front">
       <div v-if="arrayTraining[id].pos == true">
-        <img class="w-full" :src="url" :alt="description" />
+        <img class="w-full" :src="url" alt="Fotos de personas trabajando " />
         <div class="font-bold text-xl mb-4 px-2 mt-2">{{ title }}</div>
         <button
           @click="set_id(id)"
@@ -10,13 +12,13 @@
         >
           Leer más
         </button>
-        <br>
+        <br />
       </div>
     </div>
     <div id="back">
       <div v-if="arrayTraining[id].pos == false" class="text-left py-8 px-8">
         <p>{{ text[0] }}</p>
-        <br>
+        <br />
         <p class="ml-4">{{ text[1] }}</p>
         <p class="ml-4">{{ text[2] }}</p>
         <p class="ml-4">{{ text[3] }}</p>
@@ -24,12 +26,12 @@
         <p class="ml-4">{{ text[5] }}</p>
         <button
           @click="set_id(id)"
-          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold mt-4 py-2 px-4 border hover:border-transparent rounded content-center"
+          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold mt-4 py-2 px-4 border hover:border-transparent rounded"
         >
           Volver
         </button>
-        <p> ⠀⠀⠀</p>
-        </div>
+        <p>⠀⠀⠀</p>
+      </div>
     </div>
   </div>
 </template>

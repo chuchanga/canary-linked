@@ -11,7 +11,7 @@
         </span>
       </div>
       <Input
-        class="focus:outline-none"
+        class="focus:outline-none text-base lg:text-xl 2xl:text-2xl"
         type="email"
         id="email"
         placeholder="Correo Electrónico"
@@ -29,6 +29,7 @@
         </span>
       </div>
       <Input
+        class="focus:outline-none text-base lg:text-xl 2xl:text-2xl"
         type="password"
         id="password"
         placeholder="Contraseña"

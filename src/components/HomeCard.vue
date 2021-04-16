@@ -23,7 +23,11 @@
           >
         </div>
       </div>
-      <img :src="text.src" class="m-8" />
+      <img
+        :src="text.src"
+        class="m-8"
+        alt="Foto de una persona mirando ofertas y otra foto mostrando un equipo de trabajo unido"
+      />
     </div>
     <div class="bg-cyberyellow textcontent lg:flex-row">
       <div class="flex-col justify-center lg:flex-row">
@@ -44,7 +48,11 @@
           >
         </div>
       </div>
-      <img src="../assets/notices.jpg" class="m-8" />
+      <img
+        src="../assets/notices.jpg"
+        class="m-8"
+        alt="Foto de una persona mirando las noticias"
+      />
     </div>
   </div>
 </template>

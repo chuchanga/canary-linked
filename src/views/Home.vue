@@ -10,8 +10,10 @@
         class="w-full h-screen bg-opacity-10 bg-richblack flex justify-center items-center relative"
       >
         <div class="mx-4 text-center text-white">
-          <h1 class="font-bold text-6xl mb-4">Bienvenidos a Canary Linked</h1>
-          <h2 class="font-bold text-3xl mb-12 mt-8">
+          <h1 class="font-bold text-5xl lg:text-7xl mb-4">
+            Bienvenidos a Canary Linked
+          </h1>
+          <h2 class="font-bold text-3xl lg:text-4xl mb-12 mt-8">
             Encuentra tu oportunidad con nosotros
           </h2>
         </div>
