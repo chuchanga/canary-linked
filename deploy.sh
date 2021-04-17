@@ -10,7 +10,7 @@ npm run build
 cd dist && cp index.html 404.html
 
 # if you are deploying to a custom domain
-echo 'app.canarylinked.com' > CNAME
+echo 'app.canarylinked.es' > CNAME
 
 git init
 git add -A
