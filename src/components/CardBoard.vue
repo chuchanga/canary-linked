@@ -1,31 +1,31 @@
 <template>
   <div class="flex flex-col justify-center rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden w-12/12">
-    <img class="w-full h-72 object-cover" :src="image" />
+    <img class="w-full h-60 object-cover" :src="image" />
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
-      <div class="grid justify-items-stretch space-y-6">
+      <div class="grid justify-items-stretch space-y-5">
         <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
           {{ briefTitle }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+        <p class="text-richblack justify-self-start text-lg lg:text-lg">
           <i class="text-cyberyellow fas fa-map-marker-alt mr-2"></i>
           {{ place }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-xl">
+        <p class="text-richblack justify-self-start text-lg lg:text-lg">
           <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
           {{ duration }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-xl text-justify">
+        <p class="text-richblack justify-self-start text-lg lg:text-lg text-justify">
           <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
           {{ briefDescription }}
         </p>
       </div>
-      <div>
-        <YellowButton class="my-2" :onClick="displayModal"> Ver Más </YellowButton>
+      <div class="lg:flex lg:justify-center">
+        <YellowButton class=" lg:mr-2 my-1" :onClick="displayModal"> Leer Más </YellowButton>
         <div v-if="mymood === 'offers'">
-          <YellowButton :onClick="saveOffer"> Guardar oferta </YellowButton>
+          <YellowButton class="my-1" :onClick="saveOffer"> Guardar oferta </YellowButton>
         </div>
         <div v-else-if="mymood === 'projects'">
-          <YellowButton :onClick="saveProject"> Guardar proyecto </YellowButton>
+          <YellowButton class="my-1" :onClick="saveProject"> Guardar proyecto </YellowButton>
         </div>
         <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
         </view-offer>
@@ -59,7 +59,7 @@ export default {
     },
     createBriefs() {
       if (this.title.length > 60) {
-        this.briefTitle = this.title.substring(0, 60) + "...";
+        this.briefTitle = this.title.substring(0, 50) + "...";
       } else {
         this.briefTitle = this.title;
       }

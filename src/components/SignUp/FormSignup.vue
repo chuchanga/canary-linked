@@ -11,7 +11,7 @@
         </span>
       </div>
       <Input
-        class="text-base lg:text-xl 2xl:text-2xl"
+        class="lg:text-xl 2xl:text-2xl"
         type="text"
         id="name"
         placeholder="Nombre y Apellidos o Empresa"

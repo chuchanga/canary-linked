@@ -12,7 +12,11 @@
           <div class="modal-body w-full px-5 py-2">
             <div class="offer-publication h-auto p-4 flex flex-col">
               <input placeholder="Título del Proyecto" class="offer-title h-12 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.title">
+                <p class="mt-2 text-red-500" v-if="errors.noTitle"> Introduce un Título</p>
+                <p class="mt-2 text-red-500" v-if="errors.badTitle"> El título debe tener entre 40 y 100 caracteres</p>
               <textarea placeholder="Descripción del Proyecto" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
+                <p class="mt-2 text-red-500" v-if="errors.noDescription"> Introduce una Descripción</p>
+                <p class="mt-2 text-red-500" v-if="errors.badDescription"> La descripción debe tener, como mínimo, 280 caracteres</p>
               <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
@@ -27,6 +31,7 @@
                 </div>
                 <div>
                   <div class="text-left text-sm">
+                    <p class="text-red-500" v-if="errors.noLocation"> Ningún Lugar seleccionado</p>
                     <i class="text-davysgray fas fa-map-marker-alt mr-4 ml-1"></i>
                     <select id="location" v-model="offerData.location"
                       class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal mt-1 mb-4 shadow-md">
@@ -37,6 +42,7 @@
                     </select>
                   </div>
                   <div class="text-left text-sm">
+                    <p class="text-red-500" v-if="errors.noCategory"> Ninguna Categoría seleccionada</p>
                     <i class=" text-davysgray fas fa-users mr-3"></i>
                     <select id="categoria" v-model="offerData.category"
                     class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal mt-1 mb-4 shadow-md">
@@ -45,6 +51,7 @@
                     </select>
                   </div>
                   <div class="text-left text-sm">
+                    <p class="text-red-500" v-if="errors.noDuration"> Ningún Mes seleccionado</p>
                     <i class=" text-davysgray fas fa-user-clock mr-3"></i>
                     <select id="categoria" v-model="offerData.duration"
                     class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal shadow-md">
@@ -56,7 +63,7 @@
                 <div class="image-upload flex flex-col">
                   <p class="mb-4 font-semibold">Selecciona una imagen de cabecera</p>
                   <input type="file" @change="previewImage" accept="image/*" class="" ref="" >
-                  <img @load="clearURL" class=" mt-4 mx-2 max-h-48 max-w-xs object-cover" :src="previewUrl" alt="Imagen elegida como cabecera">
+                  <img @load="clearURL" class=" mt-4 mx-2 max-h-48 max-w-xs object-cover" :src="previewUrl" alt="Si no seleccionas una imagen, tu oferta se publicará con una imagen por defecto">
                 </div>
               </div>
             </div>
@@ -95,7 +102,16 @@ export default {
       },
       imageData: null,
       previewUrl: "",
-      projectImageUrl: null
+      projectImageUrl: null,
+      errors: {
+        noTitle: "",
+        noDescription: "",
+        badTitle: "",
+        badDescription: "",
+        noLocation: "",
+        noCategory: "",
+        noDuration: ""
+      }
     };
   },
   components: {
@@ -104,28 +120,30 @@ export default {
   methods: {
     ...mapGetters("data", ["getProjects"]),
     addProject() {
-      this.offerData.creationTime = firebase.firestore.Timestamp.now();
-      db.collection("projects").doc().set(
-        {
-          submitterId: firebase.auth().currentUser.uid,
-          title: this.offerData.title,
-          description: this.offerData.description,
-          contactEmail: this.offerData.contactEmail,
-          location: this.offerData.location,
-          website: this.offerData.website,
-          category: this.offerData.category,
-          duration: this.offerData.duration,
-          show: this.offerData.show,
-          image: this.offerData.image,
-          creationTime: this.offerData.creationTime
-        }
-      ).then(() => {
-        this.storeImage();
-      }).then(() => {
-        this.$emit("forceRender");
-        this.$emit("close");
-        this.changeVisibility();
-      });
+      if (this.validateForm()) {
+        this.offerData.creationTime = firebase.firestore.Timestamp.now();
+        db.collection("projects").doc().set(
+          {
+            submitterId: firebase.auth().currentUser.uid,
+            title: this.offerData.title,
+            description: this.offerData.description,
+            contactEmail: this.offerData.contactEmail,
+            location: this.offerData.location,
+            website: this.offerData.website,
+            category: this.offerData.category,
+            duration: this.offerData.duration,
+            show: this.offerData.show,
+            image: this.offerData.image,
+            creationTime: this.offerData.creationTime
+          }
+        ).then(() => {
+          this.storeImage();
+        }).then(() => {
+          this.$emit("forceRender");
+          this.$emit("close");
+          this.changeVisibility();
+        });
+      }
     },
     changeVisibility() {
       const listOfId = [];
@@ -182,6 +200,49 @@ export default {
                   });
               });
           });
+      }
+    },
+    checkInputs() {
+      this.errors.noTitle = "";
+      this.errors.noDescription = "";
+      this.errors.badTitle = "";
+      this.errors.badDescription = "";
+      this.errors.noLocation = "";
+      this.errors.noCategory = "";
+      this.errors.noDuration = "";
+
+      if (!this.offerData.title) {
+        this.errors.noTitle = "error";
+      }
+      if (!this.offerData.description) {
+        this.errors.noDescription = "error";
+      }
+      if (this.offerData.title.length >= 0) {
+        if (this.offerData.title.length < 40 || this.offerData.title.length > 100) {
+          this.errors.badTitle = "error";
+        }
+      }
+      if (this.offerData.description.length >= 0) {
+        if (this.offerData.description.length < 280) {
+          this.errors.badDescription = "error";
+        }
+      }
+      if (this.offerData.location === "Lugar") {
+        this.errors.noLocation = "error";
+      }
+      if (this.offerData.category === "Categoría") {
+        this.errors.noCategory = "error";
+      }
+      if (this.offerData.duration === "Mes") {
+        this.errors.noDuration = "error";
+      }
+    },
+    validateForm() {
+      this.checkInputs();
+      if (!this.errors.noTitle && !this.errors.noDescription && !this.errors.badTitle && !this.errors.badDescription && !this.errors.noLocation && !this.errors.noCategory && !this.errors.noDuration) {
+        return true;
+      } else {
+        return false;
       }
     }
   },

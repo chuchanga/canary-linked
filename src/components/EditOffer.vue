@@ -12,7 +12,11 @@
           <div class="modal-body w-full px-5 py-2">
             <div class="offer-publication h-auto p-4 flex flex-col">
               <input placeholder="Título de la Oferta" class="offer-title h-12 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.title">
+                <p class="mt-2 text-red-500" v-if="errors.noTitle"> Introduce un Título</p>
+                <p class="mt-2 text-red-500" v-if="errors.badTitle"> El título debe tener entre 40 y 100 caracteres</p>
               <textarea placeholder="Descripción de la Oferta" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
+                <p class="mt-2 text-red-500" v-if="errors.noDescription"> Introduce una Descripción</p>
+                <p class="mt-2 text-red-500" v-if="errors.badDescription"> La descripción debe tener, como mínimo, 280 caracteres</p>
               <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
@@ -77,7 +81,11 @@
           <div class="modal-body w-full px-5 py-2">
             <div class="offer-publication h-auto p-4 flex flex-col">
               <input placeholder="Título del proyecto" class="offer-title h-12 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.title">
+                <p class="mt-2 text-red-500" v-if="errors.noTitle"> Introduce un Título</p>
+                <p class="mt-2 text-red-500" v-if="errors.badTitle"> El título debe tener entre 40 y 100 caracteres</p>
               <textarea placeholder="Descripción del Proyecto" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
+                <p class="mt-2 text-red-500" v-if="errors.noDescription"> Introduce una Descripción</p>
+                <p class="mt-2 text-red-500" v-if="errors.badDescription"> La descripción debe tener, como mínimo, 280 caracteres</p>
               <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
@@ -113,7 +121,7 @@
                     <i class=" text-davysgray fas fa-user-clock mr-3"></i>
                     <select id="duration" v-model="offerData.duration"
                     class="rounded-xl w-2/4 bg-white border-gray-400 text-gray-700 leading-normal shadow-md">
-                      <option selected disabled class="text-gray-400">Jornada</option>
+                      <option selected disabled class="text-gray-400">Mes</option>
                       <option v-for="index in getProjects().duration.length" :key="index"> {{getProjects().duration[index - 1]}}</option>
                     </select>
                   </div>
@@ -164,7 +172,13 @@ export default {
       imageData: null,
       previewUrl: "",
       projectImageUrl: null,
-      currentOfferImageId: ""
+      currentOfferImageId: "",
+      errors: {
+        noTitle: "",
+        noDescription: "",
+        badTitle: "",
+        badDescription: ""
+      }
     };
   },
   components: {
@@ -193,38 +207,40 @@ export default {
     ...mapGetters("data", ["getOffers"]),
     ...mapGetters("data", ["getProjects"]),
     saveChanges() {
-      let currentOfferId = "";
-      db.collection(this.collection).where("creationTime", "==", this.currentOfferTimeId)
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            currentOfferId = doc.id;
-            this.currentOfferImageId = doc.id;
-          });
-        }).then(() => {
-          db.collection(this.collection).doc(currentOfferId).update({
-            title: this.offerData.title,
-            description: this.offerData.description,
-            contactEmail: this.offerData.contactEmail,
-            location: this.offerData.location,
-            website: this.offerData.website,
-            category: this.offerData.category,
-            duration: this.offerData.duration
-          }
-          ).then(() => {
-            // Si no se sube imagen, deja la que ya tiene. Si se sube imagen, sustituye la anterior en firestore.
-            if (this.imageData != null) {
-              firebase.storage()
-                .ref(this.collection + "/" + this.currentOfferImageId + "/" + this.collection + "Pic.jpg")
-                .put(this.imageData);
-            } else {
+      if (this.validateForm()) {
+        let currentOfferId = "";
+        db.collection(this.collection).where("creationTime", "==", this.currentOfferTimeId)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              currentOfferId = doc.id;
+              this.currentOfferImageId = doc.id;
+            });
+          }).then(() => {
+            db.collection(this.collection).doc(currentOfferId).update({
+              title: this.offerData.title,
+              description: this.offerData.description,
+              contactEmail: this.offerData.contactEmail,
+              location: this.offerData.location,
+              website: this.offerData.website,
+              category: this.offerData.category,
+              duration: this.offerData.duration
             }
+            ).then(() => {
+            // Si no se sube imagen, deja la que ya tiene. Si se sube imagen, sustituye la anterior en firestore.
+              if (this.imageData != null) {
+                firebase.storage()
+                  .ref(this.collection + "/" + this.currentOfferImageId + "/" + this.collection + "Pic.jpg")
+                  .put(this.imageData);
+              } else {
+              }
+            });
+          }).then(() => {
+            this.$emit("beforeCloseEdit");
+          }).then(() => {
+            this.$emit("close");
           });
-        }).then(() => {
-          this.$emit("beforeCloseEdit");
-        }).then(() => {
-          this.$emit("close");
-        });
+      }
     },
     previewImage(event) {
       this.picture = null;
@@ -234,6 +250,37 @@ export default {
     clearURL () {
       URL.revokeObjectURL(this.previewUrl);
     },
+    checkInputs() {
+      this.errors.noTitle = "";
+      this.errors.noDescription = "";
+      this.errors.badTitle = "";
+      this.errors.badDescription = "";
+
+      if (!this.offerData.title) {
+        this.errors.noTitle = "error";
+      }
+      if (!this.offerData.description) {
+        this.errors.noDescription = "error";
+      }
+      if (this.offerData.title.length >= 0) {
+        if (this.offerData.title.length < 40 || this.offerData.title.length > 100) {
+          this.errors.badTitle = "error";
+        }
+      }
+      if (this.offerData.description.length >= 0) {
+        if (this.offerData.description.length < 280) {
+          this.errors.badDescription = "error";
+        }
+      }
+    },
+    validateForm() {
+      this.checkInputs();
+      if (!this.errors.noTitle && !this.errors.noDescription && !this.errors.badTitle && !this.errors.badDescription) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 };
 </script>

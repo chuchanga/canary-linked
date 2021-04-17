@@ -3,7 +3,7 @@
     <div
       class="flex justify-between lg:block lg:justify-start lg:w-auto lg:static"
     >
-      <div>
+      <div class="lg:ml-8">
         <router-link to="/home"
           ><img
             class="h-24 w-24 m-auto"
@@ -27,7 +27,7 @@
     </div>
     <div
       v-bind:class="{ hidden: !showMenu, flex: showMenu }"
-      class="flex lg:flex lg:flex-grow items-center"
+      class="flex lg:flex lg:flex-grow items-center lg:pr-8"
     >
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
         <li class="nav-item">
@@ -58,8 +58,8 @@
             >Sobre Nosotros</router-link
           >
         </li>
-        <div class="container w-32 z-40 hover:text-cyberyellow">
-          <div class="flex flex-col lg:text-lg">
+        <div class="container w-32 z-40 hover:text-cyberyellow lg:ml-12 lg:mr-8">
+          <div class="flex flex-col lg:text-lg lg:mt-1">
             <button
               @click="open = !open"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
@@ -69,7 +69,7 @@
             <span
               @click="open = !open"
               v-if="isLoggedIn"
-              class="cursor-pointer block text-culturedwhite text-center text-sm -mt-2 mb-2"
+              class="cursor-pointer block text-culturedwhite text-center text-sm mb-2"
               >Sesión iniciada como {{ currentUser }}</span
             >
             <span
@@ -81,13 +81,13 @@
             <div v-if="open" class="absolute mt-28 bg-richblack w-32">
               <div
                 v-if="!isLoggedIn"
-                class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:text-cyberyellow"
+                class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
               >
                 <router-link to="/login">Iniciar Sesión</router-link>
               </div>
               <div
                 v-if="!isLoggedIn"
-                class="cursor-pointer dropdown-item block p-2 text-culturedwhite hover:text-cyberyellow"
+                class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
               >
                 <router-link to="/signup">Regístrate</router-link>
               </div>
