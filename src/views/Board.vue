@@ -200,4 +200,9 @@ export default {
   font-family: "Merriweather Sans", sans-serif;
   font-weight: 400;
 }
+
+.textcontent-title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
+}
 </style>
