@@ -6,12 +6,12 @@
       <div class="lg:ml-8">
         <router-link to="/home"
           ><img
-            class="h-24 w-24 m-auto"
+            class="h-20 w-20 m-auto"
             src="../../assets/logo.svg"
             alt="logo"
           />
           <div
-            class="text-lg uppercase font-bold tracking-wide -mt-4 p-2 text-white hover:text-cyberyellow"
+            class=" uppercase font-bold tracking-wide -mt-4 p-2 text-white hover:text-cyberyellow"
           >
             Canary Linked
           </div>
@@ -32,34 +32,34 @@
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/board"
             >Nuestro Tablón</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/training"
             >Orientación Laboral</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/contact"
             >Contacto</router-link
           >
         </li>
         <li class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-12 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/about"
             >Sobre Nosotros</router-link
           >
         </li>
         <div class="container w-32 z-40 hover:text-cyberyellow lg:ml-12 lg:mr-8">
-          <div class="flex flex-col lg:text-lg lg:mt-1">
+          <div class="flex flex-col lg:text-lg">
             <button
               @click="open = !open"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
@@ -69,16 +69,16 @@
             <span
               @click="open = !open"
               v-if="isLoggedIn"
-              class="cursor-pointer block text-culturedwhite text-center text-sm mb-2"
+              class="cursor-pointer block text-culturedwhite text-center text-xs"
               >Sesión iniciada como {{ currentUser }}</span
             >
             <span
               @click="open = !open"
               v-if="!isLoggedIn"
-              class="cursor-pointer block text-culturedwhite text-center self-center text-sm mb-2"
+              class="cursor-pointer block text-culturedwhite text-center self-center text-xs"
               >No ha iniciado sesión</span
             >
-            <div v-if="open" class="absolute mt-28 bg-richblack w-32">
+            <div v-if="open" class="absolute mt-24 bg-richblack w-32">
               <div
                 v-if="!isLoggedIn"
                 class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
@@ -152,9 +152,9 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
 .nav {
-  background: rgba(8, 8, 8, 0.938);
+  background: #161616;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
 </style>

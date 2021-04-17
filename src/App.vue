@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="bg-culturedwhite">
-    <Navbar />
+    <Navbar class="fixed z-50 w-full" />
     <router-view></router-view>
     <Footer />
   </div>

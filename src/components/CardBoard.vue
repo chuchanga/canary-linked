@@ -1,20 +1,20 @@
 <template>
-  <div class="flex flex-col justify-center rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden w-12/12">
-    <img class="w-full h-60 object-cover" :src="image" />
+  <div class="flex flex-col justify-center rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden w-12/12 lg:w-11/12 center m-auto mb-2">
+    <img class="w-full h-56 object-cover" :src="image" />
     <div class="space-y-8 bg-white rounded-b-md shadow-lg p-8">
-      <div class="grid justify-items-stretch space-y-5">
+      <div class="grid justify-items-stretch space-y-3">
         <p class="text-richblack text-left font-semibold text-md text-lg lg:text-2xl">
           {{ briefTitle }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-lg">
+        <p class="text-richblack justify-self-start text-lg lg:text-base">
           <i class="text-cyberyellow fas fa-map-marker-alt mr-2"></i>
           {{ place }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-lg">
+        <p class="text-richblack justify-self-start text-lg lg:text-base">
           <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
           {{ duration }}
         </p>
-        <p class="text-richblack justify-self-start text-lg lg:text-lg text-justify">
+        <p class="text-richblack justify-self-start text-lg lg:text-base text-justify">
           <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
           {{ briefDescription }}
         </p>
