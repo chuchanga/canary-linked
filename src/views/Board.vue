@@ -196,10 +196,7 @@ export default {
 </script>
 
 <style scoped>
-.textcontent-title {
-  font-family: "Merriweather Sans", sans-serif;
-  font-weight: 400;
-}
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap");
 
 .textcontent-title {
   font-family: "Merriweather Sans", sans-serif;

@@ -77,6 +77,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap");
+
 .textcontent-title {
   font-family: "Merriweather Sans", sans-serif;
   font-weight: 400;
