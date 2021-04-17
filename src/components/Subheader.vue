@@ -2,9 +2,10 @@
   <div
     class="bg-cover bg-center h-auto text-culturedwhite py-24 px-10 object-fill"
     style="
-      background-image: url(https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276784_960_720.jpg);
+      background-image: url(../assets/subheaderImg.jpg');
     "
   >
+  <!-- Imagen antigua https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276784_960_720.jpg -->
     <div class="md:w-1/2 mt-24 space-y-8 m-auto">
       <p class="text-3xl font-bold" :title="title">{{ title }}</p>
       <p
