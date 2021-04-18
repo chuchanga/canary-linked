@@ -30,6 +30,14 @@
             v-model="messagesRef.name"
           />
         </div>
+        <div>
+          <p class="text-red-500 mb-2" v-if="errors.noName">
+            No ha introducido un Nombre
+          </p>
+          <p class="text-red-500 mb-2" v-if="errors.badName">
+            El Nombre debe tener entre 3 y 40 caracteres
+          </p>
+        </div>
         <div class="flex relative bg-white items-center rounded mb-6">
           <div class="flex justify-center p-4">
             <span
@@ -46,6 +54,14 @@
           />
         </div>
         <div>
+          <p class="text-red-500 mb-2" v-if="errors.noEmail">
+            No ha introducido un email
+          </p>
+          <p class="text-red-500 mb-2" v-if="errors.badEmail">
+            El email introducido no tiene el formato adecuado
+          </p>
+        </div>
+        <div>
           <textarea
             class="resize border rounded-md form-control w-full h-80 text-base lg:text-xl 2xl:text-2xl"
             placeholder="Escribe tu texto aquí..."
@@ -54,13 +70,8 @@
           </textarea>
         </div>
         <div>
-          <p class="alert alert-success font-bold" v-if="success && !error">
-            Mensaje enviado correctamente.
-          </p>
-        </div>
-        <div>
-          <p class="alert alert-error font-bold" v-if="!success && error">
-            Mensaje fallido.
+          <p class="text-red-500 mb-2" v-if="errors.noMessage">
+            El mensaje está vacío
           </p>
         </div>
         <div>
@@ -110,39 +121,76 @@ export default {
   },
   data() {
     return {
+      name: "",
+      email: "",
+      message: "",
+      errors: {
+        noName: "",
+        noEmail: "",
+        noMessage: "",
+        badName: "",
+        badEmail: "",
+      },
       messagesRef: {
         name: "",
         email: "",
         message: "",
       },
-      success: false,
-      error: false,
     };
   },
   methods: {
     sendMail: function (e) {
       e.preventDefault();
-      db.collection("messages")
-        .doc(this.messagesRef.name)
-        .set({
+      if (this.validateForm()) {
+        db.collection("messages").doc(this.messagesRef.name).set({
           name: this.messagesRef.name,
           email: this.messagesRef.email,
           message: this.messagesRef.message,
           time: new Date(),
-        })
-        .then(() => {
-          this.success = true;
-        })
-        .catch(() => {
-          this.error = true;
         });
+      }
     },
-    resetForm: function () {
-      this.messagesRef = {
-        name: "",
-        email: "",
-        message: "",
-      };
+    checkInputs() {
+      this.errors.noName = "";
+      this.errors.badName = "";
+      this.errors.noEmail = "";
+      this.errors.badEmail = "";
+      this.errors.noMessage = "";
+
+      if (!this.name) {
+        this.errors.noName = "error";
+      }
+      if (this.name.length < 3 || this.name.length > 40) {
+        this.errors.badName = "error";
+      }
+      if (!this.email) {
+        this.errors.noEmail = "error";
+      }
+      if (this.isEmailValid() === "invalidEmail") {
+        this.errors.badEmail = "error";
+      }
+      if (!this.message) {
+        this.errors.noMessage = "error";
+      }
+    },
+    isEmailValid() {
+      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+      return reg.test(this.email) ? "validEmail" : "invalidEmail";
+    },
+
+    validateForm() {
+      this.checkInputs();
+      if (
+        !this.errors.noName &&
+        !this.errors.badName &&
+        !this.errors.noEmail &&
+        !this.errors.badEmail &&
+        !this.errors.noMessage
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 };
@@ -165,18 +213,6 @@ input.form-control:focus {
 .mapa {
   width: 100%;
   min-height: 100%;
-}
-
-.alert {
-  padding: 0 10px;
-}
-
-.alert-success {
-  color: #3be249;
-}
-
-.alert-error {
-  color: #ff2121;
 }
 
 input[type="text"].form-control {
