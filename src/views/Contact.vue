@@ -50,17 +50,8 @@
           />
         </div>
         <div>
-<<<<<<< HEAD
           <p class="text-sm text-red-500 mb-2" v-if="errors.noEmail"> No ha introducido un email</p>
           <p class="text-sm text-red-500 mb-2" v-if="errors.badEmail"> El email introducido no tiene el formato adecuado</p>
-=======
-          <p class="text-red-500 mb-2" v-if="errors.noEmail">
-            No ha introducido un email
-          </p>
-          <p class="text-red-500 mb-2" v-if="errors.badEmail">
-            El email introducido no tiene el formato adecuado
-          </p>
->>>>>>> 9b9908e1a3b8c084f0bee12c94a8db91b2c8bba9
         </div>
         <div>
           <textarea
@@ -71,7 +62,6 @@
           </textarea>
         </div>
         <div>
-<<<<<<< HEAD
           <p class="mt-1 text-sm text-red-500" v-if="errors.badMsg"> La descripción debe tener entre 70 y 1000 caracteres</p>
         </div>
         <div>
@@ -82,10 +72,6 @@
         <div>
           <p class="alert alert-error font-bold" v-if="!success && error">
             Mensaje fallido.
-=======
-          <p class="text-red-500 mb-2" v-if="errors.noMessage">
-            El mensaje está vacío
->>>>>>> 9b9908e1a3b8c084f0bee12c94a8db91b2c8bba9
           </p>
         </div>
         <div>
@@ -135,22 +121,11 @@ export default {
   },
   data() {
     return {
-      name: "",
-      email: "",
-      message: "",
-      errors: {
-        noName: "",
-        noEmail: "",
-        noMessage: "",
-        badName: "",
-        badEmail: "",
-      },
       messagesRef: {
         name: "",
         email: "",
         message: "",
       },
-<<<<<<< HEAD
       success: false,
       error: false,
       errors: {
@@ -161,15 +136,12 @@ export default {
         noMsg: "",
         badMsg: ""
       }
-=======
->>>>>>> 9b9908e1a3b8c084f0bee12c94a8db91b2c8bba9
     };
   },
   methods: {
     sendMail: function (e) {
       e.preventDefault();
       if (this.validateForm()) {
-<<<<<<< HEAD
         db.collection("messages")
           .doc(this.messagesRef.name)
           .set({
@@ -184,56 +156,6 @@ export default {
           .catch(() => {
             this.error = true;
           });
-=======
-        db.collection("messages").doc(this.messagesRef.name).set({
-          name: this.messagesRef.name,
-          email: this.messagesRef.email,
-          message: this.messagesRef.message,
-          time: new Date(),
-        });
->>>>>>> 9b9908e1a3b8c084f0bee12c94a8db91b2c8bba9
-      }
-    },
-    checkInputs() {
-      this.errors.noName = "";
-      this.errors.badName = "";
-      this.errors.noEmail = "";
-      this.errors.badEmail = "";
-      this.errors.noMessage = "";
-
-      if (!this.name) {
-        this.errors.noName = "error";
-      }
-      if (this.name.length < 3 || this.name.length > 40) {
-        this.errors.badName = "error";
-      }
-      if (!this.email) {
-        this.errors.noEmail = "error";
-      }
-      if (this.isEmailValid() === "invalidEmail") {
-        this.errors.badEmail = "error";
-      }
-      if (!this.message) {
-        this.errors.noMessage = "error";
-      }
-    },
-    isEmailValid() {
-      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-      return reg.test(this.email) ? "validEmail" : "invalidEmail";
-    },
-
-    validateForm() {
-      this.checkInputs();
-      if (
-        !this.errors.noName &&
-        !this.errors.badName &&
-        !this.errors.noEmail &&
-        !this.errors.badEmail &&
-        !this.errors.noMessage
-      ) {
-        return true;
-      } else {
-        return false;
       }
     },
     checkInputs() {
