@@ -72,6 +72,9 @@ export default {
       this.openTab = tabNumber;
     },
     updateDisplay () {
+      setTimeout(this.waitToUpdate(), 1000);
+    },
+    waitToUpdate () {
       this.renderKey += 1;
     },
     showModalWindowOffer() {
