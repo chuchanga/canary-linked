@@ -1,8 +1,8 @@
 <template>
 <transition name="modal">
     <div v-if="collection==='offers'" class="modal-mask overflow-hidden">
-      <div class="modal-wrapper w-9/12">
-        <div class="modal-container m-auto w-9/12 pb-8 bg-culturedwhite rounded-md">
+      <div class="modal-wrapper lg:w-9/12 w-11/12">
+        <div class="modal-container m-auto lg:w-9/12 w-11/12 pb-8 bg-culturedwhite">
 
           <div class="modal-header w-full h-3/5 p-4 mb-4 flex-row inline-flex bg-cyberyellow align-middle ">
               <div class="font-semibold text-lg justify-self-center mr-auto">Editar Oferta</div>
@@ -17,16 +17,16 @@
               <textarea placeholder="Descripción de la Oferta" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
                 <p class="mt-2 text-red-500" v-if="errors.noDescription"> Introduce una Descripción</p>
                 <p class="mt-2 text-red-500" v-if="errors.badDescription"> La descripción debe tener, como mínimo, 280 caracteres</p>
-              <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
+              <div class="grid lg:grid-cols-3 grid-cols-1 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
                   <div class="contact-mail text-left text-sm mb-2">
                     <i class="text-davysgray fas fa-envelope mr-1"></i>
-                    <input placeholder="E-mail de contacto" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
+                    <input placeholder="E-mail de contacto" class="w-2/4 lg:3/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
                   </div>
-                  <div class="contact-web text-left text-sm">
+                  <div class="contact-web text-left text-sm mb-6">
                     <i class=" text-davysgray fas fa-pager mr-1"></i>
-                    <input placeholder="Sitio Web de la empresa" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
+                    <input placeholder="Sitio Web de la empresa" class="w-2/4 lg:3/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
                   </div>
                 </div>
                 <div>
@@ -57,7 +57,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="image-upload flex flex-col">
+                <div class="image-upload flex flex-col mt-3">
                   <p class="mb-4 font-semibold">Modifica la imagen de cabecera</p>
                   <input type="file" @change="previewImage" accept="image/*" class="" ref="" >
                   <img @load="clearURL" class=" mt-4 mx-2 max-h-48 max-w-xs object-cover" :src="previewUrl" alt="Imagen elegida como cabecera">
@@ -72,8 +72,8 @@
       </div>
     </div>
     <div v-if="collection==='projects'" class="modal-mask overflow-hidden">
-      <div class="modal-wrapper w-9/12">
-        <div class="modal-container m-auto w-9/12 pb-8 bg-culturedwhite rounded-md">
+      <div class="modal-wrapper lg:w-9/12 w-11/12">
+        <div class="modal-container m-auto lg:w-9/12 w-11/12 pb-8 bg-culturedwhite">
           <div class="modal-header w-full h-3/5 p-4 mb-4 flex-row inline-flex bg-cyberyellow align-middle ">
               <div class="font-semibold text-lg justify-self-center mr-auto">Editar Proyecto</div>
               <i @click="$emit('close')" class="cursor-pointer fas fa-times-circle text-richblack"></i>
@@ -86,16 +86,16 @@
               <textarea placeholder="Descripción del Proyecto" class="h-64 mt-8 ml-2 text-left p-4 border rounded border-gray-200 shadow-md" v-model="offerData.description"></textarea>
                 <p class="mt-2 text-red-500" v-if="errors.noDescription"> Introduce una Descripción</p>
                 <p class="mt-2 text-red-500" v-if="errors.badDescription"> La descripción debe tener, como mínimo, 280 caracteres</p>
-              <div class="grid grid-cols-3 ml-8 mt-8 md:w-5/5 sm:w-full">
+              <div class="grid lg:grid-cols-3 grid-cols-1 ml-8 mt-8 md:w-5/5 sm:w-full">
                 <div>
                   <p class="text-richblack text-left mb-1">Información de Contacto</p>
                   <div class="contact-mail text-left text-sm mb-2">
                     <i class="text-davysgray fas fa-envelope mr-1"></i>
-                    <input placeholder="E-mail de contacto" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
+                    <input placeholder="E-mail de contacto" class="w-2/4 lg:3/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.contactEmail">
                   </div>
-                  <div class="contact-web text-left text-sm">
+                  <div class="contact-web text-left text-sm mb-6">
                     <i class=" text-davysgray fas fa-pager mr-1"></i>
-                    <input placeholder="Sitio Web" class="w-2/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
+                    <input placeholder="Sitio Web" class="w-2/4 lg:3/4 mt-1 ml-2 text-left p-1 border rounded border-gray-200 shadow-md text-gray-400" v-model="offerData.website">
                   </div>
                 </div>
                 <div>
@@ -126,7 +126,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="image-upload flex flex-col">
+                <div class="image-upload flex flex-col mt-3">
                   <p class="mb-4 font-semibold">Modifica la imagen de cabecera</p>
                   <input type="file" @change="previewImage" accept="image/*" class="" ref="" >
                   <img @load="clearURL" class=" mt-4 mx-2 max-h-48 max-w-xs object-cover" :src="previewUrl" alt="Imagen elegida como cabecera">

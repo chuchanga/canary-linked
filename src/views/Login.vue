@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col jutify-center lg:flex-row bg-cover py-16">
+  <div class="flex flex-col jutify-center lg:flex-row bg-cover py-48">
     <Arrow />
     <div class="container m-auto font-sans">
       <div class="logo">

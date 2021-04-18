@@ -1,11 +1,11 @@
 <template>
   <div class="offer-card-container grid grid-cols-12  w-full h-auto overflow-hidden rounded-md bg-culturedwhite py-4 px-5 my-3 border-2 border-gray-200 shadow-md">
-      <img class="w-10/12 h-auto col-span-2 rounded-md mt-2" :src="image" />
-    <div class="col-span-5 title-and-description-container flex flex-col">
+      <img class="lg:w-10/12 w-12/12 h-auto lg:col-span-2 col-span-12 rounded-md mt-2" :src="image" />
+    <div class="lg:col-span-5 col-span-12 title-and-description-container flex flex-col">
       <div class="offer-title font-bold h-2/6 text-left mb-1">{{title}}</div>
       <div class="offer-description border-green text-left">{{brief}}</div>
     </div>
-    <div class="pl-3 col-span-4 contactinfo-container flex-col">
+    <div class="pl-3 lg:col-span-4 col-span-10 contactinfo-container flex-col">
       <div class="location text-left text-sm">
         <i class="text-davysgray fas fa-map-marker-alt mr-2 mt-1"></i>
         {{location}}
@@ -23,7 +23,7 @@
         {{website}}
       </div>
     </div>
-    <div class="col-span-1 button-container flex justify-end">
+    <div class="lg:col-span-1 col-span-2 button-container flex justify-end">
       <div v-if="userType!='person'" class="flex flex-col">
         <EditButton :onClick="showEditWindow" class="mb-2" />
         <DeleteButton :onClick="deleteOffer" class="mb-2" />

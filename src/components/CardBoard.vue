@@ -76,7 +76,7 @@ export default {
         userSavedOffers = doc.data().savedOffers;
         console.log(userSavedOffers);
       }).then(() => {
-        if (!userSavedOffers.includes(this.id)) {
+        if (!userSavedOffers.includes(this.id)) { // Si el usuario no tiene esa oferta guardada
           userSavedOffers.unshift(this.id);
           // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(

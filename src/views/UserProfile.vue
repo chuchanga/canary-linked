@@ -1,8 +1,8 @@
 <template>
-  <div class="profile-container m-4 flex flex-col lg:flex-row px-36">
-      <div class="description-container">
+  <div class="profile-container py-32 flex flex-wrap lg:flex-nowrap xl:px-36 lg:px-28 justify-center">
+      <div class="description-container w-80 flex flex-col">
         <div v-if="!editing">
-          <UserDescription />
+          <UserDescription class="" />
         </div>
         <div v-if="!editing" class="mb-2">
           <YellowButton :onClick="startEditing"> EDITAR PERFIL </YellowButton>

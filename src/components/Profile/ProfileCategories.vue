@@ -1,6 +1,6 @@
 <template>
   <div class="category-container w-full h-auto">
-    <ul class="mb-0 list-none grid grid-cols-2 pt-3 pb-4 cursor-pointer">
+    <ul class="mb-0 list-none pt-3 pb-4 cursor-pointer flex flex-col lg:flex-row">
         <li class="-mb-px flex-auto text-center">
           <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-black bg-cyberyellow hover:bg-minionyellow': openTab !== 1, 'text-white bg-goldenrod': openTab === 1}">
             Mis Ofertas de Trabajo
@@ -12,7 +12,7 @@
           </a>
         </li>
       </ul>
-      <div class="relative flex flex-col min-w-0 break-words bg-culturedwhite w-full mb-6 shadow-lg rounded">
+      <div class="flex flex-col min-w-0 break-words bg-culturedwhite w-full mb-6 shadow-md rounded">
         <div class="px-4 py-2 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">

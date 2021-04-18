@@ -27,7 +27,7 @@
     </div>
     <div
       v-bind:class="{ hidden: !showMenu, flex: showMenu }"
-      class="flex lg:flex lg:flex-grow items-center lg:pr-8"
+      class="flex lg:flex lg:flex-grow items-center"
     >
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
         <li class="nav-item">

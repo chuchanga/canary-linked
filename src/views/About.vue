@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-24">
     <Subheader
       class="textcontent-title"
       title="Conoce nuestra empresa, objetivos, metas y descubre quienes la componen"

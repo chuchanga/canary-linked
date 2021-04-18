@@ -1,5 +1,5 @@
  <template>
-  <div class="bg-gray-50">
+  <div class="bg-gray-50 py-24">
     <Subheader
       class="textcontent-title"
       title="Bienvenido a nuestro Tablón de Ofertas y Proyectos"
