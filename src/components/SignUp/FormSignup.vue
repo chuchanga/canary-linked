@@ -19,9 +19,13 @@
       />
     </div>
     <div>
-        <p class="text-red-500 mb-2" v-if="errors.noName"> No ha introducido un Nombre</p>
-        <p class="text-red-500 mb-2" v-if="errors.badName"> El Nombre debe tener entre 3 y 40 caracteres</p>
-      </div>
+      <p class="text-red-500 mb-2" v-if="errors.noName">
+        No ha introducido un Nombre
+      </p>
+      <p class="text-red-500 mb-2" v-if="errors.badName">
+        El Nombre debe tener entre 3 y 40 caracteres
+      </p>
+    </div>
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6"
     >
@@ -41,9 +45,13 @@
       />
     </div>
     <div>
-        <p class="text-red-500 mb-2" v-if="errors.noEmail"> No ha introducido un email</p>
-        <p class="text-red-500 mb-2" v-if="errors.badEmail"> El email introducido no tiene el formato adecuado</p>
-      </div>
+      <p class="text-red-500 mb-2" v-if="errors.noEmail">
+        No ha introducido un email
+      </p>
+      <p class="text-red-500 mb-2" v-if="errors.badEmail">
+        El email introducido no tiene el formato adecuado
+      </p>
+    </div>
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10"
     >
@@ -62,9 +70,13 @@
         v-model="password"
       />
     </div>
-     <div>
-      <p class="text-red-500 mb-2" v-if="errors.noPassword"> No ha introducido una contraseña</p>
-      <p class="text-red-500 mb-2" v-if="errors.badPassword"> La Contraseña introducida debe tener entre 6 y 20 caracteres</p>
+    <div>
+      <p class="text-red-500 mb-2" v-if="errors.noPassword">
+        No ha introducido una contraseña
+      </p>
+      <p class="text-red-500 mb-2" v-if="errors.badPassword">
+        La Contraseña introducida debe tener entre 6 y 20 caracteres
+      </p>
     </div>
     <div>
       <input
@@ -87,7 +99,9 @@
       <label class="text-richblack font-semibold" for="entity">Empresa</label>
     </div>
     <div>
-      <p class="text-red-500 mb-2" v-if="errors.noUserType"> No ha seleccionado el tipo de usuario</p>
+      <p class="text-red-500 mb-2" v-if="errors.noUserType">
+        No ha seleccionado el tipo de usuario
+      </p>
     </div>
     <BlueButton :onClick="register"> REGISTRAR CUENTA </BlueButton>
     <div class="m-auto -mt-4">
@@ -126,8 +140,8 @@ export default {
         noEmail: "",
         badEmail: "",
         noPassword: "",
-        noUserType: ""
-      }
+        noUserType: "",
+      },
     };
   },
   methods: {
@@ -194,19 +208,27 @@ export default {
       }
     },
 
-    isEmailValid () {
+    isEmailValid() {
       const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-      return (reg.test(this.email)) ? "validEmail" : "invalidEmail";
+      return reg.test(this.email) ? "validEmail" : "invalidEmail";
     },
 
     validateForm() {
       this.checkInputs();
-      if (!this.errors.noName && !this.errors.badName && !this.errors.noEmail && !this.errors.noPassword && !this.errors.badPassword && !this.errors.badEmail && !this.errors.noUserType) {
+      if (
+        !this.errors.noName &&
+        !this.errors.badName &&
+        !this.errors.noEmail &&
+        !this.errors.noPassword &&
+        !this.errors.badPassword &&
+        !this.errors.badEmail &&
+        !this.errors.noUserType
+      ) {
         return true;
       } else {
         return false;
       }
-    }
+    },
   },
   components: {
     // Button,
