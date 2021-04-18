@@ -30,6 +30,10 @@
             v-model="messagesRef.name"
           />
         </div>
+        <div>
+            <p class="text-sm text-red-500 mb-2" v-if="errors.noName"> No ha introducido un Nombre</p>
+            <p class="text-sm text-red-500 mb-2" v-if="errors.badName"> El Nombre debe tener entre 3 y 40 caracteres</p>
+          </div>
         <div class="flex relative bg-white items-center rounded mb-6">
           <div class="flex justify-center p-4">
             <span
@@ -46,12 +50,19 @@
           />
         </div>
         <div>
+          <p class="text-sm text-red-500 mb-2" v-if="errors.noEmail"> No ha introducido un email</p>
+          <p class="text-sm text-red-500 mb-2" v-if="errors.badEmail"> El email introducido no tiene el formato adecuado</p>
+        </div>
+        <div>
           <textarea
             class="resize border rounded-md form-control w-full h-80 text-base lg:text-xl 2xl:text-2xl"
             placeholder="Escribe tu texto aquí..."
             v-model="messagesRef.message"
           >
           </textarea>
+        </div>
+        <div>
+          <p class="mt-1 text-sm text-red-500" v-if="errors.badMsg"> La descripción debe tener entre 70 y 1000 caracteres</p>
         </div>
         <div>
           <p class="alert alert-success font-bold" v-if="success && !error">
@@ -117,25 +128,35 @@ export default {
       },
       success: false,
       error: false,
+      errors: {
+        noName: "",
+        badName: "",
+        noEmail: "",
+        badEamil: "",
+        noMsg: "",
+        badMsg: ""
+      }
     };
   },
   methods: {
     sendMail: function (e) {
       e.preventDefault();
-      db.collection("messages")
-        .doc(this.messagesRef.name)
-        .set({
-          name: this.messagesRef.name,
-          email: this.messagesRef.email,
-          message: this.messagesRef.message,
-          time: new Date(),
-        })
-        .then(() => {
-          this.success = true;
-        })
-        .catch(() => {
-          this.error = true;
-        });
+      if (this.validateForm()) {
+        db.collection("messages")
+          .doc(this.messagesRef.name)
+          .set({
+            name: this.messagesRef.name,
+            email: this.messagesRef.email,
+            message: this.messagesRef.message,
+            time: new Date(),
+          })
+          .then(() => {
+            this.success = true;
+          })
+          .catch(() => {
+            this.error = true;
+          });
+      }
     },
     resetForm: function () {
       this.messagesRef = {
@@ -144,6 +165,47 @@ export default {
         message: "",
       };
     },
+    checkInputs() {
+      this.errors.noName = "";
+      this.errors.badName = "";
+      this.errors.noEmail = "";
+      this.errors.badEmail = "";
+      this.errors.noText = "";
+      this.errors.badText = "";
+
+      if (!this.messagesRef.name) {
+        this.errors.noName = "error";
+      }
+      if (this.messagesRef.name.length < 3 || this.name.length > 40) {
+        this.errors.badName = "error";
+      }
+      if (!this.messagesRef.email) {
+        this.errors.noEmail = "error";
+      }
+      if (this.isEmailValid() === "invalidEmail") {
+        this.errors.badEmail = "error";
+      }
+      if (!this.messagesRef.message) {
+        this.errors.noMsg = "error";
+      }
+      if (this.messagesRef.message.length < 70 || this.password.length > 1000) {
+        this.errors.badMsg = "error";
+      }
+    },
+
+    isEmailValid () {
+      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+      return (reg.test(this.messagesRef.email)) ? "validEmail" : "invalidEmail";
+    },
+
+    validateForm() {
+      this.checkInputs();
+      if (!this.errors.noName && !this.errors.badName && !this.errors.noEmail && !this.errors.badEmail && !this.errors.noMsg && !this.errors.badMsg) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 };
 </script>

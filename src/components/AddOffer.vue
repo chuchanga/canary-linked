@@ -194,6 +194,8 @@ export default {
                     }
                     );
                   }).then(() => {
+                    this.$emit("forceRender");
+                  }).then(() => {
                     this.$emit("beforeCloseEdit");
                   }).then(() => {
                     this.$emit("close");
