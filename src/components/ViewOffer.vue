@@ -20,7 +20,12 @@
                   <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
                   {{ duration }}
                 </p>
-                <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveOffer">Guardar Oferta</YellowButton>
+                <div v-if="cardType === 'offers'">
+                  <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveOffer"> Guardar oferta </YellowButton>
+                </div>
+                <div v-else-if="cardType === 'projects'">
+                  <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveProject"> Guardar proyecto </YellowButton>
+                </div>
               </div>
           </div>
         <div class="modal-footer mt-8">
@@ -32,11 +37,15 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "./firebaseInit.js";
 import YellowButton from "../components/Button/YellowButton.vue";
 export default {
-  props: ["offerId", "title", "description", "location", "image", "duration"],
+  props: ["id", "title", "description", "location", "duration", "image", "cardType"],
   data() {
     return {
+      userId: firebase.auth().currentUser.uid,
     };
   },
   components: {
@@ -45,9 +54,48 @@ export default {
   created () {
   },
   methods: {
-    saveOffer() {
-      console.log("Guardar Oferta");
-    }
+    saveOffer () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
+      let userSavedOffers;
+      db.collection("users").doc(this.userId).get().then(doc => {
+        userSavedOffers = doc.data().savedOffers;
+        console.log(userSavedOffers);
+      }).then(() => {
+        if (!userSavedOffers.includes(this.id)) { // Si el usuario no tiene esa oferta guardada
+          userSavedOffers.unshift(this.id);
+          // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          db.collection("users").doc(this.userId).update(
+            {
+              savedOffers: userSavedOffers
+            }
+          ).then(() => {
+            alert("Oferta guardada, puedes verla en tu perfil");
+          });
+        } else {
+          alert("Ya habías guardado esta oferta");
+        }
+      });
+    },
+    saveProject () { // Guarda el id del proyecto seleccionado en el array de savedProjects del usuario logueado
+      let userSavedProjects;
+      db.collection("users").doc(this.userId).get().then(doc => {
+        userSavedProjects = doc.data().savedProjects;
+        console.log(userSavedProjects);
+      }).then(() => {
+        if (!userSavedProjects.includes(this.id)) { // Si el usuario no tiene ese proyecto guardado
+          userSavedProjects.unshift(this.id);
+          // Guarda el proyecto al principio del array de ofertas guardadas para que salga primera
+          db.collection("users").doc(this.userId).update(
+            {
+              savedProjects: userSavedProjects
+            }
+          ).then(() => {
+            alert("Proyecto guardado, puedes verla en tu perfil");
+          });
+        } else {
+          alert("Ya habías guardado este proyecto");
+        }
+      });
+    },
   },
 };
 </script>

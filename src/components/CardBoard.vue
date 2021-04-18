@@ -27,7 +27,7 @@
         <div v-else-if="mymood === 'projects'">
           <YellowButton class="my-1" :onClick="saveProject"> Guardar proyecto </YellowButton>
         </div>
-        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" v-if="showView" @close="showView = false">
+        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" :cardType="mymood" v-if="showView" @close="showView = false">
         </view-offer>
       </div>
   </div>
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      userId: firebase.auth().currentUser.uid,
+      userId: "",
       showView: false,
       briefDescription: "",
       briefTitle: "",
@@ -91,15 +91,15 @@ export default {
         }
       });
     },
-    saveProject () { // Guarda el id de la oferta seleccionada en el array de savedOffers del usuario logueado
+    saveProject () { // Guarda el id del proyecto seleccionado en el array de savedProjects del usuario logueado
       let userSavedProjects;
       db.collection("users").doc(this.userId).get().then(doc => {
-        userSavedProjects = doc.data().savedOffers;
+        userSavedProjects = doc.data().savedProjects;
         console.log(userSavedProjects);
       }).then(() => {
-        if (!userSavedProjects.includes(this.id)) {
+        if (!userSavedProjects.includes(this.id)) { // Si el usuario no tiene ese proyecto guardado
           userSavedProjects.unshift(this.id);
-          // Guarda la oferta al principio del array de ofertas guardadas para que salga primera
+          // Guarda el proyecto al principio del array de ofertas guardadas para que salga primera
           db.collection("users").doc(this.userId).update(
             {
               savedProjects: userSavedProjects
@@ -115,6 +115,9 @@ export default {
   },
   created () {
     this.createBriefs();
+    if (firebase.auth().currentUser.uid) {
+      this.userId = firebase.auth().currentUser.uid;
+    }
   },
 };
 </script>

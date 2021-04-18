@@ -91,6 +91,7 @@ export default {
     },
     // Método que elimina la oferta o proyecto del array de ofertas o proyectos guardados del usuario logueado.
     removeSavedOffer() {
+      this.getOfferId();
       if (this.collection === "offers") {
         let userSavedOffers;
         db.collection("users").doc(this.currentUserId).get().then(doc => {
@@ -130,6 +131,15 @@ export default {
           });
         });
       }
+    },
+    getOfferId() {
+      db.collection(this.collection).where("creationTime", "==", this.timeId)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            this.currentOfferId = doc.id;
+          });
+        });
     },
 
     showEditWindow() {

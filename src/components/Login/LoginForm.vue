@@ -18,6 +18,10 @@
         v-model="email"
       />
     </div>
+     <div>
+        <p class="text-red-500 mb-2" v-if="errors.noEmail"> No ha introducido un email</p>
+        <p class="text-red-500 mb-2" v-if="errors.badEmail"> El email introducido no tiene el formato adecuado</p>
+      </div>
     <div
       class="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10"
     >
@@ -35,6 +39,9 @@
         placeholder="Contraseña"
         v-model="password"
       />
+    </div>
+    <div>
+      <p class="text-red-500" v-if="errors.noPassword"> No ha introducido una contraseña</p>
     </div>
     <BlueButton :onClick="login"> INICIAR SESIÓN </BlueButton>
     <div class="m-auto -mt-4">
@@ -64,30 +71,62 @@ export default {
     return {
       email: "",
       password: "",
+      errors: {
+        noEmail: "",
+        noPassword: "",
+        badEmail: ""
+      }
     };
   },
   methods: {
     // Este método crea un usuario en firebase auth con el email y passwd que pasemos en los inputs
     login(e) {
       e.preventDefault();
-      console.log(this.email);
-      console.log(this.password);
-      console.log(firebase);
-      // Para probar aquí iba console.log("register");
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          (user) => {
-            console.log(user);
-            alert(`Inició sesión como ${this.email}`);
-            this.$router.go({ path: "/profile" });
-          },
-          (err) => {
-            alert(err.message);
-          }
-        );
+      if (this.validateForm()) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(
+            (user) => {
+              console.log(user);
+              alert(`Inició sesión como ${this.email}`);
+              this.$router.go({ path: "/profile" });
+            },
+            (err) => {
+              alert(err.message);
+            }
+          );
+      }
     },
+    checkInputs() {
+      this.errors.noEmail = "";
+      this.errors.noPassword = "";
+      this.errors.badEmail = "";
+
+      if (!this.email) {
+        this.errors.noEmail = "error";
+      }
+      if (!this.password) {
+        this.errors.noPassword = "error";
+      }
+      if (this.isEmailValid() === "invalidEmail") {
+        this.errors.badEmail = "error";
+      }
+    },
+
+    isEmailValid () {
+      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+      return (reg.test(this.email)) ? "validEmail" : "invalidEmail";
+    },
+
+    validateForm() {
+      this.checkInputs();
+      if (!this.errors.noEmail && !this.errors.noPassword && !this.errors.badEmail) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   components: {
     // Button,
