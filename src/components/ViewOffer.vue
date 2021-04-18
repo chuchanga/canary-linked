@@ -20,6 +20,10 @@
                   <i class="text-cyberyellow far fa-calendar-alt mr-2"></i>
                   {{ duration }}
                 </p>
+                <p class="text-richblack text-left justify-self-start text-lg lg:text-lg">
+                  <i class="text-cyberyellow fas fa-envelope mr-2"></i>
+                  {{ contactEmail }}
+                </p>
                 <div v-if="cardType === 'offers'">
                   <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveOffer"> Guardar oferta </YellowButton>
                 </div>
@@ -42,7 +46,7 @@ import "firebase/auth";
 import db from "./firebaseInit.js";
 import YellowButton from "../components/Button/YellowButton.vue";
 export default {
-  props: ["id", "title", "description", "location", "duration", "image", "cardType"],
+  props: ["id", "title", "description", "location", "duration", "image", "contactEmail", "cardType"],
   data() {
     return {
       userId: firebase.auth().currentUser.uid,

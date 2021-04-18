@@ -91,7 +91,7 @@ export default {
         submitterId: "",
         title: "",
         description: "",
-        contactEmail: "",
+        contactEmail: firebase.auth().currentUser.email,
         location: "Lugar",
         website: "",
         category: "Categoría",

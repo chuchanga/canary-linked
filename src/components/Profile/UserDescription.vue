@@ -1,6 +1,9 @@
 <template>
   <div class="user-info w-72 h-auto m-4 p-4 shadow-lg flex flex-col">
-    <!--<div class="user-image mb-8 h-48 w-48 rounded-full self-center bg-hero"></div>-->
+    <div class="mb-4 p-3 bg-minionyellow text-richblack shadow-md border-2 text-xs font-semibold text-justify" v-if="isProfileCompleted === false">
+      <i class="fas fa-exclamation-circle"></i>
+        Es recomendable que completes tu perfil añadiendo tu nombre de usuario, descripción y localización
+       </div>
     <ProfileImage/>
     <div class="user-name font-semibold ml-2 h-1/6 text-left">{{loggedUserData.name}} {{loggedUserData.surname}}</div>
     <div class="user-diplayname mt-1 ml-2 h-1/6 text-left text-gray-400">@{{loggedUserData.displayName}}</div>
@@ -41,6 +44,7 @@ export default {
       },
       imgFile: {},
       textReadOnly: true,
+      isProfileCompleted: false
     };
   },
   created () {
@@ -51,9 +55,16 @@ export default {
       this.loggedUserData.description = doc.data().description;
       this.loggedUserData.location = doc.data().location;
       this.loggedUserData.website = doc.data().website;
+    }).then(() => {
+      this.checkCompletion();
     });
   },
   methods: {
+    checkCompletion() {
+      if (this.loggedUserData.displayName && this.loggedUserData.location && this.loggedUserData.description) {
+        this.isProfileCompleted = true;
+      }
+    }
   },
   components: {
     ProfileImage,

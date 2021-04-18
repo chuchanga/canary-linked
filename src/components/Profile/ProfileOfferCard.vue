@@ -36,7 +36,7 @@
       </div>
       <edit-offer :collection="collection" :currentOfferTimeId="timeId" v-if="showEdit" @close="showEdit = false" @beforeCloseEdit="onEditSave()">
       </edit-offer>
-      <view-offer :title="title" :description="description" :location="location" :duration="duration" v-if="showView" @close="showView = false">
+      <view-offer :title="title" :description="description" :location="location" :duration="duration" :contactEmail="contactEmail" v-if="showView" @close="showView = false">
       </view-offer>
     </div>
   </div>
