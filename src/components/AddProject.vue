@@ -138,9 +138,10 @@ export default {
           }
         ).then(() => {
           this.storeImage();
-        }).then(() => {
           this.$emit("forceRender");
+        }).then(() => {
           this.$emit("close");
+          this.$emit("forceRender");
           this.changeVisibility();
         });
       }
