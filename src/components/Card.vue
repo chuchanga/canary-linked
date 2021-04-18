@@ -1,16 +1,16 @@
 <template>
   <div
-    class="flex flex-col justify-center mx-2 lg:flex-row rounded-lg shadow-lg"
+    class="w-full flex flex-col justify-center mx-2 lg:flex-row rounded-lg shadow-lg"
   >
     <div id="front">
       <div v-if="arrayTraining[id].pos == true">
         <img class="w-full" :src="url" alt="Fotos de personas trabajando " />
-        <div class="font-bold text-xl mb-4 px-2 mt-2">{{ title }}</div>
+        <div class="font-bold text-xl mb-8 px-4 mt-4">{{ title }}</div>
         <button
           @click="set_id(id)"
-          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 mb-6 border hover:border-transparent rounded"
+          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold py-2 px-4 mb-12 border hover:border-transparent rounded"
         >
-          Leer más
+          Leer consejos
         </button>
         <br />
       </div>
@@ -24,13 +24,15 @@
         <p class="ml-4">{{ text[3] }}</p>
         <p class="ml-4">{{ text[4] }}</p>
         <p class="ml-4">{{ text[5] }}</p>
-        <button
-          @click="set_id(id)"
-          class="bg-cyberyellow hover:bg-minionyellow text-black font-semibold mt-4 py-2 px-4 border hover:border-transparent rounded"
-        >
-          Volver
-        </button>
-        <p>⠀⠀⠀</p>
+        <div class="flex justify-center align-middle">
+          <button
+            @click="set_id(id)"
+            class="bg-cyberyellow hover:bg-minionyellow text-black self-center font-semibold mt-8 mb-2 py-2 px-4 border hover:border-transparent rounded"
+          >
+            Volver
+          </button>
+        </div>
+        <p></p>
       </div>
     </div>
   </div>

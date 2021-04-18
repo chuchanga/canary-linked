@@ -60,12 +60,13 @@
         </li>
         <div class="container w-32 z-40 hover:text-cyberyellow lg:ml-12 lg:mr-8">
           <div class="flex flex-col lg:text-lg">
-            <button
+            <button v-if="!userImageUrl"
               @click="open = !open"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
             >
               <i class="far fa-user fa-2x rounded-full self-center"></i>
             </button>
+            <img class="h-14 w-14 mt-2 self-center object-cover rounded-full cursor-pointer" @click="open = !open" v-on:click="toggleNavbar()" v-if="userImageUrl!=null" :src=userImageUrl alt="Foto de perfil del usuario">
             <span
               @click="open = !open"
               v-if="isLoggedIn"
@@ -126,12 +127,20 @@ export default {
       isLoggedIn: false,
       currentUser: false,
       open: false,
+      userImageUrl: null
     };
   },
   created() {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser.email;
+    }
+  },
+  mounted() {
+    if (firebase.auth().currentUser) {
+      firebase.storage().ref("users/" + firebase.auth().currentUser.uid + "/profile.jpg").getDownloadURL().then(imgUrl => {
+        this.userImageUrl = imgUrl;
+      });
     }
   },
 
