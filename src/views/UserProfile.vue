@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-container py-32 flex flex-wrap lg:flex-nowrap xl:px-36 lg:px-28 justify-center">
+  <div class="profile-container py-32 flex flex-wrap lg:flex-nowrap 2xl:px-32 xl:px-20 lg:px-20 -mx-12 justify-center">
       <div class="description-container w-80 flex flex-col">
         <div v-if="!editing">
           <UserDescription class="" />

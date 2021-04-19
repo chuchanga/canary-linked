@@ -25,10 +25,10 @@
                   {{ contactEmail }}
                 </p>
                 <div v-if="cardType === 'offers'">
-                  <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveOffer"> Guardar oferta </YellowButton>
+                  <YellowButton v-if="currentUserType==='person'" class="mt-8 w-4/5 self-center" :onClick="saveOffer"> Guardar oferta </YellowButton>
                 </div>
                 <div v-else-if="cardType === 'projects'">
-                  <YellowButton class="mt-8 w-4/5 self-center" :onClick="saveProject"> Guardar proyecto </YellowButton>
+                  <YellowButton v-if="currentUserType==='person'" class="mt-8 w-4/5 self-center" :onClick="saveProject"> Guardar proyecto </YellowButton>
                 </div>
               </div>
           </div>
@@ -46,7 +46,7 @@ import "firebase/auth";
 import db from "./firebaseInit.js";
 import YellowButton from "../components/Button/YellowButton.vue";
 export default {
-  props: ["id", "title", "description", "location", "duration", "image", "contactEmail", "cardType"],
+  props: ["id", "title", "description", "location", "duration", "image", "contactEmail", "currentUserType", "cardType"],
   data() {
     return {
       userId: firebase.auth().currentUser.uid,

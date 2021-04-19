@@ -11,7 +11,7 @@
       >
         <div class="mx-4 text-center text-white">
           <h1 class="font-bold text-5xl lg:text-7xl mb-4">
-            Bienvenidos a Canary Linked
+            Bienvenid@ a Canary Linked
           </h1>
           <h2 class="font-bold text-3xl lg:text-4xl mb-12 mt-8">
             Encuentra tu oportunidad con nosotros
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="lg:mx-0 -mx-8">
       <HomeCard></HomeCard>
     </div>
     <p class="text-4xl lg:text-5xl mt-12 font-bold">

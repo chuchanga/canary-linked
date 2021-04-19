@@ -3,7 +3,7 @@
     <!--p class="justify-items-center">Estás en la página: {{ currentPage }}</p-->
 
     <div
-      class="flex flex-col md:flex-row lg:h-12 font-medium rounded-full bg-cyberyellow"
+      class="mb-8 flex flex-row lg:h-12 font-medium rounded-full bg-cyberyellow"
     >
       <div
         class="w-12 p-2 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full font-bold hover:bg-red-100"
@@ -20,13 +20,13 @@
       </div>
 
       <div
-        class="w-12 p-2 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full font-bold bg-cyberyellow text-white hover:bg-minionyellow"
+        class="w-12 p-2 md:flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full font-bold bg-cyberyellow text-black hover:bg-minionyellow"
         v-for="index in totalPages"
         :key="index"
       >
         <div
           v-if="index == currentPage"
-          class="text-black font-bold"
+          class="text-white font-bold"
           @click="changePage(index)"
         >
           {{ index }}

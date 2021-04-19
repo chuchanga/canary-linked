@@ -2,7 +2,7 @@
   <div class="bg-gray-50 py-24">
     <Subheader
       class="textcontent-title"
-      title="Bienvenido a nuestro Tablón de Ofertas y Proyectos"
+      title="Este es nuestro Tablón de Ofertas y Proyectos"
       description="Aquí podrás encontrar las mejores oportunidades para tu carrera profesional"
       text="Contáctanos"
     ></Subheader>
@@ -35,7 +35,7 @@
         </a>
       </li>
     </ul>
-    <div class="flex flex-col md:flex-col m-12">
+    <div class="flex flex-col md:flex-col mx-2 my-8 lg:m-10">
       <div class="tab-content tab-space">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="antialiased font-sans">
@@ -48,9 +48,7 @@
           <div v-if="filtering">
             <div v-if="noresults">No hay resultados</div>
             <div v-else>
-              <div
-                class="flex justify-center flex-col lg:grid grid-cols-3 gap-4"
-              >
+              <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4">
                 <div v-for="card in itemsFiltered" :key="card.title">
                   <div v-if="card.show">
                     <CardBoard
@@ -60,6 +58,8 @@
                       :place="card.place"
                       :duration="card.duration"
                       :description="card.description"
+                      :contactEmail="card.contactEmail"
+                      :currentUserType="currentUserType"
                       mymood="offers"
                     />
                   </div>
@@ -78,6 +78,8 @@
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    :contactEmail="card.contactEmail"
+                    :currentUserType="currentUserType"
                     mymood="offers"
                   />
                 </div>
@@ -116,6 +118,8 @@
                       :place="card.place"
                       :duration="card.duration"
                       :description="card.description"
+                      :contactEmail="card.contactEmail"
+                      :currentUserType="currentUserType"
                       mymood="projects"
                     />
                   </div>
@@ -134,6 +138,8 @@
                     :place="card.place"
                     :duration="card.duration"
                     :description="card.description"
+                    :contactEmail="card.contactEmail"
+                    :currentUserType="currentUserType"
                     mymood="projects"
                   />
                 </div>
@@ -156,6 +162,9 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "../components/firebaseInit.js";
 import Subheader from "../components/Subheader.vue";
 import FilterCard from "../components/FilterCard.vue";
 import CardBoard from "../components/CardBoard.vue";
@@ -174,9 +183,29 @@ export default {
   data() {
     return {
       openTab: 1,
+      currentUserType: "not person",
     };
   },
+  created () {
+    if (this.isLoggedIn()) {
+      this.getUserType();
+    }
+  },
   methods: {
+    isLoggedIn () {
+      if (firebase.auth().currentUser) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    getUserType () {
+      const userId = firebase.auth().currentUser.uid;
+      db.collection("users").doc(userId).get().then(doc => {
+        this.currentUserType = doc.data().userType;
+      });
+    },
+
     toggleTabs: function (tabNumber) {
       this.openTab = tabNumber;
     },

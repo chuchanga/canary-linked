@@ -13,7 +13,7 @@
         </li>
       </ul>
       <div class="flex flex-col min-w-0 break-words bg-culturedwhite w-full mb-6 shadow-md rounded">
-        <div class="px-4 py-2 flex-auto">
+        <div class="lg:px-4 px-2 py-2 flex-auto">
           <div class="tab-content tab-space">
             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
               <div v-if="userType=='entity'" class="add-offer">

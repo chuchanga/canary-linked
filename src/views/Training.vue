@@ -2,13 +2,10 @@
   <div class="py-24">
     <Subheader
       class="textcontent-title"
-      title="Bienvenidos a nuestro portal de tips y consejos de orientación laboral"
+      title="Este es nuestro portal de tips y consejos de orientación laboral"
       description="Resuelve tus dudas con estos consejos"
       text="Contáctanos"
     ></Subheader>
-    <!--<div class="font-bold text-xl lg:text-4xl p-12 bg-cyberyellow">
-      ÚLTIMOS CONSEJOS
-    </div>-->
     <div class="flex justify-center flex-col lg:grid grid-cols-3 gap-4 mt-12 px-16">
       <div v-for="card in arrayTraining" :key="card.id">
         <div :id="card.id" v-if="card.show" class="flip-vertical-right">

@@ -90,7 +90,7 @@
         <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
           <svg
             viewBox="0 0 24 24"
-            class="h-4 w-4 mr-24 xl:-mt-20 2xl:-mt-14 fill-current text-gray-500"
+            class="h-4 w-4 mr-24 xl:-mt-5 2xl:mt-0 fill-current text-gray-500"
           >
             <path
               d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
@@ -104,15 +104,15 @@
         />
       </div>
       <!--------------------------------------  Botones  ---------------------------------------------->
-      <div class="flex flex-col">
+      <div class="flex flex-col lg:flex-row justify-center ">
         <button
-          class="bg-cyberyellow hover:bg-goldenrod focus:outline-none shadow-2xl mt-4 p-2 text-black font-semibold border hover:border-transparent rounded-lg content-center items-center"
+          class="bg-cyberyellow hover:bg-goldenrod focus:outline-none shadow-2xl mt-4 p-2 text-black font-semibold border hover:border-transparent rounded-lg content-center items-center lg:mr-4 self-start"
           @click="setMood(mymood)"
         >
           Filtrar
         </button>
         <button
-          class="bg-cyberyellow hover:bg-goldenrod focus:outline-none shadow-2xl mt-4 p-2 text-black font-semibold border hover:border-transparent rounded-lg content-center items-center"
+          class="bg-cyberyellow hover:bg-goldenrod focus:outline-none shadow-2xl mt-4 p-2 text-black font-semibold border hover:border-transparent rounded-lg content-center items-center self-start"
           @click="stopFilter(mybutton)"
         >
           Dejar de filtrar

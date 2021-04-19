@@ -10,8 +10,8 @@
       <p
         class="text-xl md:text-4xl lg:text-5xl self-center flex flex-col w-4/5 m-12 break-words"
       >
-        CanaryLinked es la empresa líder en las islas canarias que facilita la
-        incorporación de profesionales sin experiencia al mundo laboral.
+        CanaryLinked es una plataforma que facilita la incorporación de profesionales
+         sin experiencia en el Sector Creativo al mundo laboral en Canarias.
         <router-link
           to="/contact"
           class="mt-12 rounded-lg m-auto text-2xl lg:text-4xl focus:outline-none shadow-2xl text-decoration:none"
@@ -86,9 +86,8 @@
           </defs>
         </svg>
         <p class="mt-8 m-8 text-xl lg:text-2xl">
-          Nuestra misión en CanaryLinked es la de proporcionar oportunidades y
-          conocimientos para que profesionales sin experiencia encuentren
-          trabajo.
+         La misión de CanaryLinked es proporcionar oportunidades y
+          conocimientos para que profesionales sin experiencia en el Sector Creativo lancen su carrera.
         </p>
       </div>
       <div>
@@ -132,7 +131,7 @@
           />
         </svg>
         <p class="m-8 text-xl lg:text-2xl">
-          Creemos que el mayor valor se obtiene cuando trabajamos juntos.
+          Creemos que obtenemos un mayor valor cuando trabajamos juntos.
           Creemos en el aprendizaje continuo y en el intercambio de nuestras
           percepciones e ideas.
         </p>
@@ -202,7 +201,7 @@ export default {
       About: [
         {
           description: "Coaching",
-          name: "Lucía Muñoz González",
+          name: "Lucía Muñoz",
           image: lucia,
         },
         {
@@ -211,7 +210,7 @@ export default {
           image: saul,
         },
         {
-          description: "Periodista",
+          description: "Antropólogo",
           name: "Aythami De Armas",
           image: aythami,
         },

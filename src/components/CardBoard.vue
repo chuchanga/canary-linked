@@ -15,19 +15,19 @@
           {{ duration }}
         </p>
         <p class="text-richblack justify-self-start text-lg lg:text-base text-justify">
-          <i class="text-cyberyellow fas fa-info-circle mr-2"></i>
+          <i class="text-cyberyellow fas fa-info-circle lg:mr-2 "></i>
           {{ briefDescription }}
         </p>
       </div>
       <div class="lg:flex lg:justify-center">
         <YellowButton class=" lg:mr-2 my-1" :onClick="displayModal"> Leer Más </YellowButton>
         <div v-if="mymood === 'offers'">
-          <YellowButton class="my-1" :onClick="saveOffer"> Guardar oferta </YellowButton>
+          <YellowButton v-if="currentUserType==='person'" class="my-1" :onClick="saveOffer"> Guardar oferta </YellowButton>
         </div>
         <div v-else-if="mymood === 'projects'">
-          <YellowButton class="my-1" :onClick="saveProject"> Guardar proyecto </YellowButton>
+          <YellowButton v-if="currentUserType==='person'" class="my-1" :onClick="saveProject"> Guardar proyecto </YellowButton>
         </div>
-        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" :cardType="mymood" v-if="showView" @close="showView = false">
+        <view-offer :id="id" :title="title" :description="description" :location="place" :duration="duration" :image="image" :contactEmail="contactEmail" :currentUserType="currentUserType" :cardType="mymood" v-if="showView" @close="showView = false">
         </view-offer>
       </div>
   </div>
@@ -40,7 +40,7 @@ import "firebase/auth";
 import db from "./firebaseInit.js";
 import ViewOffer from "./ViewOffer.vue";
 export default {
-  props: ["id", "title", "description", "place", "image", "duration", "mymood"], // Tendría que pasar todas las props en verdad
+  props: ["id", "title", "description", "place", "image", "duration", "contactEmail", "currentUserType", "mymood"], // Tendría que pasar todas las props en verdad
   components: {
     YellowButton,
     ViewOffer
@@ -95,7 +95,6 @@ export default {
       let userSavedProjects;
       db.collection("users").doc(this.userId).get().then(doc => {
         userSavedProjects = doc.data().savedProjects;
-        console.log(userSavedProjects);
       }).then(() => {
         if (!userSavedProjects.includes(this.id)) { // Si el usuario no tiene ese proyecto guardado
           userSavedProjects.unshift(this.id);
