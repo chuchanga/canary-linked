@@ -1,6 +1,6 @@
 <template>
   <div class="offer-card-container grid grid-cols-12  w-full h-auto overflow-hidden rounded-md bg-culturedwhite py-4 px-5 my-3 border-2 border-gray-200 shadow-md">
-      <img class="lg:w-10/12 w-12/12 h-auto lg:col-span-2 col-span-12 rounded-md mt-2" :src="image" />
+      <img class="lg:w-10/12 w-12/12 h-auto max-h-28 lg:col-span-2 col-span-12 rounded-md mt-2" :src="image" />
     <div class="lg:col-span-5 col-span-12 title-and-description-container flex flex-col">
       <div class="offer-title font-bold h-2/6 text-left mb-1">{{title}}</div>
       <div class="offer-description border-green text-left">{{brief}}</div>

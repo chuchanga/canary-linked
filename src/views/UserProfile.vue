@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-container py-32 flex flex-wrap lg:flex-nowrap 2xl:px-32 xl:px-20 lg:px-20 -mx-12 justify-center">
+  <div class="profile-container py-32 flex flex-wrap lg:flex-nowrap 2xl:px-32 xl:px-20 lg:px-20  justify-center">
       <div class="description-container w-80 flex flex-col">
         <div v-if="!editing">
           <UserDescription class="" />
@@ -11,7 +11,7 @@
           <EditUserDescription />
         </div>
       </div>
-      <div class="categories-container w-4/5">
+      <div class="categories-container w-5/5">
        <ProfileCategories />
       </div>
   </div>
