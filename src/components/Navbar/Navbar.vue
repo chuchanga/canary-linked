@@ -53,13 +53,13 @@
         </li>
         <li v-on:click="toggleNavbar()" class="nav-item">
           <router-link
-            class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
+            class="px-3 py-4 lg:mr-10 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/about"
             >Sobre Nosotros</router-link
           >
         </li>
-        <div class="container w-32 z-40 hover:text-cyberyellow lg:ml-12 lg:mr-8">
-          <div @mouseenter="toggleUserMenu()" @mouseleave="toggleUserMenu()" class="flex flex-col lg:text-lg">
+        <div @mouseenter="toggleUserMenu()" @mouseleave="toggleUserMenu()" class="container w-32 z-40 hover:text-cyberyellow lg:ml-2 lg:mr-8">
+          <div class="flex flex-col lg:text-lg">
             <button v-if="!userImageUrl"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
             >
