@@ -90,7 +90,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap");
 
 .textcontent {
-  @apply bg-cyberyellow shadow-2xl flex flex-col justify-center m-12 p-8 xl:flex-row;
+  @apply bg-cyberyellow shadow-2xl flex flex-col justify-center my-10 mx-4 lg:m-12 p-8 xl:flex-row;
 }
 
 .textcontent-title {

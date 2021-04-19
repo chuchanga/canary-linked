@@ -24,8 +24,8 @@
         </div>
       </div>
     </div>
-    <div class="lg:mx-0 -mx-8">
-      <HomeCard></HomeCard>
+    <div class="">
+      <HomeCard class=""></HomeCard>
     </div>
     <p class="text-4xl lg:text-5xl mt-12 font-bold">
       Lo que dicen nuestros usuarios
@@ -36,7 +36,7 @@
       class="bg-cyberyellow shadow-2xl m-12 flex flex-col justify-center p-8 lg:flex-row"
     >
       <p
-        class="text-xl lg:text-4xl self-center flex flex-col w-4/5 break-words"
+        class="text-xl lg:text-4xl self-center flex flex-col lg:w-4/5 w-5/5 break-words"
       >
         CanaryLinked es la empresa líder en las islas canarias que facilita la
         incorporación de profesionales sin experiencia al mundo laboral.
