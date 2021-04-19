@@ -20,38 +20,38 @@
       <button
         class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
         type="button"
-        v-on:click="toggleNavbar()"
+        v-on:click="toggleNavbar(), closeUserFromBurguer()"
       >
         <i class="fas fa-bars"></i>
       </button>
     </div>
     <div
-      v-bind:class="{ hidden: !showMenu, flex: showMenu }"
+      v-bind:class="{ hidden : !showMenu, flex : showMenu }"
       class="flex lg:flex lg:flex-grow items-center"
     >
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-        <li class="nav-item">
+        <li v-on:click="toggleNavbar()" class="nav-item">
           <router-link
             class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/board"
             >Nuestro Tablón</router-link
           >
         </li>
-        <li class="nav-item">
+        <li v-on:click="toggleNavbar()" class="nav-item">
           <router-link
             class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/training"
             >Orientación Laboral</router-link
           >
         </li>
-        <li class="nav-item">
+        <li v-on:click="toggleNavbar()" class="nav-item">
           <router-link
             class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/contact"
             >Contacto</router-link
           >
         </li>
-        <li class="nav-item">
+        <li v-on:click="toggleNavbar()" class="nav-item">
           <router-link
             class="px-3 py-4 lg:py-10 flex items-center text-md lg:text-xl leading-snug text-white hover:text-cyberyellow"
             to="/about"
@@ -59,49 +59,52 @@
           >
         </li>
         <div class="container w-32 z-40 hover:text-cyberyellow lg:ml-12 lg:mr-8">
-          <div class="flex flex-col lg:text-lg">
+          <div @mouseenter="toggleUserMenu()" @mouseleave="toggleUserMenu()" class="flex flex-col lg:text-lg">
             <button v-if="!userImageUrl"
-              @click="open = !open"
               class="mt-2 p-2 hover:text-cyberyellow items-center text-culturedwhite focus:outline-none rounded-full"
             >
               <i class="far fa-user fa-2x rounded-full self-center"></i>
             </button>
-            <img class="h-14 w-14 mt-2 self-center object-cover rounded-full cursor-pointer" @click="open = !open" v-on:click="toggleNavbar()" v-if="userImageUrl!=null" :src=userImageUrl alt="Foto de perfil del usuario">
+            <img class="h-14 w-14 mt-2 self-center object-cover rounded-full cursor-pointer" v-if="userImageUrl!=null" :src=userImageUrl alt="Foto de perfil del usuario">
             <span
-              @click="open = !open"
+              v-on:click="toggleUserMenu()"
               v-if="isLoggedIn"
               class="cursor-pointer block text-culturedwhite text-center text-xs"
               >Sesión iniciada como {{ currentUser }}</span
             >
             <span
-              @click="open = !open"
+              v-on:click="toggleUserMenu()"
               v-if="!isLoggedIn"
               class="cursor-pointer block text-culturedwhite text-center self-center text-xs"
               >No ha iniciado sesión</span
             >
             <div v-if="open" class="absolute mt-24 bg-richblack w-32">
               <div
+                v-on:click="toggleUserMenu(), toggleNavbar()"
                 v-if="!isLoggedIn"
                 class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
               >
                 <router-link to="/login">Iniciar Sesión</router-link>
               </div>
               <div
+               v-on:click="toggleUserMenu(), toggleNavbar()"
                 v-if="!isLoggedIn"
                 class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
               >
                 <router-link to="/signup">Regístrate</router-link>
               </div>
               <div
+                v-on:click="toggleUserMenu(), toggleNavbar()"
                 v-if="isLoggedIn"
                 class="cursor-pointer dropdown-item block p-2 border-b text-culturedwhite border-davysgray hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
               >
                 <router-link to="/profile">Perfil</router-link>
               </div>
-              <div v-if="isLoggedIn">
+              <div v-if="isLoggedIn"
+              v-on:click="toggleUserMenu(), toggleNavbar()">
                 <div
                   class="cursor-pointer dropdown-item block p-2 text-culturedwhite hover:bg-cyberyellow hover:border-richblack hover:text-richblack"
-                  @click="logout"
+                  @click="logout" v-on:click="toggleUserMenu(), toggleNavbar()"
                 >
                   Logout
                 </div>
@@ -145,8 +148,16 @@ export default {
   },
 
   methods: {
-    toggleNavbar: function () {
+    toggleNavbar () {
       this.showMenu = !this.showMenu;
+    },
+    toggleUserMenu () {
+      this.open = !this.open;
+    },
+    closeUserFromBurguer () {
+      if (this.open === true) {
+        this.open = false;
+      }
     },
     logout() {
       firebase

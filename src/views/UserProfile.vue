@@ -11,7 +11,7 @@
           <EditUserDescription />
         </div>
       </div>
-      <div class="categories-container w-5/5">
+      <div class="categories-container w-full">
        <ProfileCategories />
       </div>
   </div>
