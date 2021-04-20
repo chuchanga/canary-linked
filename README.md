@@ -46,6 +46,7 @@ First of all, following this link will get you to Firebase´s Documentation http
 We recommend you check the main documents in order to get a better understanding of firebase´s functionalities and workarounds.
 
 The canary-linked project uses 5 Firestore Database collections where we store all the required information.
+
  Collection |	Function
 ------|-------------------
 **users** | `Stores all the users information. User´s ID´s are linked to Firebase Authentication`
@@ -55,6 +56,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **arrayTraining** | `Stores the information displayed for every card in the Orientacion Laboral view`
 
 1. The **"users"** collection´s documents must have the following field structure in order to function properly
+
  Collection |	Function
 ------|-------------------
 **name** |`String` `Stores the name a user inputs when registered`
@@ -67,6 +69,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **savedProjects** |`Array of Strings` `Stores an array of the user´s saved projects´ ID´s`
 
 2. The **"offers"** and **"projects"** collections´ documents must have the following field structure in order to function properly
+
  Collection |	Function
 ------|-------------------
 **title** |`String` `Stores the offer or project title`
@@ -80,6 +83,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **submitterId** |`Strings` `Stores the ID of the  submitter`
 
 3. The **"messages"** collections´ documents must have the following field structure in order to function properly
+
  Collection |	Function
 ------|-------------------
 **name** |`String` `Stores the offer or project title`
@@ -92,8 +96,6 @@ The canary-linked project uses 5 Firestore Database collections where we store a
  We use the **Vue Analytics** library to link the project to **Google Analytics** and allow live tracking.
 
  You must change the credentials in the `/src/main.js/` file for this to work.
-
-
 
 ## CanaryLinked use cases by userType ##
 
