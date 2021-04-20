@@ -1,5 +1,5 @@
 <template>
-  <div class="py-24">
+  <div class="pt-24">
     <Subheader
       class="textcontent-title"
       title="Este es nuestro portal de tips y consejos de orientación laboral"

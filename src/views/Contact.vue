@@ -1,7 +1,7 @@
 
 <template>
   <div
-    class="bg-cover py-28"
+    class="bg-cover pt-28"
     style="
       background-image: url(https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg);
     "

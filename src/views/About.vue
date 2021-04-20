@@ -1,5 +1,5 @@
 <template>
-  <div class="py-24">
+  <div class="pt-24">
     <Subheader
       class="textcontent-title"
       title="Conoce nuestra empresa, objetivos, metas y descubre quienes la componen"
@@ -139,9 +139,6 @@
     </div>
     <div class="text-2xl md:text-2xl lg:text-5xl">
       <div>
-        <p class="font-bold mt-24 text-3xl lg:text-5xl">Video</p>
-      </div>
-      <div>
         <p class="font-bold mt-24 text-3xl lg:text-5xl">
           Conoce a nuestro equipo
         </p>
@@ -200,7 +197,7 @@ export default {
     return {
       About: [
         {
-          description: "Coaching",
+          description: "Orientadora",
           name: "Lucía Muñoz",
           image: lucia,
         },
@@ -210,7 +207,7 @@ export default {
           image: saul,
         },
         {
-          description: "Antropólogo",
+          description: "Redactor",
           name: "Aythami De Armas",
           image: aythami,
         },
