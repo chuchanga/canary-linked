@@ -97,7 +97,7 @@ export default {
         category: "Categoría",
         duration: "Mes",
         show: true,
-        image: "https://firebasestorage.googleapis.com/v0/b/canarylinked.appspot.com/o/Boardphotos%2FCanary%20Linked.png?alt=media&token=7e99d61b-4421-4792-b6a9-6f1cb3cf47aa",
+        image: "https://firebasestorage.googleapis.com/v0/b/canarylinked.appspot.com/o/defaultimage%2FCanary%20Linked.png?alt=media&token=9db2e17e-3a8d-45e6-94a5-8a1c9ce2b1e4",
         creationTime: ""
       },
       imageData: null,
