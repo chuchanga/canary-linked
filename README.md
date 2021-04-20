@@ -55,6 +55,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **arrayTraining** | `Stores the information displayed for every card in the Orientacion Laboral view`
 
 1. The **"users"** collection´s documents must have the following field structure in order to function properly
+ Collection |	Function
 ------|-------------------
 **name** |`String` `Stores the name a user inputs when registered`
 **displayName** |`String` `Stores the @username`
@@ -66,6 +67,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **savedProjects** |`Array of Strings` `Stores an array of the user´s saved projects´ ID´s`
 
 2. The **"offers"** and **"projects"** collections´ documents must have the following field structure in order to function properly
+ Collection |	Function
 ------|-------------------
 **title** |`String` `Stores the offer or project title`
 **description** |`String` `Stores the offer or project description`
@@ -78,6 +80,7 @@ The canary-linked project uses 5 Firestore Database collections where we store a
 **submitterId** |`Strings` `Stores the ID of the  submitter`
 
 3. The **"messages"** collections´ documents must have the following field structure in order to function properly
+ Collection |	Function
 ------|-------------------
 **name** |`String` `Stores the offer or project title`
 **message** |`String` `Stores the sent message`
@@ -119,60 +122,60 @@ You will need, though, to give permision to this file by using `chmod +x deploy.
 
 ## Dependencies used ##
 
-"dependencies": {
-    "@ocrv/vue-tailwind-pagination": "^0.0.4",
-    "@splidejs/vue-splide": "^0.3.5",
-    "@tailwindcss/forms": "^0.2.1",
-    "axios": "^0.21.1",
-    "chart.js": "^2.9.4",
-    "core-js": "^3.6.5",
-    "cors": "^2.8.5",
-    "dns": "^0.1.2",
-    "firebase": "^8.3.1",
-    "firebase-functions": "^3.13.2",
-    "google-maps-api-loader": "^1.1.1",
-    "nodemailer": "^6.5.0",
-    "vue": "^2.6.11",
-    "vue-analytics": "^5.22.1",
-    "vue-carousel": "^0.18.0",
-    "vue-carousel-3d": "^1.0.1",
-    "vue-googlemaps": "^0.1.2",
-    "vue-plain-pagination": "^0.3.0",
-    "vue-router": "^3.5.1",
-    "vue-slick-carousel": "^1.0.6",
-    "vue-slider-component": "^3.2.11",
-    "vuex": "^3.6.2"
+"dependencies": {  
+    "@ocrv/vue-tailwind-pagination": "^0.0.4",  
+    "@splidejs/vue-splide": "^0.3.5",  
+    "@tailwindcss/forms": "^0.2.1",  
+    "axios": "^0.21.1",  
+    "chart.js": "^2.9.4",  
+    "core-js": "^3.6.5",  
+    "cors": "^2.8.5",  
+    "dns": "^0.1.2",  
+    "firebase": "^8.3.1",  
+    "firebase-functions": "^3.13.2",  
+    "google-maps-api-loader": "^1.1.1",  
+    "nodemailer": "^6.5.0",  
+    "vue": "^2.6.11",  
+    "vue-analytics": "^5.22.1",  
+    "vue-carousel": "^0.18.0",  
+    "vue-carousel-3d": "^1.0.1",  
+    "vue-googlemaps": "^0.1.2",  
+    "vue-plain-pagination": "^0.3.0",  
+    "vue-router": "^3.5.1",  
+    "vue-slick-carousel": "^1.0.6",  
+    "vue-slider-component": "^3.2.11",  
+    "vuex": "^3.6.2"  
   },
   
-  "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@storybook/addon-actions": "^6.2.3",
-    "@storybook/addon-essentials": "^6.2.3",
-    "@storybook/addon-links": "^6.2.3",
-    "@storybook/vue": "^6.2.3",
-    "@tailwindcss/postcss7-compat": "^2.0.4",
-    "@testing-library/vue": "^5.6.1",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "jest": "^26.6.3",
-    "lodash": "^4.17.21",
-    "postcss": "^7.0.35",
-    "sitemap-webpack-plugin": "^1.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
-    "vue-cli-plugin-sitemap": "~2.3.0",
-    "vue-loader": "^15.9.6",
-    "vue-template-compiler": "^2.6.11"
+  "devDependencies": {  
+    "@babel/core": "^7.13.14",  
+    "@storybook/addon-actions": "^6.2.3",  
+    "@storybook/addon-essentials": "^6.2.3",  
+    "@storybook/addon-links": "^6.2.3",  
+    "@storybook/vue": "^6.2.3",  
+    "@tailwindcss/postcss7-compat": "^2.0.4",  
+    "@testing-library/vue": "^5.6.1",  
+    "@vue/cli-plugin-babel": "~4.5.0",  
+    "@vue/cli-plugin-eslint": "~4.5.0",  
+    "@vue/cli-plugin-vuex": "~4.5.0",  
+    "@vue/cli-service": "~4.5.0",  
+    "@vue/eslint-config-standard": "^5.1.2",  
+    "autoprefixer": "^9.8.6",  
+    "babel-eslint": "^10.1.0",  
+    "babel-loader": "^8.2.2",  
+    "eslint": "^6.7.2",  
+    "eslint-plugin-import": "^2.20.2",  
+    "eslint-plugin-node": "^11.1.0",  
+    "eslint-plugin-promise": "^4.2.1",  
+    "eslint-plugin-standard": "^4.0.0",  
+    "eslint-plugin-vue": "^6.2.2",  
+    "jest": "^26.6.3",  
+    "lodash": "^4.17.21",  
+    "postcss": "^7.0.35",  
+    "sitemap-webpack-plugin": "^1.1.0",  
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",  
+    "vue-cli-plugin-sitemap": "~2.3.0",  
+    "vue-loader": "^15.9.6",  
+    "vue-template-compiler": "^2.6.11"  
   }
 
