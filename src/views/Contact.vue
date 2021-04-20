@@ -169,7 +169,7 @@ export default {
       if (!this.messagesRef.name) {
         this.errors.noName = "error";
       }
-      if (this.messagesRef.name.length < 3 || this.name.length > 40) {
+      if (this.messagesRef.name.length < 3 || this.messagesRef.name.length > 40) {
         this.errors.badName = "error";
       }
       if (!this.messagesRef.email) {
