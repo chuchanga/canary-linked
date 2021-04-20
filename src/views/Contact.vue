@@ -181,7 +181,7 @@ export default {
       if (!this.messagesRef.message) {
         this.errors.noMsg = "error";
       }
-      if (this.messagesRef.message.length < 70 || this.password.length > 1000) {
+      if (this.messagesRef.message.length < 70 || this.messagesRef.message.length > 1000) {
         this.errors.badMsg = "error";
       }
     },
